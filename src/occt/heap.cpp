@@ -24,7 +24,7 @@ struct NvHeapBlockHeader
 };
 
 //! Generates non-null, practically unique heap handles.
-AcHeapHandle NextHeapHandle()
+NvHeapHandle NextHeapHandle()
 {
   static std::mutex aMutex;
   static size_t aCounter = 0;
@@ -32,11 +32,11 @@ AcHeapHandle NextHeapHandle()
   ++aCounter;
   // Handles are small odd integers cast to pointers; they are never
   // dereferenced, only compared.
-  return reinterpret_cast<AcHeapHandle> (aCounter * 2 + 1);
+  return reinterpret_cast<NvHeapHandle> (aCounter * 2 + 1);
 }
 
-//! True when the handle was produced by acHeapCreate and not destroyed.
-bool IsValidHeap (AcHeapHandle theHeap)
+//! True when the handle was produced by NvHeapCreate and not destroyed.
+bool IsValidHeap (NvHeapHandle theHeap)
 {
   return theHeap != nullptr;
 }
@@ -57,7 +57,7 @@ NvHeapBlockHeader* HeaderOf (void* thePtr)
 
 //=================================================================================================
 
-AcHeapHandle acHeapCreate (Nova::UInt32 theFlags)
+NvHeapHandle NvHeapCreate (Nova::UInt32 theFlags)
 {
   (void)theFlags; // no pool flags are honored by the CRT-backed heap
   return NextHeapHandle();
@@ -65,16 +65,16 @@ AcHeapHandle acHeapCreate (Nova::UInt32 theFlags)
 
 //=================================================================================================
 
-void acHeapDestroy (AcHeapHandle theHeap)
+void NvHeapDestroy (NvHeapHandle theHeap)
 {
   // Nothing to release: blocks are owned by their users and freed through
-  // acHeapFree; the handle simply becomes invalid.
+  // NvHeapFree; the handle simply becomes invalid.
   (void)theHeap;
 }
 
 //=================================================================================================
 
-void* acHeapAlloc (AcHeapHandle theHeap, size_t theSize)
+void* NvHeapAlloc (NvHeapHandle theHeap, size_t theSize)
 {
   if (!IsValidHeap (theHeap) || theSize == 0)
   {
@@ -92,16 +92,16 @@ void* acHeapAlloc (AcHeapHandle theHeap, size_t theSize)
 
 //=================================================================================================
 
-void* acTryHeapAlloc (AcHeapHandle theHeap, size_t theSize)
+void* acTryHeapAlloc (NvHeapHandle theHeap, size_t theSize)
 {
-  // Same contract as acHeapAlloc: a failing allocation returns null
+  // Same contract as NvHeapAlloc: a failing allocation returns null
   // instead of raising.
-  return acHeapAlloc (theHeap, theSize);
+  return NvHeapAlloc (theHeap, theSize);
 }
 
 //=================================================================================================
 
-void acHeapFree (AcHeapHandle theHeap, void* thePtr)
+void NvHeapFree (NvHeapHandle theHeap, void* thePtr)
 {
   (void)theHeap;
   std::free (thePtr != nullptr ? HeaderOf (thePtr) : nullptr);
@@ -109,7 +109,7 @@ void acHeapFree (AcHeapHandle theHeap, void* thePtr)
 
 //=================================================================================================
 
-void* acHeapReAlloc (AcHeapHandle theHeap, void* thePtr, size_t theSize)
+void* NvHeapReAlloc (NvHeapHandle theHeap, void* thePtr, size_t theSize)
 {
   if (!IsValidHeap (theHeap) || theSize == 0)
   {
@@ -117,7 +117,7 @@ void* acHeapReAlloc (AcHeapHandle theHeap, void* thePtr, size_t theSize)
   }
   if (thePtr == nullptr)
   {
-    return acHeapAlloc (theHeap, theSize);
+    return NvHeapAlloc (theHeap, theSize);
   }
   NvHeapBlockHeader* aHeader = static_cast<NvHeapBlockHeader*> (
     std::realloc (HeaderOf (thePtr), sizeof (NvHeapBlockHeader) + theSize));
@@ -131,7 +131,7 @@ void* acHeapReAlloc (AcHeapHandle theHeap, void* thePtr, size_t theSize)
 
 //=================================================================================================
 
-size_t acHeapSize (AcHeapHandle theHeap, const void* thePtr)
+size_t NvHeapSize (NvHeapHandle theHeap, const void* thePtr)
 {
   (void)theHeap;
   if (thePtr == nullptr)
@@ -143,7 +143,7 @@ size_t acHeapSize (AcHeapHandle theHeap, const void* thePtr)
 
 //=================================================================================================
 
-bool acHeapValidate (AcHeapHandle theHeap, const void* thePtr)
+bool NvHeapValidate (NvHeapHandle theHeap, const void* thePtr)
 {
   (void)theHeap;
   // The CRT heap performs no cheap per-block validation; a non-null block

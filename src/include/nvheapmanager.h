@@ -1,5 +1,5 @@
-#ifndef ACHEAPMANAGER_H_
-#define ACHEAPMANAGER_H_
+#ifndef NvHeapMANAGER_H_
+#define NvHeapMANAGER_H_
 
 #pragma once
 
@@ -56,4 +56,4 @@ inline AcStackAllocator::~AcStackAllocator()
 #pragma pop_macro("delete")
 #pragma pop_macro("new")
 
-#endif //ACHEAPMANAGER_H_
+#endif //NvHeapMANAGER_H_
