@@ -636,7 +636,7 @@ NvGeCurve3d& NvGeCurve3d::setInterval ()
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::setInterval (const NvGeInterval& theIntrvl)
+Nova::Boolean NvGeCurve3d::setInterval (const NvGeInterval& theIntrvl)
 {
   // Re-trim always from the basis curve so a later wider interval still works.
   const occ::handle<Geom_Curve> aBasis = BasisOf (NvGeCurve3dOf (mpImpEnt));
@@ -649,18 +649,18 @@ Adesk::Boolean NvGeCurve3d::setInterval (const NvGeInterval& theIntrvl)
   if (!std::isinf (aFirst) && !std::isinf (aDomFirst)
       && aFirst < aDomFirst - theIntrvl.tolerance())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   if (!std::isinf (aLast) && !std::isinf (aDomLast)
       && aLast > aDomLast + theIntrvl.tolerance())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   aFirst = WindowBoundOf (aFirst, aDomFirst);
   aLast  = WindowBoundOf (aLast,  aDomLast);
   if (aLast - aFirst <= Precision::Confusion())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   occ::handle<Geom_Curve> aTrimmed;
   try
@@ -672,7 +672,7 @@ Adesk::Boolean NvGeCurve3d::setInterval (const NvGeInterval& theIntrvl)
     throw TranslatedFailure ("setInterval", aFailure);
   }
   SetCurve (mpImpEnt, aTrimmed);
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -868,7 +868,7 @@ void NvGeCurve3d::getProjClosestPointTo (const NvGeCurve3d& theCurve,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::getNormalPoint (const NvGePoint3d& thePnt,
+Nova::Boolean NvGeCurve3d::getNormalPoint (const NvGePoint3d& thePnt,
                                             NvGePointOnCurve3d& thePntOnCrv,
                                             const NvGeTol& theTol) const
 {
@@ -881,7 +881,7 @@ Adesk::Boolean NvGeCurve3d::getNormalPoint (const NvGePoint3d& thePnt,
     const GeomAPI_ProjectPointOnCurve aProjector (PntOf (thePnt), aCurve);
     if (aProjector.NbPoints() == 0)
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
     aParam = aProjector.LowerDistanceParameter();
     aCurve->D1 (aParam, aPnt, aTangent);
@@ -893,18 +893,18 @@ Adesk::Boolean NvGeCurve3d::getNormalPoint (const NvGePoint3d& thePnt,
   const double aTangentLen = aTangent.Magnitude();
   if (aTangentLen <= gp::Resolution())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const gp_Vec aConnection (aPnt, PntOf (thePnt));
   // The point qualifies when the connection to thePnt is perpendicular to
   // the tangent, i.e. a normal at that point passes through thePnt.
   if (std::abs (aConnection.Dot (aTangent)) / aTangentLen > theTol.equalVector())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   thePntOnCrv.setCurve (*this);
   thePntOnCrv.setParameter (aParam);
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -1024,7 +1024,7 @@ NvGeEntity3d* NvGeCurve3d::orthoProject (const NvGePlane& theProjectionPlane,
 //
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isOn (const NvGePoint3d& thePnt,
+Nova::Boolean NvGeCurve3d::isOn (const NvGePoint3d& thePnt,
                                   const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
@@ -1033,7 +1033,7 @@ Adesk::Boolean NvGeCurve3d::isOn (const NvGePoint3d& thePnt,
     const GeomAPI_ProjectPointOnCurve aProjector (PntOf (thePnt), aCurve);
     return aProjector.NbPoints() > 0
         && aProjector.LowerDistance() <= theTol.equalPoint()
-      ? Adesk::kTrue : Adesk::kFalse;
+      ? Nova::kTrue : Nova::kFalse;
   }
   catch (const Standard_Failure& aFailure)
   {
@@ -1043,7 +1043,7 @@ Adesk::Boolean NvGeCurve3d::isOn (const NvGePoint3d& thePnt,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isOn (const NvGePoint3d& thePnt, double& theParam,
+Nova::Boolean NvGeCurve3d::isOn (const NvGePoint3d& thePnt, double& theParam,
                                   const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
@@ -1053,10 +1053,10 @@ Adesk::Boolean NvGeCurve3d::isOn (const NvGePoint3d& thePnt, double& theParam,
     if (aProjector.NbPoints() == 0
         || aProjector.LowerDistance() > theTol.equalPoint())
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
     theParam = aProjector.LowerDistanceParameter();
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
   catch (const Standard_Failure& aFailure)
   {
@@ -1066,14 +1066,14 @@ Adesk::Boolean NvGeCurve3d::isOn (const NvGePoint3d& thePnt, double& theParam,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isOn (double theParam, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve3d::isOn (double theParam, const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   const double aFirst = NormalizedBound (aCurve->FirstParameter());
   const double aLast  = NormalizedBound (aCurve->LastParameter());
   return theParam >= aFirst - theTol.equalPoint()
       && theParam <= aLast + theTol.equalPoint()
-    ? Adesk::kTrue : Adesk::kFalse;
+    ? Nova::kTrue : Nova::kFalse;
 }
 
 //=================================================================================================
@@ -1127,14 +1127,14 @@ void NvGeCurve3d::getTrimmedOffset (double theDistance,
 //
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isClosed (const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve3d::isClosed (const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   const double aFirst = aCurve->FirstParameter();
   const double aLast  = aCurve->LastParameter();
   if (Precision::IsInfinite (aFirst) || Precision::IsInfinite (aLast))
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   gp_Pnt aStartPnt;
   gp_Pnt anEndPnt;
@@ -1148,12 +1148,12 @@ Adesk::Boolean NvGeCurve3d::isClosed (const NvGeTol& theTol) const
     throw TranslatedFailure ("isClosed", aFailure);
   }
   return aStartPnt.Distance (anEndPnt) <= theTol.equalPoint()
-    ? Adesk::kTrue : Adesk::kFalse;
+    ? Nova::kTrue : Nova::kFalse;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isPlanar (NvGePlane& thePlane, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve3d::isPlanar (NvGePlane& thePlane, const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   double aFirst = 0.0;
@@ -1165,16 +1165,16 @@ Adesk::Boolean NvGeCurve3d::isPlanar (NvGePlane& thePlane, const NvGeTol& theTol
   gp_Vec aNormal;
   if (!FittedPlaneOf (aPoints, theTol, anOrigin, aNormal))
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   thePlane.set (Pnt3dOf (anOrigin),
                 NvGeVector3d (aNormal.X(), aNormal.Y(), aNormal.Z()));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isLinear (NvGeLine3d& theLine, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve3d::isLinear (NvGeLine3d& theLine, const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   // Fast path: the stored geometry is already (the basis of) a line.
@@ -1186,7 +1186,7 @@ Adesk::Boolean NvGeCurve3d::isLinear (NvGeLine3d& theLine, const NvGeTol& theTol
     const gp_Dir& aDir = anAxis.Direction();
     theLine.set (Pnt3dOf (anAxis.Location()),
                  NvGeVector3d (aDir.X(), aDir.Y(), aDir.Z()));
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
   // General case: every sample must deviate from the chord by at most the
   // point tolerance.
@@ -1198,7 +1198,7 @@ Adesk::Boolean NvGeCurve3d::isLinear (NvGeLine3d& theLine, const NvGeTol& theTol
   const gp_Vec aChord (aPoints.front(), aPoints.back());
   if (aChord.Magnitude() <= gp::Resolution())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const gp_Vec aUnitChord = aChord.Normalized();
   for (const gp_Pnt& aPnt : aPoints)
@@ -1206,17 +1206,17 @@ Adesk::Boolean NvGeCurve3d::isLinear (NvGeLine3d& theLine, const NvGeTol& theTol
     if (gp_Vec (aPoints.front(), aPnt).Crossed (aUnitChord).Magnitude()
         > theTol.equalPoint())
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
   }
   theLine.set (Pnt3dOf (aPoints.front()),
                NvGeVector3d (aUnitChord.X(), aUnitChord.Y(), aUnitChord.Z()));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isCoplanarWith (const NvGeCurve3d& theCurve,
+Nova::Boolean NvGeCurve3d::isCoplanarWith (const NvGeCurve3d& theCurve,
                                             NvGePlane& thePlane,
                                             const NvGeTol& theTol) const
 {
@@ -1239,30 +1239,30 @@ Adesk::Boolean NvGeCurve3d::isCoplanarWith (const NvGeCurve3d& theCurve,
   gp_Vec aNormal;
   if (!FittedPlaneOf (aCombined, theTol, anOrigin, aNormal))
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   thePlane.set (Pnt3dOf (anOrigin),
                 NvGeVector3d (aNormal.X(), aNormal.Y(), aNormal.Z()));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isPeriodic (double& thePeriod) const
+Nova::Boolean NvGeCurve3d::isPeriodic (double& thePeriod) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   // Circle and ellipse are periodic with a two pi parameter period.
   if (!occ::down_cast<Geom_Conic> (aCurve).IsNull())
   {
     thePeriod = THE_TWO_PI;
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
   if (aCurve->IsPeriodic())
   {
     thePeriod = aCurve->Period();
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
-  return Adesk::kFalse;
+  return Nova::kFalse;
 }
 
 //=================================================================================================
@@ -1313,7 +1313,7 @@ double NvGeCurve3d::length (double theFromParam, double theToParam, double theTo
 //=================================================================================================
 
 double NvGeCurve3d::paramAtLength (double theDatumParam, double theLength,
-                                   Adesk::Boolean thePosParamDir, double theTol) const
+                                   Nova::Boolean thePosParamDir, double theTol) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   if (theLength < 0.0)
@@ -1374,14 +1374,14 @@ double NvGeCurve3d::paramAtLength (double theDatumParam, double theLength,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::area (double theStartParam, double theEndParam,
+Nova::Boolean NvGeCurve3d::area (double theStartParam, double theEndParam,
                                   double& theValue, const NvGeTol&) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   if (std::isinf (theStartParam) || std::isinf (theEndParam)
       || theEndParam <= theStartParam)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   std::vector<gp_Pnt> aPoints;
   SampleCurve (aCurve, theStartParam, theEndParam, THE_NB_AREA_SAMPLES, aPoints,
@@ -1392,7 +1392,7 @@ Adesk::Boolean NvGeCurve3d::area (double theStartParam, double theEndParam,
   if (aFitted.Magnitude() <= gp::Resolution())
   {
     theValue = 0.0;
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
   gp_Vec anU;
   gp_Vec aV;
@@ -1407,7 +1407,7 @@ Adesk::Boolean NvGeCurve3d::area (double theStartParam, double theEndParam,
     aSum += aCur.Dot (anU) * aNxt.Dot (aV) - aNxt.Dot (anU) * aCur.Dot (aV);
   }
   theValue = std::abs (aSum) / 2.0;
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -1415,7 +1415,7 @@ Adesk::Boolean NvGeCurve3d::area (double theStartParam, double theEndParam,
 //
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isDegenerate (NvGe::EntityId& theDegenerateType,
+Nova::Boolean NvGeCurve3d::isDegenerate (NvGe::EntityId& theDegenerateType,
                                           const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
@@ -1424,21 +1424,21 @@ Adesk::Boolean NvGeCurve3d::isDegenerate (NvGe::EntityId& theDegenerateType,
   if (!std::isinf (aTotal) && aTotal <= theTol.equalPoint())
   {
     theDegenerateType = NvGe::kPosition3d;
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
   theDegenerateType = NvGe::kCurve3d;
-  return Adesk::kFalse;
+  return Nova::kFalse;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::isDegenerate (NvGeEntity3d*& theConvertedEntity,
+Nova::Boolean NvGeCurve3d::isDegenerate (NvGeEntity3d*& theConvertedEntity,
                                           const NvGeTol& theTol) const
 {
   NvGe::EntityId aType = NvGe::kEntity3d;
   if (!isDegenerate (aType, theTol))
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   // A zero-length curve degenerates into a point at its start.
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
@@ -1455,7 +1455,7 @@ Adesk::Boolean NvGeCurve3d::isDegenerate (NvGeEntity3d*& theConvertedEntity,
   aData->Point = aPnt;
   theConvertedEntity = newEntity3d (new NvGeImpEntity3d (NvGe::kPosition3d,
     occ::handle<Standard_Transient> (aData)));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -1495,12 +1495,12 @@ void NvGeCurve3d::getSplitCurves (double theParam, NvGeCurve3d*& thePiece1,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::explode (NvGeVoidPointerArray&, NvGeIntArray&,
+Nova::Boolean NvGeCurve3d::explode (NvGeVoidPointerArray&, NvGeIntArray&,
                                      const NvGeInterval*) const
 {
   // A generic curve is a single component; composite curve classes that do
   // have sub-curves override this.
-  return Adesk::kFalse;
+  return Nova::kFalse;
 }
 
 //=================================================================================================
@@ -1601,13 +1601,13 @@ void NvGeCurve3d::getLocalClosestPoints (const NvGeCurve3d& theOtherCurve,
 //
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::hasStartPoint (NvGePoint3d& theStartPnt) const
+Nova::Boolean NvGeCurve3d::hasStartPoint (NvGePoint3d& theStartPnt) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   const double aFirst = aCurve->FirstParameter();
   if (Precision::IsInfinite (aFirst))
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   gp_Pnt aPnt;
   try
@@ -1619,18 +1619,18 @@ Adesk::Boolean NvGeCurve3d::hasStartPoint (NvGePoint3d& theStartPnt) const
     throw TranslatedFailure ("hasStartPoint", aFailure);
   }
   theStartPnt = Pnt3dOf (aPnt);
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve3d::hasEndPoint (NvGePoint3d& theEndPnt) const
+Nova::Boolean NvGeCurve3d::hasEndPoint (NvGePoint3d& theEndPnt) const
 {
   const occ::handle<Geom_Curve> aCurve = NvGeCurve3dOf (mpImpEnt);
   const double aLast = aCurve->LastParameter();
   if (Precision::IsInfinite (aLast))
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   gp_Pnt aPnt;
   try
@@ -1642,7 +1642,7 @@ Adesk::Boolean NvGeCurve3d::hasEndPoint (NvGePoint3d& theEndPnt) const
     throw TranslatedFailure ("hasEndPoint", aFailure);
   }
   theEndPnt = Pnt3dOf (aPnt);
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================

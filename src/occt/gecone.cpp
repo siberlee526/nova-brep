@@ -388,7 +388,7 @@ NvGePoint3d NvGeCone::apex() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCone::isClosed (const NvGeTol& theTol) const
+Nova::Boolean NvGeCone::isClosed (const NvGeTol& theTol) const
 {
   // Closed means a full revolution in u; a bounded height still leaves a
   // closed band.
@@ -399,7 +399,7 @@ Adesk::Boolean NvGeCone::isClosed (const NvGeTol& theTol) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCone::isOuterNormal() const
+Nova::Boolean NvGeCone::isOuterNormal() const
 {
   // OCCT builds elementary surfaces with the normal oriented towards the
   // outside region of the cone.
@@ -478,7 +478,7 @@ NvGeCone& NvGeCone::operator = (const NvGeCone& theSrc)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCone::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& theIntn,
+Nova::Boolean NvGeCone::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& theIntn,
                                         NvGePoint3d& thePnt1, NvGePoint3d& thePnt2,
                                         const NvGeTol& theTol) const
 {

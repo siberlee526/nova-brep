@@ -657,7 +657,7 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGeNurbCurve2d& theSrc)
 //=================================================================================================
 
 NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGeKnotVector& theKnots,
-                                  const NvGePoint2dArray& theCntrlPnts, Adesk::Boolean theIsPeriodic)
+                                  const NvGePoint2dArray& theCntrlPnts, Nova::Boolean theIsPeriodic)
 {
   if (mDelEnt && mpImpEnt != nullptr)
   {
@@ -665,7 +665,7 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGeKnotVector& theKnots,
   }
   Definition aDef;
   aDef.Degree = theDegree;
-  aDef.Periodic = theIsPeriodic != Adesk::kFalse;
+  aDef.Periodic = theIsPeriodic != Nova::kFalse;
   aDef.Poles.reserve (theCntrlPnts.length());
   for (int i = 0; i < theCntrlPnts.length(); ++i)
   {
@@ -682,7 +682,7 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGeKnotVector& theKnots,
 
 NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGeKnotVector& theKnots,
                                   const NvGePoint2dArray& theCntrlPnts,
-                                  const NvGeDoubleArray& theWeights, Adesk::Boolean theIsPeriodic)
+                                  const NvGeDoubleArray& theWeights, Nova::Boolean theIsPeriodic)
 {
   if (mDelEnt && mpImpEnt != nullptr)
   {
@@ -690,7 +690,7 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGeKnotVector& theKnots,
   }
   Definition aDef;
   aDef.Degree = theDegree;
-  aDef.Periodic = theIsPeriodic != Adesk::kFalse;
+  aDef.Periodic = theIsPeriodic != Nova::kFalse;
   aDef.Poles.reserve (theCntrlPnts.length());
   for (int i = 0; i < theCntrlPnts.length(); ++i)
   {
@@ -707,7 +707,7 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGeKnotVector& theKnots,
 //=================================================================================================
 
 NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGePolyline2d& theFitPolyline,
-                                  Adesk::Boolean theIsPeriodic)
+                                  Nova::Boolean theIsPeriodic)
 {
   if (mDelEnt && mpImpEnt != nullptr)
   {
@@ -718,7 +718,7 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGePolyline2d& theFitPol
     throw NvException ("NvGeNurbCurve2d::NvGeNurbCurve2d(): the degree must be at least 2");
   }
   NvGeFitData2d aFit;
-  aFit.Periodic = theIsPeriodic != Adesk::kFalse;
+  aFit.Periodic = theIsPeriodic != Nova::kFalse;
   const int aCount = theFitPolyline.numFitPoints();
   for (int i = 0; i < aCount; ++i)
   {
@@ -745,8 +745,8 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (int theDegree, const NvGePolyline2d& theFitPol
 NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGePoint2dArray& theFitPoints,
                                   const NvGeVector2d& theStartTangent,
                                   const NvGeVector2d& theEndTangent,
-                                  Adesk::Boolean theStartTangentDefined,
-                                  Adesk::Boolean theEndTangentDefined,
+                                  Nova::Boolean theStartTangentDefined,
+                                  Nova::Boolean theEndTangentDefined,
                                   const NvGeTol& theFitTolerance)
 {
   if (mDelEnt && mpImpEnt != nullptr)
@@ -758,8 +758,8 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGePoint2dArray& theFitPoints,
   aFit.EndTangentsExist = true;
   aFit.StartTangent = theStartTangent;
   aFit.EndTangent = theEndTangent;
-  aFit.StartTangentDefined = theStartTangentDefined != Adesk::kFalse;
-  aFit.EndTangentDefined = theEndTangentDefined != Adesk::kFalse;
+  aFit.StartTangentDefined = theStartTangentDefined != Nova::kFalse;
+  aFit.EndTangentDefined = theEndTangentDefined != Nova::kFalse;
   aFit.Tolerance = theFitTolerance;
   mpImpEnt = new NvGeImpEntity3d (NvGe::kNurbCurve2d, InterpolateFit (aFit, "NvGeNurbCurve2d"));
   mpImpEnt->Ref();
@@ -770,8 +770,8 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGePoint2dArray& theFitPoints,
 NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGePoint2dArray& theFitPoints,
                                   const NvGeVector2d& theStartTangent,
                                   const NvGeVector2d& theEndTangent,
-                                  Adesk::Boolean theStartTangentDefined,
-                                  Adesk::Boolean theEndTangentDefined,
+                                  Nova::Boolean theStartTangentDefined,
+                                  Nova::Boolean theEndTangentDefined,
                                   NvGe::KnotParameterization theKnotParam,
                                   const NvGeTol& theFitTolerance)
 {
@@ -788,8 +788,8 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGePoint2dArray& theFitPoints,
   aFit.EndTangentsExist = true;
   aFit.StartTangent = theStartTangent;
   aFit.EndTangent = theEndTangent;
-  aFit.StartTangentDefined = theStartTangentDefined != Adesk::kFalse;
-  aFit.EndTangentDefined = theEndTangentDefined != Adesk::kFalse;
+  aFit.StartTangentDefined = theStartTangentDefined != Nova::kFalse;
+  aFit.EndTangentDefined = theEndTangentDefined != Nova::kFalse;
   aFit.KnotParam = theKnotParam;
   aFit.Tolerance = theFitTolerance;
   mpImpEnt = new NvGeImpEntity3d (NvGe::kNurbCurve2d, InterpolateFit (aFit, "NvGeNurbCurve2d"));
@@ -816,7 +816,7 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGePoint2dArray& theFitPoints, const Nv
 NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGePoint2dArray& theFitPoints,
                                   const NvGeVector2dArray& theFitTangents,
                                   const NvGeTol& theFitTolerance,
-                                  Adesk::Boolean theIsPeriodic)
+                                  Nova::Boolean theIsPeriodic)
 {
   if (mDelEnt && mpImpEnt != nullptr)
   {
@@ -826,7 +826,7 @@ NvGeNurbCurve2d::NvGeNurbCurve2d (const NvGePoint2dArray& theFitPoints,
   aFit.Points = theFitPoints;
   aFit.Tangents = theFitTangents;
   aFit.TangentsExist = true;
-  aFit.Periodic = theIsPeriodic != Adesk::kFalse;
+  aFit.Periodic = theIsPeriodic != Nova::kFalse;
   aFit.Tolerance = theFitTolerance;
   mpImpEnt = new NvGeImpEntity3d (NvGe::kNurbCurve2d, InterpolateFit (aFit, "NvGeNurbCurve2d"));
   mpImpEnt->Ref();
@@ -907,108 +907,108 @@ int NvGeNurbCurve2d::numFitPoints () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::getFitPointAt (int theIndex, NvGePoint2d& thePoint) const
+Nova::Boolean NvGeNurbCurve2d::getFitPointAt (int theIndex, NvGePoint2d& thePoint) const
 {
   const NvGeNurb2dData* aData = FitDataOf (SplineOf (mpImpEnt));
   if (aData == nullptr || theIndex < 0 || theIndex >= aData->Fit.Points.length())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   thePoint = aData->Fit.Points[theIndex];
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::getFitTolerance (NvGeTol& theFitTolerance) const
+Nova::Boolean NvGeNurbCurve2d::getFitTolerance (NvGeTol& theFitTolerance) const
 {
   const NvGeNurb2dData* aData = FitDataOf (SplineOf (mpImpEnt));
   if (aData == nullptr)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   theFitTolerance = aData->Fit.Tolerance;
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::getFitTangents (NvGeVector2d& theStartTangent,
+Nova::Boolean NvGeNurbCurve2d::getFitTangents (NvGeVector2d& theStartTangent,
                                                 NvGeVector2d& theEndTangent) const
 {
   const NvGeNurb2dData* aData = FitDataOf (SplineOf (mpImpEnt));
   if (aData == nullptr || !aData->Fit.EndTangentsExist)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   theStartTangent = aData->Fit.StartTangent;
   theEndTangent = aData->Fit.EndTangent;
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::getFitKnotParameterization (KnotParameterization& theKnotParam) const
+Nova::Boolean NvGeNurbCurve2d::getFitKnotParameterization (KnotParameterization& theKnotParam) const
 {
   const NvGeNurb2dData* aData = FitDataOf (SplineOf (mpImpEnt));
   if (aData == nullptr)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   theKnotParam = aData->Fit.KnotParam;
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::getFitData (NvGePoint2dArray& theFitPoints,
+Nova::Boolean NvGeNurbCurve2d::getFitData (NvGePoint2dArray& theFitPoints,
                                             NvGeTol& theFitTolerance,
-                                            Adesk::Boolean& theTangentsExist,
+                                            Nova::Boolean& theTangentsExist,
                                             NvGeVector2d& theStartTangent,
                                             NvGeVector2d& theEndTangent) const
 {
   const NvGeNurb2dData* aData = FitDataOf (SplineOf (mpImpEnt));
   if (aData == nullptr)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   theFitPoints = aData->Fit.Points;
   theFitTolerance = aData->Fit.Tolerance;
-  theTangentsExist = aData->Fit.EndTangentsExist ? Adesk::kTrue : Adesk::kFalse;
+  theTangentsExist = aData->Fit.EndTangentsExist ? Nova::kTrue : Nova::kFalse;
   theStartTangent = aData->Fit.StartTangent;
   theEndTangent = aData->Fit.EndTangent;
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::getFitData (NvGePoint2dArray& theFitPoints,
+Nova::Boolean NvGeNurbCurve2d::getFitData (NvGePoint2dArray& theFitPoints,
                                             NvGeTol& theFitTolerance,
-                                            Adesk::Boolean& theTangentsExist,
+                                            Nova::Boolean& theTangentsExist,
                                             NvGeVector2d& theStartTangent,
                                             NvGeVector2d& theEndTangent,
                                             KnotParameterization& theKnotParam) const
 {
   if (!getFitData (theFitPoints, theFitTolerance, theTangentsExist, theStartTangent, theEndTangent))
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const NvGeNurb2dData* aData = FitDataOf (SplineOf (mpImpEnt));
   theKnotParam = aData->Fit.KnotParam;
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-void NvGeNurbCurve2d::getDefinitionData (int& theDegree, Adesk::Boolean& theRational,
-                                         Adesk::Boolean& thePeriodic, NvGeKnotVector& theKnots,
+void NvGeNurbCurve2d::getDefinitionData (int& theDegree, Nova::Boolean& theRational,
+                                         Nova::Boolean& thePeriodic, NvGeKnotVector& theKnots,
                                          NvGePoint2dArray& theControlPoints,
                                          NvGeDoubleArray& theWeights) const
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   theDegree = aSpline->Degree();
-  theRational = aSpline->Weights() != nullptr ? Adesk::kTrue : Adesk::kFalse;
-  thePeriodic = aSpline->IsPeriodic() ? Adesk::kTrue : Adesk::kFalse;
+  theRational = aSpline->Weights() != nullptr ? Nova::kTrue : Nova::kFalse;
+  thePeriodic = aSpline->IsPeriodic() ? Nova::kTrue : Nova::kFalse;
   theKnots = FlatKnotVector (*aSpline);
   theControlPoints.removeAll();
   const NCollection_Array1<gp_Pnt2d>& aPoles = aSpline->Poles();
@@ -1049,22 +1049,22 @@ double NvGeNurbCurve2d::weightAt (int theIdx) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::evalMode () const
+Nova::Boolean NvGeNurbCurve2d::evalMode () const
 {
   const NvGeNurb2dData* aData = FitDataOf (SplineOf (mpImpEnt));
-  return aData != nullptr && aData->Fit.EvalModeFlag ? Adesk::kTrue : Adesk::kFalse;
+  return aData != nullptr && aData->Fit.EvalModeFlag ? Nova::kTrue : Nova::kFalse;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::getParamsOfC1Discontinuity (NvGeDoubleArray& theParams,
+Nova::Boolean NvGeNurbCurve2d::getParamsOfC1Discontinuity (NvGeDoubleArray& theParams,
                                                             const NvGeTol&) const
 {
   theParams.removeAll();
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   if (aSpline->IsPeriodic())
   {
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
   const int aNbKnots = aSpline->NbKnots();
   for (int i = 2; i <= aNbKnots - 1; ++i)
@@ -1074,12 +1074,12 @@ Adesk::Boolean NvGeNurbCurve2d::getParamsOfC1Discontinuity (NvGeDoubleArray& the
       theParams.append (aSpline->Knot (i));
     }
   }
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::getParamsOfG1Discontinuity (NvGeDoubleArray& theParams,
+Nova::Boolean NvGeNurbCurve2d::getParamsOfG1Discontinuity (NvGeDoubleArray& theParams,
                                                             const NvGeTol& theTol) const
 {
   theParams.removeAll();
@@ -1100,19 +1100,19 @@ Adesk::Boolean NvGeNurbCurve2d::getParamsOfG1Discontinuity (NvGeDoubleArray& the
       theParams.append (aKnot);
     }
   }
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::setFitPointAt (int theIndex, const NvGePoint2d& thePoint)
+Nova::Boolean NvGeNurbCurve2d::setFitPointAt (int theIndex, const NvGePoint2d& thePoint)
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   const NvGeNurb2dData* aSrc = FitDataOf (aSpline);
   if (aSrc == nullptr || aSrc->Fit.Points.length() == 0
       || theIndex < 0 || theIndex >= aSrc->Fit.Points.length())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (aSpline);
   aData->Fit.Points[theIndex] = thePoint;
@@ -1123,19 +1123,19 @@ Adesk::Boolean NvGeNurbCurve2d::setFitPointAt (int theIndex, const NvGePoint2d& 
     aData->Fit.Points[aData->Fit.Points.length() - 1] = thePoint;
   }
   ReplaceGeometry (mpImpEnt, InterpolateFit (aData->Fit, "setFitPointAt"));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::addFitPointAt (int theIndex, const NvGePoint2d& thePoint)
+Nova::Boolean NvGeNurbCurve2d::addFitPointAt (int theIndex, const NvGePoint2d& thePoint)
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   const NvGeNurb2dData* aSrc = FitDataOf (aSpline);
   if (aSrc == nullptr || aSrc->Fit.Periodic
       || theIndex < 0 || theIndex > aSrc->Fit.Points.length())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (aSpline);
   NvGePoint2dArray aPoints;
@@ -1153,12 +1153,12 @@ Adesk::Boolean NvGeNurbCurve2d::addFitPointAt (int theIndex, const NvGePoint2d& 
   aData->Fit.Points = aPoints;
   aData->Fit.Params.clear();   // parameters are recomputed on rebuild
   ReplaceGeometry (mpImpEnt, InterpolateFit (aData->Fit, "addFitPointAt"));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::deleteFitPointAt (int theIndex)
+Nova::Boolean NvGeNurbCurve2d::deleteFitPointAt (int theIndex)
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   const NvGeNurb2dData* aSrc = FitDataOf (aSpline);
@@ -1166,7 +1166,7 @@ Adesk::Boolean NvGeNurbCurve2d::deleteFitPointAt (int theIndex)
       || theIndex < 0 || theIndex >= aSrc->Fit.Points.length()
       || aSrc->Fit.Points.length() <= 2)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (aSpline);
   NvGePoint2dArray aPoints;
@@ -1180,34 +1180,34 @@ Adesk::Boolean NvGeNurbCurve2d::deleteFitPointAt (int theIndex)
   aData->Fit.Points = aPoints;
   aData->Fit.Params.clear();
   ReplaceGeometry (mpImpEnt, InterpolateFit (aData->Fit, "deleteFitPointAt"));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::setFitTolerance (const NvGeTol& theFitTol)
+Nova::Boolean NvGeNurbCurve2d::setFitTolerance (const NvGeTol& theFitTol)
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   if (FitDataOf (aSpline) == nullptr)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (aSpline);
   aData->Fit.Tolerance = theFitTol;
   ReplaceGeometry (mpImpEnt, aData);   // tolerance affects future fits only
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::setFitTangents (const NvGeVector2d& theStartTangent,
+Nova::Boolean NvGeNurbCurve2d::setFitTangents (const NvGeVector2d& theStartTangent,
                                                 const NvGeVector2d& theEndTangent)
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   const NvGeNurb2dData* aSrc = FitDataOf (aSpline);
   if (aSrc == nullptr || aSrc->Fit.Periodic)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (aSpline);
   aData->Fit.EndTangentsExist = true;
@@ -1216,28 +1216,28 @@ Adesk::Boolean NvGeNurbCurve2d::setFitTangents (const NvGeVector2d& theStartTang
   aData->Fit.StartTangentDefined = true;
   aData->Fit.EndTangentDefined = true;
   ReplaceGeometry (mpImpEnt, InterpolateFit (aData->Fit, "setFitTangents"));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::setFitKnotParameterization (KnotParameterization theKnotParam)
+Nova::Boolean NvGeNurbCurve2d::setFitKnotParameterization (KnotParameterization theKnotParam)
 {
   if (theKnotParam != NvGe::kChord && theKnotParam != NvGe::kSqrtChord
       && theKnotParam != NvGe::kUniform)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   if (FitDataOf (aSpline) == nullptr)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (aSpline);
   aData->Fit.KnotParam = theKnotParam;
   aData->Fit.Params.clear();
   ReplaceGeometry (mpImpEnt, InterpolateFit (aData->Fit, "setFitKnotParameterization"));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -1291,7 +1291,7 @@ NvGeNurbCurve2d& NvGeNurbCurve2d::setFitData (const NvGeKnotVector& theFitKnots,
                                               const NvGeVector2d& theStartTangent,
                                               const NvGeVector2d& theEndTangent,
                                               const NvGeTol& theFitTol,
-                                              Adesk::Boolean theIsPeriodic)
+                                              Nova::Boolean theIsPeriodic)
 {
   NvGeFitData2d aFit;
   aFit.Points = theFitPoints;
@@ -1300,7 +1300,7 @@ NvGeNurbCurve2d& NvGeNurbCurve2d::setFitData (const NvGeKnotVector& theFitKnots,
   aFit.EndTangent = theEndTangent;
   aFit.StartTangentDefined = true;
   aFit.EndTangentDefined = true;
-  aFit.Periodic = theIsPeriodic != Adesk::kFalse;
+  aFit.Periodic = theIsPeriodic != Nova::kFalse;
   aFit.KnotParam = NvGe::kCustomParameterization;
   aFit.Tolerance = theFitTol;
   const int aCount = theFitPoints.length();
@@ -1365,32 +1365,32 @@ NvGeNurbCurve2d& NvGeNurbCurve2d::setFitData (int theDegree,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::purgeFitData ()
+Nova::Boolean NvGeNurbCurve2d::purgeFitData ()
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   if (FitDataOf (aSpline) == nullptr)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   // Copy() yields a plain Geom2d_BSplineCurve without side data.
   ReplaceGeometry (mpImpEnt, occ::down_cast<Geom2d_BSplineCurve> (aSpline->Copy()));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::buildFitData ()
+Nova::Boolean NvGeNurbCurve2d::buildFitData ()
 {
   return buildFitData (NvGe::kChord);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::buildFitData (KnotParameterization theKp)
+Nova::Boolean NvGeNurbCurve2d::buildFitData (KnotParameterization theKp)
 {
   if (theKp != NvGe::kChord && theKp != NvGe::kSqrtChord && theKp != NvGe::kUniform)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   NvGeFitData2d aFit;
@@ -1412,7 +1412,7 @@ Adesk::Boolean NvGeNurbCurve2d::buildFitData (KnotParameterization theKp)
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (aSpline);
   aData->Fit = aFit;
   ReplaceGeometry (mpImpEnt, aData);   // geometry is unchanged; fit data attached
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -1496,10 +1496,10 @@ NvGeSplineEnt2d& NvGeNurbCurve2d::setWeightAt (int theIdx, double theVal)
 
 //=================================================================================================
 
-NvGeNurbCurve2d& NvGeNurbCurve2d::setEvalMode (Adesk::Boolean theEvalMode)
+NvGeNurbCurve2d& NvGeNurbCurve2d::setEvalMode (Nova::Boolean theEvalMode)
 {
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (SplineOf (mpImpEnt));
-  aData->Fit.EvalModeFlag = theEvalMode != Adesk::kFalse;
+  aData->Fit.EvalModeFlag = theEvalMode != Nova::kFalse;
   ReplaceGeometry (mpImpEnt, aData);
   return *this;
 }
@@ -1769,19 +1769,19 @@ NvGeNurbCurve2d& NvGeNurbCurve2d::elevateDegree (int thePlusDegree)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::addControlPointAt (double theNewKnot, const NvGePoint2d& thePoint,
+Nova::Boolean NvGeNurbCurve2d::addControlPointAt (double theNewKnot, const NvGePoint2d& thePoint,
                                                    double theWeight)
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   if (aSpline->IsPeriodic() || theWeight <= 0.0)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const double aKnotTol = KnotToleranceOf (*aSpline);
   if (theNewKnot <= aSpline->FirstParameter() + aKnotTol
       || theNewKnot >= aSpline->LastParameter() - aKnotTol)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   occ::handle<NvGeNurb2dData> aData = PrivateCopy (aSpline);
   const int aNbKnotsBefore = aData->NbKnots();
@@ -1793,7 +1793,7 @@ Adesk::Boolean NvGeNurbCurve2d::addControlPointAt (double theNewKnot, const NvGe
   }
   catch (const Standard_Failure&)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   // The pole controlling the point at the inserted knot follows the poles of
   // all knots strictly before it.
@@ -1822,22 +1822,22 @@ Adesk::Boolean NvGeNurbCurve2d::addControlPointAt (double theNewKnot, const NvGe
   }
   catch (const Standard_Failure&)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   ReplaceGeometry (mpImpEnt, aData);
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbCurve2d::deleteControlPointAt (int theIndex)
+Nova::Boolean NvGeNurbCurve2d::deleteControlPointAt (int theIndex)
 {
   const occ::handle<Geom2d_BSplineCurve> aSpline = SplineOf (mpImpEnt);
   if (aSpline->IsPeriodic()
       || theIndex < 0 || theIndex >= aSpline->NbPoles()
       || aSpline->NbPoles() <= aSpline->Degree() + 1)
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   Definition aDef = DefinitionOf (*aSpline);
   // Reduce the multiplicity of the knot owning the pole, then drop the pole.
@@ -1870,7 +1870,7 @@ Adesk::Boolean NvGeNurbCurve2d::deleteControlPointAt (int theIndex)
     aData->Fit = aSrc->Fit;
   }
   ReplaceGeometry (mpImpEnt, aData);
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================

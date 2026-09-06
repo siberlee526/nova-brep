@@ -39,7 +39,7 @@ public:
 
     // Test if it is a singular matrix. A singular matrix is not invertable.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isSingular   (const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isSingular   (const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Matrix transposition.
     //
@@ -55,8 +55,8 @@ public:
 
     // Test scaling effects of matrix
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isUniScaledOrtho(const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isScaledOrtho(const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isUniScaledOrtho(const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isScaledOrtho(const NvGeTol& tol = NvGeContext::gTol) const;
     GE_DLLEXPIMPORT double		   scale(void);
 
     // Determinant
@@ -70,8 +70,8 @@ public:
 
     // Retrieve scaling, rotation, mirror components
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isConformal (double& scale, double& angle,
-                                Adesk::Boolean& isMirror, NvGeVector2d& reflex) const;
+    GE_DLLEXPIMPORT Nova::Boolean isConformal (double& scale, double& angle,
+                                Nova::Boolean& isMirror, NvGeVector2d& reflex) const;
 
 
     // Set/get coordinate system

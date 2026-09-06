@@ -24,9 +24,9 @@ public:
                                     const NvGeTol& tol = NvGeContext::gTol) const;
     // Point containment
     //
-    GE_DLLEXPIMPORT Adesk::Boolean  isOn           (const NvGePoint3d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean  isOn           (const NvGePoint3d& pnt,
                                     const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean  isOn           (const NvGePoint3d& pnt, NvGePoint2d& paramPoint,
+    GE_DLLEXPIMPORT Nova::Boolean  isOn           (const NvGePoint3d& pnt, NvGePoint2d& paramPoint,
                                     const NvGeTol& tol = NvGeContext::gTol ) const;
     // Operations.
     //
@@ -39,7 +39,7 @@ public:
     GE_DLLEXPIMPORT double          distanceTo     (const NvGePoint3d& pnt,
                                     const NvGeTol& tol = NvGeContext::gTol) const;
 
-    GE_DLLEXPIMPORT Adesk::Boolean  isNormalReversed () const;
+    GE_DLLEXPIMPORT Nova::Boolean  isNormalReversed () const;
     GE_DLLEXPIMPORT NvGeSurface&    reverseNormal    ();
 
     // Assignment operator.
@@ -52,8 +52,8 @@ public:
 
     // Geometric inquiry methods.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isClosedInU       (const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isClosedInV       (const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isClosedInU       (const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isClosedInV       (const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Evaluators.
     // Derivative arrays are indexed partialU, partialV followed by

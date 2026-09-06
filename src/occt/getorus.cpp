@@ -283,7 +283,7 @@ NvGeVector3d NvGeTorus::refAxis() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeTorus::isOuterNormal() const
+Nova::Boolean NvGeTorus::isOuterNormal() const
 {
   // OCCT builds elementary surfaces with the normal oriented towards the
   // outside region of the torus.
@@ -372,7 +372,7 @@ NvGeTorus& NvGeTorus::operator = (const NvGeTorus& theSrc)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeTorus::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& theIntn,
+Nova::Boolean NvGeTorus::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& theIntn,
                                          NvGePoint3d& thePnt1, NvGePoint3d& thePnt2,
                                          NvGePoint3d& thePnt3, NvGePoint3d& thePnt4,
                                          const NvGeTol& theTol) const
@@ -389,7 +389,7 @@ Adesk::Boolean NvGeTorus::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& 
 
 //=================================================================================================
 
-Adesk::Boolean NvGeTorus::isLemon() const
+Nova::Boolean NvGeTorus::isLemon() const
 {
   // Horn torus: the tube radius equals the ring radius and the tube
   // touches the axis in a single point.
@@ -398,7 +398,7 @@ Adesk::Boolean NvGeTorus::isLemon() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeTorus::isApple() const
+Nova::Boolean NvGeTorus::isApple() const
 {
   // Self-intersecting torus without a central hole.
   return minorRadius() > 0.0 && majorRadius() < minorRadius();
@@ -406,7 +406,7 @@ Adesk::Boolean NvGeTorus::isApple() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeTorus::isVortex() const
+Nova::Boolean NvGeTorus::isVortex() const
 {
   // ARX definition: a vortex torus carries a negative minor radius; such a
   // torus is rejected by the NvGeTorus validation, so this stays false for
@@ -416,7 +416,7 @@ Adesk::Boolean NvGeTorus::isVortex() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeTorus::isDoughnut() const
+Nova::Boolean NvGeTorus::isDoughnut() const
 {
   // Standard ring torus with a central hole.
   return minorRadius() > 0.0 && majorRadius() > minorRadius();
@@ -424,7 +424,7 @@ Adesk::Boolean NvGeTorus::isDoughnut() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeTorus::isDegenerate() const
+Nova::Boolean NvGeTorus::isDegenerate() const
 {
   // A zero tube radius collapses the surface onto the ring circle.
   return minorRadius() == 0.0;
@@ -432,7 +432,7 @@ Adesk::Boolean NvGeTorus::isDegenerate() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeTorus::isHollow() const
+Nova::Boolean NvGeTorus::isHollow() const
 {
   // Hollow means the central hole exists, i.e. the doughnut shape.
   return isDoughnut();

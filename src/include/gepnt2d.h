@@ -243,7 +243,7 @@ NvGePoint2d::operator [] (unsigned int i)
     return *(&x+i);
 }
 
-#define ADSK_ACGEPOINT2D_DEFINED
+#define NOVA_NVEPOINT2D_DEFINED
 #include "nvarrayhelper.h"
 
 #pragma pack (pop)

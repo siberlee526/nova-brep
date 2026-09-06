@@ -38,7 +38,7 @@ public:
     GE_DLLEXPIMPORT NvGeScale3d    inverse        () const;
     GE_DLLEXPIMPORT NvGeScale3d&   invert         ();
 
-    GE_DLLEXPIMPORT Adesk::Boolean isProportional(const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isProportional(const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Tests for equivalence using the infinity norm.
     //

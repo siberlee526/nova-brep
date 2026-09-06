@@ -33,8 +33,8 @@ public:
     NvGeVector3d   refAxis           () const;
     NvGePoint3d    northPole         () const;
     NvGePoint3d    southPole         () const;
-    Adesk::Boolean isOuterNormal     () const;
-    Adesk::Boolean isClosed       (const NvGeTol& tol = NvGeContext::gTol) const;
+    Nova::Boolean isOuterNormal     () const;
+    Nova::Boolean isClosed       (const NvGeTol& tol = NvGeContext::gTol) const;
 
     NvGeSphere&    setRadius         (double);
     NvGeSphere&    setAnglesInU      (double start, double end);
@@ -53,7 +53,7 @@ public:
 
     // Intersection with a linear entity
     //
-    Adesk::Boolean intersectWith  (const NvGeLinearEnt3d&, int& intn,
+    Nova::Boolean intersectWith  (const NvGeLinearEnt3d&, int& intn,
                                    NvGePoint3d& p1, NvGePoint3d& p2,
                                    const NvGeTol& tol = NvGeContext::gTol) const;
 };

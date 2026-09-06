@@ -42,7 +42,7 @@ NvGePoint2d NvGeSurface::paramOf (const NvGePoint3d& thePnt, const NvGeTol& theT
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSurface::isOn (const NvGePoint3d& thePnt, const NvGeTol& theTol) const
+Nova::Boolean NvGeSurface::isOn (const NvGePoint3d& thePnt, const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Surface> aSurface = NvGeSurfaceOf (mpImpEnt);
   GeomAPI_ProjectPointOnSurf aProjector (gp_Pnt (thePnt.x, thePnt.y, thePnt.z), aSurface);
@@ -52,7 +52,7 @@ Adesk::Boolean NvGeSurface::isOn (const NvGePoint3d& thePnt, const NvGeTol& theT
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSurface::isOn (const NvGePoint3d& thePnt, NvGePoint2d& theParamPoint,
+Nova::Boolean NvGeSurface::isOn (const NvGePoint3d& thePnt, NvGePoint2d& theParamPoint,
                                   const NvGeTol& theTol) const
 {
   if (!isOn (thePnt, theTol))
@@ -100,7 +100,7 @@ double NvGeSurface::distanceTo (const NvGePoint3d& thePnt, const NvGeTol& theTol
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSurface::isNormalReversed() const
+Nova::Boolean NvGeSurface::isNormalReversed() const
 {
   // The base stores no orientation flag; the orientation follows the OCCT
   // surface geometry. Subclasses with explicit orientation override this.
@@ -150,7 +150,7 @@ void NvGeSurface::getEnvelope (NvGeInterval& theIntrvlX, NvGeInterval& theIntrvl
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSurface::isClosedInU (const NvGeTol& theTol) const
+Nova::Boolean NvGeSurface::isClosedInU (const NvGeTol& theTol) const
 {
   (void)theTol;
   return NvGeSurfaceOf (mpImpEnt)->IsUClosed();
@@ -158,7 +158,7 @@ Adesk::Boolean NvGeSurface::isClosedInU (const NvGeTol& theTol) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSurface::isClosedInV (const NvGeTol& theTol) const
+Nova::Boolean NvGeSurface::isClosedInV (const NvGeTol& theTol) const
 {
   (void)theTol;
   return NvGeSurfaceOf (mpImpEnt)->IsVClosed();

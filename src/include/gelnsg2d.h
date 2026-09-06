@@ -21,9 +21,9 @@ public:
     GE_DLLEXPIMPORT NvGeLineSeg2d& set(const NvGeCurve2d& curve1,
                        const NvGeCurve2d& curve2,
                        double& param1, double& param2,
-                       Adesk::Boolean& success);
+                       Nova::Boolean& success);
     GE_DLLEXPIMPORT NvGeLineSeg2d& set(const NvGeCurve2d& curve, const NvGePoint2d& point,
-                       double& param, Adesk::Boolean& success);
+                       double& param, Nova::Boolean& success);
 
 
     // Bisector.

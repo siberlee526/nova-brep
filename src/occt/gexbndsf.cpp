@@ -111,13 +111,13 @@ occ::handle<Geom_Surface> CaptureSurface (void* theSurfaceDef, bool theMakeCopy,
 
 //! Installs a fresh holder, replacing the base placeholder impl.
 void InstallData (NvGeImpEntity3d*& theImp, void* theSurfaceDef,
-                  NvGe::ExternalEntityKind theKind, Adesk::Boolean theMakeCopy,
+                  NvGe::ExternalEntityKind theKind, Nova::Boolean theMakeCopy,
                   const char* theMethod)
 {
   occ::handle<NvGeExternalBndSurfData> aData = new NvGeExternalBndSurfData();
   aData->ExternalDef = theSurfaceDef;
   aData->Kind = theKind;
-  aData->IsOwner = theMakeCopy != Adesk::kFalse;
+  aData->IsOwner = theMakeCopy != Nova::kFalse;
   if (theSurfaceDef != nullptr)
   {
     // Validate and capture the geometry BEFORE touching this entity, so a
@@ -139,7 +139,7 @@ void InstallData (NvGeImpEntity3d*& theImp, void* theSurfaceDef,
 
 NvGeExternalBoundedSurface::NvGeExternalBoundedSurface ()
 {
-  InstallData (mpImpEnt, nullptr, NvGe::kExternalEntityUndefined, Adesk::kFalse,
+  InstallData (mpImpEnt, nullptr, NvGe::kExternalEntityUndefined, Nova::kFalse,
                "NvGeExternalBoundedSurface");
 }
 
@@ -147,7 +147,7 @@ NvGeExternalBoundedSurface::NvGeExternalBoundedSurface ()
 
 NvGeExternalBoundedSurface::NvGeExternalBoundedSurface (void* theSurfaceDef,
                                                         NvGe::ExternalEntityKind theSurfaceKind,
-                                                        Adesk::Boolean theMakeCopy)
+                                                        Nova::Boolean theMakeCopy)
 {
   InstallData (mpImpEnt, theSurfaceDef, theSurfaceKind, theMakeCopy,
                "NvGeExternalBoundedSurface");
@@ -169,7 +169,7 @@ NvGe::ExternalEntityKind NvGeExternalBoundedSurface::externalSurfaceKind () cons
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isDefined () const
+Nova::Boolean NvGeExternalBoundedSurface::isDefined () const
 {
   return !DataOf (mpImpEnt)->Surface.IsNull();
 }
@@ -205,20 +205,20 @@ void NvGeExternalBoundedSurface::getBaseSurface (NvGeExternalSurface& theUnbound
   const NvGeExternalBndSurfData* aData = DataOf (mpImpEnt);
   if (aData->Surface.IsNull())
   {
-    theUnbounded.set (nullptr, NvGe::kExternalEntityUndefined, Adesk::kFalse);
+    theUnbounded.set (nullptr, NvGe::kExternalEntityUndefined, Nova::kFalse);
     return;
   }
   // Wrap the captured base geometry in a transient native wrapper and hand
   // it to the external surface as its definition (shared, not copied).
   NvGeSurface* aBase = (NvGeSurface*) newEntity3d (
       new NvGeImpEntity3d (NvGe::kSurface, aData->Surface));
-  theUnbounded.set (aBase, NvGe::kAcisEntity, Adesk::kFalse);
+  theUnbounded.set (aBase, NvGe::kAcisEntity, Nova::kFalse);
   delete aBase;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isPlane () const
+Nova::Boolean NvGeExternalBoundedSurface::isPlane () const
 {
   const NvGeExternalBndSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -227,7 +227,7 @@ Adesk::Boolean NvGeExternalBoundedSurface::isPlane () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isSphere () const
+Nova::Boolean NvGeExternalBoundedSurface::isSphere () const
 {
   const NvGeExternalBndSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -236,7 +236,7 @@ Adesk::Boolean NvGeExternalBoundedSurface::isSphere () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isCylinder () const
+Nova::Boolean NvGeExternalBoundedSurface::isCylinder () const
 {
   const NvGeExternalBndSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -245,7 +245,7 @@ Adesk::Boolean NvGeExternalBoundedSurface::isCylinder () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isCone () const
+Nova::Boolean NvGeExternalBoundedSurface::isCone () const
 {
   const NvGeExternalBndSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -254,7 +254,7 @@ Adesk::Boolean NvGeExternalBoundedSurface::isCone () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isTorus () const
+Nova::Boolean NvGeExternalBoundedSurface::isTorus () const
 {
   const NvGeExternalBndSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -263,7 +263,7 @@ Adesk::Boolean NvGeExternalBoundedSurface::isTorus () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isNurbs () const
+Nova::Boolean NvGeExternalBoundedSurface::isNurbs () const
 {
   const NvGeExternalBndSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -272,11 +272,11 @@ Adesk::Boolean NvGeExternalBoundedSurface::isNurbs () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isExternalSurface () const
+Nova::Boolean NvGeExternalBoundedSurface::isExternalSurface () const
 {
   // The base surface is always stored as captured native geometry in this
   // layer, never as an external-surface holder.
-  return Adesk::kFalse;
+  return Nova::kFalse;
 }
 
 //=================================================================================================
@@ -300,7 +300,7 @@ void NvGeExternalBoundedSurface::getContours (int& theNumContours,
 
 NvGeExternalBoundedSurface& NvGeExternalBoundedSurface::set (void* theSurfaceDef,
                                                              NvGe::ExternalEntityKind theSurfaceKind,
-                                                             Adesk::Boolean theMakeCopy)
+                                                             Nova::Boolean theMakeCopy)
 {
   InstallData (mpImpEnt, theSurfaceDef, theSurfaceKind, theMakeCopy, "set");
   return *this;
@@ -317,7 +317,7 @@ NvGeExternalBoundedSurface& NvGeExternalBoundedSurface::operator = (
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalBoundedSurface::isOwnerOfSurface () const
+Nova::Boolean NvGeExternalBoundedSurface::isOwnerOfSurface () const
 {
   return DataOf (mpImpEnt)->IsOwner;
 }

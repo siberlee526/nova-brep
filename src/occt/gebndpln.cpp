@@ -136,7 +136,7 @@ NvGeBoundedPlane::NvGeBoundedPlane (const NvGePoint3d& theP1, const NvGePoint3d&
 
 //=================================================================================================
 
-Adesk::Boolean NvGeBoundedPlane::intersectWith (const NvGeLinearEnt3d& theLinEnt,
+Nova::Boolean NvGeBoundedPlane::intersectWith (const NvGeLinearEnt3d& theLinEnt,
                                                 NvGePoint3d& thePoint, const NvGeTol& theTol) const
 {
   // Infinite-plane hit, then inside-the-patch check in local coordinates.
@@ -176,7 +176,7 @@ Adesk::Boolean NvGeBoundedPlane::intersectWith (const NvGeLinearEnt3d& theLinEnt
 
 //=================================================================================================
 
-Adesk::Boolean NvGeBoundedPlane::intersectWith (const NvGePlane& thePlane,
+Nova::Boolean NvGeBoundedPlane::intersectWith (const NvGePlane& thePlane,
                                                 NvGeLineSeg3d& theResults,
                                                 const NvGeTol& theTol) const
 {
@@ -186,7 +186,7 @@ Adesk::Boolean NvGeBoundedPlane::intersectWith (const NvGePlane& thePlane,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeBoundedPlane::intersectWith (const NvGeBoundedPlane& thePlane,
+Nova::Boolean NvGeBoundedPlane::intersectWith (const NvGeBoundedPlane& thePlane,
                                                 NvGeLineSeg3d& theResult,
                                                 const NvGeTol& theTol) const
 {

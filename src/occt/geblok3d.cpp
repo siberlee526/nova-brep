@@ -276,7 +276,7 @@ NvGeBoundBlock3d& NvGeBoundBlock3d::swell (double theDistance)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeBoundBlock3d::contains (const NvGePoint3d& thePoint) const
+Nova::Boolean NvGeBoundBlock3d::contains (const NvGePoint3d& thePoint) const
 {
   const NvGeBoundBlock3dData* aData = DataOf (mpImpEnt);
   const gp_Vec aDelta (thePoint.x - aData->Point.X(),
@@ -332,7 +332,7 @@ Adesk::Boolean NvGeBoundBlock3d::contains (const NvGePoint3d& thePoint) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeBoundBlock3d::isDisjoint (const NvGeBoundBlock3d& theBlock) const
+Nova::Boolean NvGeBoundBlock3d::isDisjoint (const NvGeBoundBlock3d& theBlock) const
 {
   // Conservative axis-aligned hull test: disjoint hulls imply disjoint
   // blocks; overlapping hulls report non-disjoint (exact for boxes).
@@ -355,7 +355,7 @@ NvGeBoundBlock3d& NvGeBoundBlock3d::operator = (const NvGeBoundBlock3d& theBlock
 
 //=================================================================================================
 
-Adesk::Boolean NvGeBoundBlock3d::isBox() const
+Nova::Boolean NvGeBoundBlock3d::isBox() const
 {
   const NvGeBoundBlock3dData* aData = DataOf (mpImpEnt);
   const double aTol = NvGeContext::gTol.equalVector();
@@ -366,7 +366,7 @@ Adesk::Boolean NvGeBoundBlock3d::isBox() const
 
 //=================================================================================================
 
-NvGeBoundBlock3d& NvGeBoundBlock3d::setToBox (Adesk::Boolean theToBox)
+NvGeBoundBlock3d& NvGeBoundBlock3d::setToBox (Nova::Boolean theToBox)
 {
   if (!theToBox)
   {

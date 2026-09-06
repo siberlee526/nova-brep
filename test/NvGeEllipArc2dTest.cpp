@@ -62,7 +62,7 @@ TEST_F (NvGeEllipArc2dTest, DefaultConstructor_IsUnitCircleAtOrigin)
   EXPECT_TRUE (anEll.isCircular());
   EXPECT_NEAR (anEll.startAng(), 0.0, THE_TEST_TOL);
   EXPECT_NEAR (anEll.endAng(), 2.0 * THE_PI, THE_TEST_TOL);
-  EXPECT_TRUE (anEll.isClockWise() == Adesk::kFalse);
+  EXPECT_TRUE (anEll.isClockWise() == Nova::kFalse);
   ExpectNear (anEll.majorAxis(), 1.0, 0.0);
   ExpectNear (anEll.minorAxis(), 0.0, 1.0);
 }
@@ -79,8 +79,8 @@ TEST_F (NvGeEllipArc2dTest, AxesConstructor_RoundTrips)
   // Axes are returned normalized.
   ExpectNear (anEll.majorAxis(), 1.0, 0.0);
   ExpectNear (anEll.minorAxis(), 0.0, 1.0);
-  EXPECT_TRUE (anEll.isClockWise() == Adesk::kFalse);
-  EXPECT_TRUE (anEll.isCircular() == Adesk::kFalse);
+  EXPECT_TRUE (anEll.isClockWise() == Nova::kFalse);
+  EXPECT_TRUE (anEll.isCircular() == Nova::kFalse);
 }
 
 //=================================================================================================
@@ -107,7 +107,7 @@ TEST_F (NvGeEllipArc2dTest, AngleConstructor_QuarterArc_RoundTrips)
                               NvGeVector2d (0.0, 1.0), 3.0, 1.0, 0.0, THE_PI / 2.0);
   EXPECT_NEAR (anEll.startAng(), 0.0, THE_TEST_TOL);
   EXPECT_NEAR (anEll.endAng(), THE_PI / 2.0, THE_TEST_TOL);
-  EXPECT_TRUE (anEll.isClockWise() == Adesk::kFalse);
+  EXPECT_TRUE (anEll.isClockWise() == Nova::kFalse);
   ExpectNear (anEll.startPoint(), 4.0, 2.0);
   ExpectNear (anEll.endPoint(), 1.0, 3.0);
 }
@@ -130,7 +130,7 @@ TEST_F (NvGeEllipArc2dTest, AngleConstructor_Clockwise_RoundTrips)
   // clockwise, and increasing angles then run clockwise around the center.
   const NvGeEllipArc2d anEll (NvGePoint2d (1.0, 2.0), NvGeVector2d (1.0, 0.0),
                               NvGeVector2d (0.0, -1.0), 3.0, 1.0, THE_PI / 2.0, 0.0);
-  EXPECT_TRUE (anEll.isClockWise() == Adesk::kTrue);
+  EXPECT_TRUE (anEll.isClockWise() == Nova::kTrue);
   EXPECT_NEAR (anEll.startAng(), THE_PI / 2.0, THE_TEST_TOL);
   EXPECT_NEAR (anEll.endAng(), 0.0, THE_TEST_TOL);
   ExpectNear (anEll.startPoint(), 1.0, 1.0);
@@ -149,7 +149,7 @@ TEST_F (NvGeEllipArc2dTest, CircArcConstructor_Converts)
   EXPECT_NEAR (anEll.minorRadius(), 2.0, THE_TEST_TOL);
   EXPECT_NEAR (anEll.startAng(), 0.0, THE_TEST_TOL);
   EXPECT_NEAR (anEll.endAng(), 2.0 * THE_PI, THE_TEST_TOL);
-  EXPECT_TRUE (anEll.isClockWise() == Adesk::kFalse);
+  EXPECT_TRUE (anEll.isClockWise() == Nova::kFalse);
 }
 
 //=================================================================================================
@@ -161,8 +161,8 @@ TEST_F (NvGeEllipArc2dTest, IsInside_ClassifiesByQuadraticForm)
   EXPECT_TRUE (anEll.isInside (NvGePoint2d (0.0, 0.0)));
   EXPECT_TRUE (anEll.isInside (NvGePoint2d (1.0, 0.0)));
   EXPECT_TRUE (anEll.isInside (NvGePoint2d (0.0, 0.5)));
-  EXPECT_TRUE (anEll.isInside (NvGePoint2d (5.0, 0.0)) == Adesk::kFalse);
-  EXPECT_TRUE (anEll.isInside (NvGePoint2d (0.0, 2.0)) == Adesk::kFalse);
+  EXPECT_TRUE (anEll.isInside (NvGePoint2d (5.0, 0.0)) == Nova::kFalse);
+  EXPECT_TRUE (anEll.isInside (NvGePoint2d (0.0, 2.0)) == Nova::kFalse);
 }
 
 //=================================================================================================
@@ -214,7 +214,7 @@ TEST_F (NvGeEllipArc2dTest, SetAxes_FlipsDirectionForOppositeHandedness)
 {
   NvGeEllipArc2d anEll;
   anEll.setAxes (NvGeVector2d (1.0, 0.0), NvGeVector2d (0.0, -1.0));
-  EXPECT_TRUE (anEll.isClockWise() == Adesk::kTrue);
+  EXPECT_TRUE (anEll.isClockWise() == Nova::kTrue);
   ExpectNear (anEll.majorAxis(), 1.0, 0.0);
   ExpectNear (anEll.minorAxis(), 0.0, -1.0);
   EXPECT_NEAR (anEll.majorRadius(), 1.0, THE_TEST_TOL);
@@ -252,5 +252,5 @@ TEST_F (NvGeEllipArc2dTest, IsClosed_TrueOnlyForFullEllipse)
   EXPECT_TRUE (NvGeEllipArc2d().isClosed());
   const NvGeEllipArc2d aQuarter (NvGePoint2d (0.0, 0.0), NvGeVector2d (1.0, 0.0),
                                  NvGeVector2d (0.0, 1.0), 3.0, 1.0, 0.0, THE_PI / 2.0);
-  EXPECT_TRUE (aQuarter.isClosed() == Adesk::kFalse);
+  EXPECT_TRUE (aQuarter.isClosed() == Nova::kFalse);
 }

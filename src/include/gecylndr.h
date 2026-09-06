@@ -34,8 +34,8 @@ public:
     double         heightAt      (double u) const;
     NvGeVector3d   axisOfSymmetry() const;
     NvGeVector3d   refAxis       () const;
-    Adesk::Boolean isOuterNormal () const;
-    Adesk::Boolean isClosed      (const NvGeTol& tol = NvGeContext::gTol) const;
+    Nova::Boolean isOuterNormal () const;
+    Nova::Boolean isClosed      (const NvGeTol& tol = NvGeContext::gTol) const;
 
     NvGeCylinder&  setRadius     (double radius);
     NvGeCylinder&  setAngles     (double start, double end);
@@ -53,7 +53,7 @@ public:
 
     // Intersection with a linear entity
     //
-    Adesk::Boolean intersectWith (const NvGeLinearEnt3d& linEnt, int& intn,
+    Nova::Boolean intersectWith (const NvGeLinearEnt3d& linEnt, int& intn,
                                   NvGePoint3d& p1, NvGePoint3d& p2,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 };

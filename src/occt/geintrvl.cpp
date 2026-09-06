@@ -59,7 +59,7 @@ NvGeInterval::NvGeInterval (double theLower, double theUpper, double theTol)
 
 //=================================================================================================
 
-NvGeInterval::NvGeInterval (Adesk::Boolean theBoundedBelow, double theBound, double theTol)
+NvGeInterval::NvGeInterval (Nova::Boolean theBoundedBelow, double theBound, double theTol)
 : mpImpInt (new NvGeImpInterval()),
   mDelInt (1)
 {
@@ -172,7 +172,7 @@ NvGeInterval& NvGeInterval::set (double theLower, double theUpper)
 
 //=================================================================================================
 
-NvGeInterval& NvGeInterval::set (Adesk::Boolean theBoundedBelow, double theBound)
+NvGeInterval& NvGeInterval::set (Nova::Boolean theBoundedBelow, double theBound)
 {
   if (theBoundedBelow)
   {
@@ -267,7 +267,7 @@ int NvGeInterval::subtract (const NvGeInterval& theOtherInterval,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::intersectWith (const NvGeInterval& theOtherInterval,
+Nova::Boolean NvGeInterval::intersectWith (const NvGeInterval& theOtherInterval,
                                             NvGeInterval& theResult) const
 {
   if (isDisjoint (theOtherInterval))
@@ -284,35 +284,35 @@ Adesk::Boolean NvGeInterval::intersectWith (const NvGeInterval& theOtherInterval
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isBounded() const
+Nova::Boolean NvGeInterval::isBounded() const
 {
   return IsFiniteVal (mpImpInt->LowerBound) && IsFiniteVal (mpImpInt->UpperBound);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isBoundedAbove() const
+Nova::Boolean NvGeInterval::isBoundedAbove() const
 {
   return IsFiniteVal (mpImpInt->UpperBound);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isBoundedBelow() const
+Nova::Boolean NvGeInterval::isBoundedBelow() const
 {
   return IsFiniteVal (mpImpInt->LowerBound);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isUnBounded() const
+Nova::Boolean NvGeInterval::isUnBounded() const
 {
   return !IsFiniteVal (mpImpInt->LowerBound) && !IsFiniteVal (mpImpInt->UpperBound);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isSingleton() const
+Nova::Boolean NvGeInterval::isSingleton() const
 {
   return isBounded()
       && std::abs (mpImpInt->UpperBound - mpImpInt->LowerBound) <= mpImpInt->Tolerance;
@@ -320,7 +320,7 @@ Adesk::Boolean NvGeInterval::isSingleton() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isDisjoint (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::isDisjoint (const NvGeInterval& theOtherInterval) const
 {
   const double aTol = std::max (mpImpInt->Tolerance, theOtherInterval.mpImpInt->Tolerance);
   return mpImpInt->UpperBound < theOtherInterval.mpImpInt->LowerBound - aTol
@@ -329,7 +329,7 @@ Adesk::Boolean NvGeInterval::isDisjoint (const NvGeInterval& theOtherInterval) c
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::contains (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::contains (const NvGeInterval& theOtherInterval) const
 {
   return mpImpInt->LowerBound <= theOtherInterval.mpImpInt->LowerBound + mpImpInt->Tolerance
       && mpImpInt->UpperBound >= theOtherInterval.mpImpInt->UpperBound - mpImpInt->Tolerance;
@@ -337,7 +337,7 @@ Adesk::Boolean NvGeInterval::contains (const NvGeInterval& theOtherInterval) con
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::contains (double theVal) const
+Nova::Boolean NvGeInterval::contains (double theVal) const
 {
   return mpImpInt->LowerBound - mpImpInt->Tolerance <= theVal
       && theVal <= mpImpInt->UpperBound + mpImpInt->Tolerance;
@@ -345,7 +345,7 @@ Adesk::Boolean NvGeInterval::contains (double theVal) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isContinuousAtUpper (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::isContinuousAtUpper (const NvGeInterval& theOtherInterval) const
 {
   // Intervals join when this ends exactly where the other starts.
   return std::abs (mpImpInt->UpperBound - theOtherInterval.mpImpInt->LowerBound)
@@ -354,7 +354,7 @@ Adesk::Boolean NvGeInterval::isContinuousAtUpper (const NvGeInterval& theOtherIn
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isOverlapAtUpper (const NvGeInterval& theOtherInterval,
+Nova::Boolean NvGeInterval::isOverlapAtUpper (const NvGeInterval& theOtherInterval,
                                                NvGeInterval& theOverlap) const
 {
   return intersectWith (theOtherInterval, theOverlap);
@@ -362,21 +362,21 @@ Adesk::Boolean NvGeInterval::isOverlapAtUpper (const NvGeInterval& theOtherInter
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator == (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::operator == (const NvGeInterval& theOtherInterval) const
 {
   return isEqualAtLower (theOtherInterval) && isEqualAtUpper (theOtherInterval);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator != (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::operator != (const NvGeInterval& theOtherInterval) const
 {
   return !(*this == theOtherInterval);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isEqualAtUpper (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::isEqualAtUpper (const NvGeInterval& theOtherInterval) const
 {
   return std::abs (mpImpInt->UpperBound - theOtherInterval.mpImpInt->UpperBound)
        <= mpImpInt->Tolerance;
@@ -384,14 +384,14 @@ Adesk::Boolean NvGeInterval::isEqualAtUpper (const NvGeInterval& theOtherInterva
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isEqualAtUpper (double theValue) const
+Nova::Boolean NvGeInterval::isEqualAtUpper (double theValue) const
 {
   return std::abs (mpImpInt->UpperBound - theValue) <= mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isEqualAtLower (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::isEqualAtLower (const NvGeInterval& theOtherInterval) const
 {
   return std::abs (mpImpInt->LowerBound - theOtherInterval.mpImpInt->LowerBound)
        <= mpImpInt->Tolerance;
@@ -399,14 +399,14 @@ Adesk::Boolean NvGeInterval::isEqualAtLower (const NvGeInterval& theOtherInterva
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isEqualAtLower (double theValue) const
+Nova::Boolean NvGeInterval::isEqualAtLower (double theValue) const
 {
   return std::abs (mpImpInt->LowerBound - theValue) <= mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::isPeriodicallyOn (double thePeriod, double& theVal)
+Nova::Boolean NvGeInterval::isPeriodicallyOn (double thePeriod, double& theVal)
 {
   if (std::abs (thePeriod) < mpImpInt->Tolerance || !isBoundedBelow())
   {
@@ -430,84 +430,84 @@ Adesk::Boolean NvGeInterval::isPeriodicallyOn (double thePeriod, double& theVal)
 
 //=================================================================================================
 
-Adesk::Boolean operator > (double theVal, const NvGeInterval& theIntrvl)
+Nova::Boolean operator > (double theVal, const NvGeInterval& theIntrvl)
 {
   return theVal > theIntrvl.mpImpInt->UpperBound + theIntrvl.mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator > (double theVal) const
+Nova::Boolean NvGeInterval::operator > (double theVal) const
 {
   return mpImpInt->LowerBound > theVal + mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator > (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::operator > (const NvGeInterval& theOtherInterval) const
 {
   return mpImpInt->LowerBound > theOtherInterval.mpImpInt->UpperBound + mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean operator >= (double theVal, const NvGeInterval& theIntrvl)
+Nova::Boolean operator >= (double theVal, const NvGeInterval& theIntrvl)
 {
   return theVal >= theIntrvl.mpImpInt->UpperBound - theIntrvl.mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator >= (double theVal) const
+Nova::Boolean NvGeInterval::operator >= (double theVal) const
 {
   return mpImpInt->LowerBound >= theVal - mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator >= (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::operator >= (const NvGeInterval& theOtherInterval) const
 {
   return mpImpInt->LowerBound >= theOtherInterval.mpImpInt->UpperBound - mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean operator < (double theVal, const NvGeInterval& theIntrvl)
+Nova::Boolean operator < (double theVal, const NvGeInterval& theIntrvl)
 {
   return theVal < theIntrvl.mpImpInt->LowerBound - theIntrvl.mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator < (double theVal) const
+Nova::Boolean NvGeInterval::operator < (double theVal) const
 {
   return mpImpInt->UpperBound < theVal - mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator < (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::operator < (const NvGeInterval& theOtherInterval) const
 {
   return mpImpInt->UpperBound < theOtherInterval.mpImpInt->LowerBound - mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean operator <= (double theVal, const NvGeInterval& theIntrvl)
+Nova::Boolean operator <= (double theVal, const NvGeInterval& theIntrvl)
 {
   return theVal <= theIntrvl.mpImpInt->LowerBound + theIntrvl.mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator <= (double theVal) const
+Nova::Boolean NvGeInterval::operator <= (double theVal) const
 {
   return mpImpInt->UpperBound <= theVal + mpImpInt->Tolerance;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeInterval::operator <= (const NvGeInterval& theOtherInterval) const
+Nova::Boolean NvGeInterval::operator <= (const NvGeInterval& theOtherInterval) const
 {
   return mpImpInt->UpperBound <= theOtherInterval.mpImpInt->LowerBound + mpImpInt->Tolerance;
 }

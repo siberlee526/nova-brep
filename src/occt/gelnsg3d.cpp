@@ -227,7 +227,7 @@ NvGeLineSeg3d& NvGeLineSeg3d::set (const NvGePoint3d& thePnt1, const NvGePoint3d
 
 NvGeLineSeg3d& NvGeLineSeg3d::set (const NvGeCurve3d& theCurve1, const NvGeCurve3d& theCurve2,
                                    double& theParam1, double& theParam2,
-                                   Adesk::Boolean& theSuccess)
+                                   Nova::Boolean& theSuccess)
 {
   // Shortest segment between the two curves: take the closest pair of
   // points and report their parameters; touching curves produce no
@@ -252,7 +252,7 @@ NvGeLineSeg3d& NvGeLineSeg3d::set (const NvGeCurve3d& theCurve1, const NvGeCurve
 //=================================================================================================
 
 NvGeLineSeg3d& NvGeLineSeg3d::set (const NvGeCurve3d& theCurve, const NvGePoint3d& thePnt,
-                                   double& theParam, Adesk::Boolean& theSuccess)
+                                   double& theParam, Nova::Boolean& theSuccess)
 {
   // Shortest segment from a point to a curve: the closest point on the
   // curve defines the far endpoint and its parameter.

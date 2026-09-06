@@ -152,7 +152,7 @@ NvGeLineSeg2d& NvGeLineSeg2d::set (const NvGePoint2d& thePnt1, const NvGePoint2d
 
 NvGeLineSeg2d& NvGeLineSeg2d::set (const NvGeCurve2d& theCurve1, const NvGeCurve2d& theCurve2,
                                    double& theParam1, double& theParam2,
-                                   Adesk::Boolean& theSuccess)
+                                   Nova::Boolean& theSuccess)
 {
   theSuccess = false;
   try
@@ -197,7 +197,7 @@ NvGeLineSeg2d& NvGeLineSeg2d::set (const NvGeCurve2d& theCurve1, const NvGeCurve
 //=================================================================================================
 
 NvGeLineSeg2d& NvGeLineSeg2d::set (const NvGeCurve2d& theCurve, const NvGePoint2d& thePoint,
-                                   double& theParam, Adesk::Boolean& theSuccess)
+                                   double& theParam, Nova::Boolean& theSuccess)
 {
   theSuccess = false;
   try

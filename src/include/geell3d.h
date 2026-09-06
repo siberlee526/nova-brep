@@ -39,16 +39,16 @@ public:
 
     // Intersection with other geometric objects.
     // 
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith (const NvGeLinearEnt3d& line, int& intn,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith (const NvGeLinearEnt3d& line, int& intn,
                                   NvGePoint3d& p1, NvGePoint3d& p2,
                                   const NvGeTol& tol = NvGeContext::gTol) const;  
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith (const NvGePlanarEnt& plane, int& numOfIntersect,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith (const NvGePlanarEnt& plane, int& numOfIntersect,
                                   NvGePoint3d& p1, NvGePoint3d& p2,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
  
     // Projection-intersection with other geometric objects.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean projIntersectWith(const NvGeLinearEnt3d& line,
+    GE_DLLEXPIMPORT Nova::Boolean projIntersectWith(const NvGeLinearEnt3d& line,
                                   const NvGeVector3d& projDir, int &numInt,
                                   NvGePoint3d& pntOnEllipse1,
                                   NvGePoint3d& pntOnEllipse2,
@@ -61,11 +61,11 @@ public:
 
     // Inquiry Methods
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isCircular    (const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isCircular    (const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Test if point is inside full ellipse
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isInside      (const NvGePoint3d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean isInside      (const NvGePoint3d& pnt,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Definition of ellipse

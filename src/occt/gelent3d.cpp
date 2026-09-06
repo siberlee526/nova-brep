@@ -166,7 +166,7 @@ NvGeLinearEnt3d& NvGeLinearEnt3d::operator = (const NvGeLinearEnt3d& theLine)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::intersectWith (const NvGeLinearEnt3d& theLine, NvGePoint3d& theIntPnt,
+Nova::Boolean NvGeLinearEnt3d::intersectWith (const NvGeLinearEnt3d& theLine, NvGePoint3d& theIntPnt,
                                                const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Line> aLine1 = LineOf (mpImpEnt->Geom());
@@ -219,7 +219,7 @@ Adesk::Boolean NvGeLinearEnt3d::intersectWith (const NvGeLinearEnt3d& theLine, N
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::intersectWith (const NvGePlanarEnt& thePlane, NvGePoint3d& theIntPnt,
+Nova::Boolean NvGeLinearEnt3d::intersectWith (const NvGePlanarEnt& thePlane, NvGePoint3d& theIntPnt,
                                                const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Line> aLine = LineOf (mpImpEnt->Geom());
@@ -253,7 +253,7 @@ Adesk::Boolean NvGeLinearEnt3d::intersectWith (const NvGePlanarEnt& thePlane, Nv
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::projIntersectWith (const NvGeLinearEnt3d& theLine,
+Nova::Boolean NvGeLinearEnt3d::projIntersectWith (const NvGeLinearEnt3d& theLine,
                                                    const NvGeVector3d& theProjDir,
                                                    NvGePoint3d& thePntOnThisLine,
                                                    NvGePoint3d& thePntOnOtherLine,
@@ -314,7 +314,7 @@ Adesk::Boolean NvGeLinearEnt3d::projIntersectWith (const NvGeLinearEnt3d& theLin
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::overlap (const NvGeLinearEnt3d& theLine, NvGeLinearEnt3d*& theOverlap,
+Nova::Boolean NvGeLinearEnt3d::overlap (const NvGeLinearEnt3d& theLine, NvGeLinearEnt3d*& theOverlap,
                                          const NvGeTol& theTol) const
 {
   theOverlap = nullptr;
@@ -387,7 +387,7 @@ Adesk::Boolean NvGeLinearEnt3d::overlap (const NvGeLinearEnt3d& theLine, NvGeLin
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isOn (const NvGePoint3d& thePnt, const NvGeTol& theTol) const
+Nova::Boolean NvGeLinearEnt3d::isOn (const NvGePoint3d& thePnt, const NvGeTol& theTol) const
 {
   double aParam = 0.0;
   return isOn (thePnt, aParam, theTol);
@@ -395,7 +395,7 @@ Adesk::Boolean NvGeLinearEnt3d::isOn (const NvGePoint3d& thePnt, const NvGeTol& 
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isOn (const NvGePoint3d& thePnt, double& theParam,
+Nova::Boolean NvGeLinearEnt3d::isOn (const NvGePoint3d& thePnt, double& theParam,
                                       const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Line> aLine = LineOf (mpImpEnt->Geom());
@@ -424,7 +424,7 @@ Adesk::Boolean NvGeLinearEnt3d::isOn (const NvGePoint3d& thePnt, double& thePara
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isOn (double theParam, const NvGeTol& theTol) const
+Nova::Boolean NvGeLinearEnt3d::isOn (double theParam, const NvGeTol& theTol) const
 {
   double aFirst1 = 0.0, aLast1 = 0.0;
   LinearRangeOf (type(), mpImpEnt->Geom(), aFirst1, aLast1);
@@ -433,7 +433,7 @@ Adesk::Boolean NvGeLinearEnt3d::isOn (double theParam, const NvGeTol& theTol) co
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isOn (const NvGePlane& thePlane, const NvGeTol& theTol) const
+Nova::Boolean NvGeLinearEnt3d::isOn (const NvGePlane& thePlane, const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Line> aLine = LineOf (mpImpEnt->Geom());
   if (aLine.IsNull())
@@ -455,7 +455,7 @@ Adesk::Boolean NvGeLinearEnt3d::isOn (const NvGePlane& thePlane, const NvGeTol& 
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isParallelTo (const NvGeLinearEnt3d& theLine,
+Nova::Boolean NvGeLinearEnt3d::isParallelTo (const NvGeLinearEnt3d& theLine,
                                               const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Line> aLine1 = LineOf (mpImpEnt->Geom());
@@ -471,7 +471,7 @@ Adesk::Boolean NvGeLinearEnt3d::isParallelTo (const NvGeLinearEnt3d& theLine,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isParallelTo (const NvGePlanarEnt& thePlane,
+Nova::Boolean NvGeLinearEnt3d::isParallelTo (const NvGePlanarEnt& thePlane,
                                               const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Line> aLine = LineOf (mpImpEnt->Geom());
@@ -487,7 +487,7 @@ Adesk::Boolean NvGeLinearEnt3d::isParallelTo (const NvGePlanarEnt& thePlane,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isPerpendicularTo (const NvGeLinearEnt3d& theLine,
+Nova::Boolean NvGeLinearEnt3d::isPerpendicularTo (const NvGeLinearEnt3d& theLine,
                                                    const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Line> aLine1 = LineOf (mpImpEnt->Geom());
@@ -503,7 +503,7 @@ Adesk::Boolean NvGeLinearEnt3d::isPerpendicularTo (const NvGeLinearEnt3d& theLin
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isPerpendicularTo (const NvGePlanarEnt& thePlane,
+Nova::Boolean NvGeLinearEnt3d::isPerpendicularTo (const NvGePlanarEnt& thePlane,
                                                    const NvGeTol& theTol) const
 {
   const occ::handle<Geom_Line> aLine = LineOf (mpImpEnt->Geom());
@@ -519,7 +519,7 @@ Adesk::Boolean NvGeLinearEnt3d::isPerpendicularTo (const NvGePlanarEnt& thePlane
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt3d::isColinearTo (const NvGeLinearEnt3d& theLine,
+Nova::Boolean NvGeLinearEnt3d::isColinearTo (const NvGeLinearEnt3d& theLine,
                                               const NvGeTol& theTol) const
 {
   if (!isParallelTo (theLine, theTol))

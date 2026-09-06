@@ -17,9 +17,9 @@ public:
     NvGeCurveBoundary();
     NvGeCurveBoundary(int numberOfCurves, const NvGeEntity3d *const * crv3d,
                       const NvGeCurve2d *const * crv2d,
-                      Adesk::Boolean* orientation3d,
-                      Adesk::Boolean* orientation2d,
-                      Adesk::Boolean makeCopy = Adesk::kTrue);
+                      Nova::Boolean* orientation3d,
+                      Nova::Boolean* orientation2d,
+                      Nova::Boolean makeCopy = Nova::kTrue);
     NvGeCurveBoundary(const NvGeCurveBoundary&);
 
     ~NvGeCurveBoundary();
@@ -30,23 +30,23 @@ public:
 
     // Query the data.
     //
-    Adesk::Boolean     isDegenerate () const;
-    Adesk::Boolean     isDegenerate (NvGePosition3d& degenPoint, NvGeCurve2d** paramCurve) const;
+    Nova::Boolean     isDegenerate () const;
+    Nova::Boolean     isDegenerate (NvGePosition3d& degenPoint, NvGeCurve2d** paramCurve) const;
     int                numElements  () const;
     void               getContour   (int& n, NvGeEntity3d*** crv3d,
                                      NvGeCurve2d*** paramGeometry,
-                                     Adesk::Boolean** orientation3d,
-                                     Adesk::Boolean** orientation2d) const;
+                                     Nova::Boolean** orientation3d,
+                                     Nova::Boolean** orientation2d) const;
 
     NvGeCurveBoundary& set (int numElements, const NvGeEntity3d *const * crv3d,
                             const NvGeCurve2d *const * crv2d,
-                            Adesk::Boolean* orientation3d,
-                            Adesk::Boolean* orientation2d,
-                            Adesk::Boolean makeCopy = Adesk::kTrue);
+                            Nova::Boolean* orientation3d,
+                            Nova::Boolean* orientation2d,
+                            Nova::Boolean makeCopy = Nova::kTrue);
 
     // Curve ownership.
     //
-    Adesk::Boolean     isOwnerOfCurves() const;
+    Nova::Boolean     isOwnerOfCurves() const;
     NvGeCurveBoundary& setToOwnCurves ();
 
 protected:

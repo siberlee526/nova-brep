@@ -31,16 +31,16 @@ public:
 
     // Intersection with other geometric objects.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith (const NvGeLinearEnt2d& line, int& intn,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith (const NvGeLinearEnt2d& line, int& intn,
                                   NvGePoint2d& p1, NvGePoint2d& p2,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
     // Inquiry Methods
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isCircular    (const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isCircular    (const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Test if point is inside full ellipse
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isInside      (const NvGePoint2d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean isInside      (const NvGePoint2d& pnt,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 
 
@@ -55,7 +55,7 @@ public:
     GE_DLLEXPIMPORT double         endAng        () const;
     GE_DLLEXPIMPORT NvGePoint2d    startPoint    () const;
     GE_DLLEXPIMPORT NvGePoint2d    endPoint      () const;
-    GE_DLLEXPIMPORT Adesk::Boolean isClockWise   () const;
+    GE_DLLEXPIMPORT Nova::Boolean isClockWise   () const;
 
     GE_DLLEXPIMPORT NvGeEllipArc2d& setCenter     (const NvGePoint2d& cent);
     GE_DLLEXPIMPORT NvGeEllipArc2d& setMinorRadius(double rad);

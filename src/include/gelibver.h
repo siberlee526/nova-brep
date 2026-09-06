@@ -19,32 +19,32 @@ public:
     //
     GE_DLLEXPIMPORT NvGeLibVersion();
     GE_DLLEXPIMPORT NvGeLibVersion(const NvGeLibVersion&);
-    GE_DLLEXPIMPORT NvGeLibVersion(Adesk::UInt8 major, Adesk::UInt8 minor,
-                   Adesk::UInt8 corrective,
-                   Adesk::UInt8 internal_version);
+    GE_DLLEXPIMPORT NvGeLibVersion(Nova::UInt8 major, Nova::UInt8 minor,
+                   Nova::UInt8 corrective,
+                   Nova::UInt8 internal_version);
 
     // Inquiry functions.
     //
-    GE_DLLEXPIMPORT Adesk::UInt8     majorVersion        () const;
-    GE_DLLEXPIMPORT Adesk::UInt8     minorVersion        () const;
-    GE_DLLEXPIMPORT Adesk::UInt8     correctiveVersion   () const;
-    GE_DLLEXPIMPORT Adesk::UInt8     schemaVersion       () const;
+    GE_DLLEXPIMPORT Nova::UInt8     majorVersion        () const;
+    GE_DLLEXPIMPORT Nova::UInt8     minorVersion        () const;
+    GE_DLLEXPIMPORT Nova::UInt8     correctiveVersion   () const;
+    GE_DLLEXPIMPORT Nova::UInt8     schemaVersion       () const;
 
     // Set functions.
     //
-    GE_DLLEXPIMPORT NvGeLibVersion&     setMajorVersion        (Adesk::UInt8 val);
-    GE_DLLEXPIMPORT NvGeLibVersion&     setMinorVersion        (Adesk::UInt8 val);
-    GE_DLLEXPIMPORT NvGeLibVersion&     setCorrectiveVersion   (Adesk::UInt8 val);
-    GE_DLLEXPIMPORT NvGeLibVersion&     setSchemaVersion       (Adesk::UInt8 val);
+    GE_DLLEXPIMPORT NvGeLibVersion&     setMajorVersion        (Nova::UInt8 val);
+    GE_DLLEXPIMPORT NvGeLibVersion&     setMinorVersion        (Nova::UInt8 val);
+    GE_DLLEXPIMPORT NvGeLibVersion&     setCorrectiveVersion   (Nova::UInt8 val);
+    GE_DLLEXPIMPORT NvGeLibVersion&     setSchemaVersion       (Nova::UInt8 val);
 
     // Comparisons
     //
-    GE_DLLEXPIMPORT Adesk::Boolean operator ==      (const NvGeLibVersion&) const;
-    GE_DLLEXPIMPORT Adesk::Boolean operator !=      (const NvGeLibVersion&) const;
-    GE_DLLEXPIMPORT Adesk::Boolean operator <       (const NvGeLibVersion&) const;
-    GE_DLLEXPIMPORT Adesk::Boolean operator <=      (const NvGeLibVersion&) const;
-    GE_DLLEXPIMPORT Adesk::Boolean operator >       (const NvGeLibVersion&) const;
-    GE_DLLEXPIMPORT Adesk::Boolean operator >=      (const NvGeLibVersion&) const;
+    GE_DLLEXPIMPORT Nova::Boolean operator ==      (const NvGeLibVersion&) const;
+    GE_DLLEXPIMPORT Nova::Boolean operator !=      (const NvGeLibVersion&) const;
+    GE_DLLEXPIMPORT Nova::Boolean operator <       (const NvGeLibVersion&) const;
+    GE_DLLEXPIMPORT Nova::Boolean operator <=      (const NvGeLibVersion&) const;
+    GE_DLLEXPIMPORT Nova::Boolean operator >       (const NvGeLibVersion&) const;
+    GE_DLLEXPIMPORT Nova::Boolean operator >=      (const NvGeLibVersion&) const;
 
     // Relased version objects.
     // gelib release 0 --- End of 1995.
@@ -60,7 +60,7 @@ public:
     GE_DLLDATAEXIMP static const NvGeLibVersion kReleaseTah;
 
 private:
-    Adesk::UInt8   mVersion[10];
+    Nova::UInt8   mVersion[10];
 };
 
 #pragma pack (pop)

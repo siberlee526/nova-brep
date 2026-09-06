@@ -20,7 +20,7 @@ public:
     GE_DLLEXPIMPORT NvGeCircArc2d(const NvGePoint2d& cent, double radius,
                   double startAngle, double endAngle,
                   const NvGeVector2d& refVec = NvGeVector2d::kXAxis,
-                  Adesk::Boolean isClockWise = Adesk::kFalse);
+                  Nova::Boolean isClockWise = Nova::kFalse);
     GE_DLLEXPIMPORT NvGeCircArc2d(const NvGePoint2d& startPoint, const NvGePoint2d& point, 
                   const NvGePoint2d& endPoint);
 
@@ -29,23 +29,23 @@ public:
 	// If bulgeFlag is kFalse, then bulge is interpreted to be tan(ang/4),
 	// where ang is the angle of the arc segment between the two input points.
     GE_DLLEXPIMPORT NvGeCircArc2d(const NvGePoint2d& startPoint, const NvGePoint2d& endPoint, double bulge, 
-                  Adesk::Boolean bulgeFlag = Adesk::kTrue);
+                  Nova::Boolean bulgeFlag = Nova::kTrue);
 
 
     // Intersection with other geometric objects.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith  (const NvGeLinearEnt2d& line, int& intn,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith  (const NvGeLinearEnt2d& line, int& intn,
                                    NvGePoint2d& p1, NvGePoint2d& p2,
                                    const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith  (const NvGeCircArc2d& arc, int& intn,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith  (const NvGeCircArc2d& arc, int& intn,
                                    NvGePoint2d& p1, NvGePoint2d& p2,
                                    const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Tangent line to the circular arc at given point.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean tangent        (const NvGePoint2d& pnt, NvGeLine2d& line,
+    GE_DLLEXPIMPORT Nova::Boolean tangent        (const NvGePoint2d& pnt, NvGeLine2d& line,
                                    const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean tangent        (const NvGePoint2d& pnt, NvGeLine2d& line,
+    GE_DLLEXPIMPORT Nova::Boolean tangent        (const NvGePoint2d& pnt, NvGeLine2d& line,
                                    const NvGeTol& tol, NvGeError& error) const;
 		 // Possible error conditions:  kArg1TooBig, kArg1InsideThis, 
 		 // kArg1OnThis
@@ -53,7 +53,7 @@ public:
 
     // Test if point is inside circle.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isInside       (const NvGePoint2d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean isInside       (const NvGePoint2d& pnt,
                                    const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Definition of circular arc
@@ -62,7 +62,7 @@ public:
     GE_DLLEXPIMPORT double         radius         () const;
     GE_DLLEXPIMPORT double         startAng       () const;
     GE_DLLEXPIMPORT double         endAng         () const;
-    GE_DLLEXPIMPORT Adesk::Boolean isClockWise    () const;
+    GE_DLLEXPIMPORT Nova::Boolean isClockWise    () const;
     GE_DLLEXPIMPORT NvGeVector2d   refVec         () const;
     GE_DLLEXPIMPORT NvGePoint2d    startPoint     () const;
     GE_DLLEXPIMPORT NvGePoint2d    endPoint       () const;
@@ -77,7 +77,7 @@ public:
                                    double ang1, double ang2,
                                    const NvGeVector2d& refVec =
                                    NvGeVector2d::kXAxis,
-                                   Adesk::Boolean isClockWise = Adesk::kFalse);
+                                   Nova::Boolean isClockWise = Nova::kFalse);
     GE_DLLEXPIMPORT NvGeCircArc2d& set            (const NvGePoint2d& startPoint, const NvGePoint2d& pnt,
                                    const NvGePoint2d& endPoint);
     GE_DLLEXPIMPORT NvGeCircArc2d& set            (const NvGePoint2d& startPoint, const NvGePoint2d& pnt,
@@ -93,18 +93,18 @@ public:
 	// where ang is the angle of the arc segment between the two input points.
     GE_DLLEXPIMPORT NvGeCircArc2d& set            (const NvGePoint2d& startPoint, 
                                    const NvGePoint2d& endPoint,
-                                   double bulge, Adesk::Boolean bulgeFlag = Adesk::kTrue);
+                                   double bulge, Nova::Boolean bulgeFlag = Nova::kTrue);
     GE_DLLEXPIMPORT NvGeCircArc2d& set            (const NvGeCurve2d& curve1,
                                    const NvGeCurve2d& curve2,
                                    double radius, double& param1, double& param2,
-								   Adesk::Boolean& success);
+								   Nova::Boolean& success);
 		// On success, this arc becomes the fillet of the given radius between the two curves,
 	    // whose points of tangency are nearest param1 and param2 respectively.
     GE_DLLEXPIMPORT NvGeCircArc2d& set            (const NvGeCurve2d& curve1,
                                    const NvGeCurve2d& curve2,
                                    const NvGeCurve2d& curve3,
                                    double& param1, double& param2, double& param3,
-								   Adesk::Boolean& success);
+								   Nova::Boolean& success);
     // Assignment operator.
     //
     GE_DLLEXPIMPORT NvGeCircArc2d& operator =     (const NvGeCircArc2d& arc);

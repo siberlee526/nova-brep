@@ -25,11 +25,11 @@ public:
 
     // Intersection.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean    intersectWith (const NvGeLinearEnt3d& linEnt, NvGePoint3d& point,
+    GE_DLLEXPIMPORT Nova::Boolean    intersectWith (const NvGeLinearEnt3d& linEnt, NvGePoint3d& point,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean    intersectWith (const NvGePlane& plane, NvGeLineSeg3d& results,
+    GE_DLLEXPIMPORT Nova::Boolean    intersectWith (const NvGePlane& plane, NvGeLineSeg3d& results,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean    intersectWith (const NvGeBoundedPlane& plane, NvGeLineSeg3d& result,
+    GE_DLLEXPIMPORT Nova::Boolean    intersectWith (const NvGeBoundedPlane& plane, NvGeLineSeg3d& result,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Set methods.

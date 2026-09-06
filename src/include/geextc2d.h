@@ -19,11 +19,11 @@ public:
     NvGeExternalCurve2d();
     NvGeExternalCurve2d(const NvGeExternalCurve2d&);
     NvGeExternalCurve2d(void* curveDef, NvGe::ExternalEntityKind curveKind,
-                        Adesk::Boolean makeCopy = Adesk::kTrue);
+                        Nova::Boolean makeCopy = Nova::kTrue);
 
-    Adesk::Boolean isNurbCurve() const;
-    Adesk::Boolean isNurbCurve(NvGeNurbCurve2d& nurbCurve) const;
-    Adesk::Boolean isDefined  () const;
+    Nova::Boolean isNurbCurve() const;
+    Nova::Boolean isNurbCurve(NvGeNurbCurve2d& nurbCurve) const;
+    Nova::Boolean isDefined  () const;
 
     void           getExternalCurve(void*& curveDef) const;
 
@@ -34,14 +34,14 @@ public:
     // Reset surface
     //
     NvGeExternalCurve2d& set(void* curveDef, NvGe::ExternalEntityKind curveKind,
-                             Adesk::Boolean makeCopy = Adesk::kTrue);
+                             Nova::Boolean makeCopy = Nova::kTrue);
     // Assignment operator
     //
     NvGeExternalCurve2d& operator = (const NvGeExternalCurve2d& src);
 
     // Ownership of curve
     //
-    Adesk::Boolean       isOwnerOfCurve() const;
+    Nova::Boolean       isOwnerOfCurve() const;
     NvGeExternalCurve2d& setToOwnCurve();
 };
 

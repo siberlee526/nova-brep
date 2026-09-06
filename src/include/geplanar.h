@@ -16,7 +16,7 @@ NvGePlanarEnt : public NvGeSurface
 public:
     // Intersection
     //
-    GE_DLLEXPIMPORT Adesk::Boolean  intersectWith    (const NvGeLinearEnt3d& linEnt, NvGePoint3d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean  intersectWith    (const NvGeLinearEnt3d& linEnt, NvGePoint3d& pnt,
                                       const NvGeTol& tol = NvGeContext::gTol) const;
     // Closest point
     //
@@ -30,18 +30,18 @@ public:
                                                = NvGeContext::gTol) const;
     // Direction tests.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isParallelTo      (const NvGeLinearEnt3d& linEnt,
+    GE_DLLEXPIMPORT Nova::Boolean isParallelTo      (const NvGeLinearEnt3d& linEnt,
                                       const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isParallelTo      (const NvGePlanarEnt& otherPlnEnt,
+    GE_DLLEXPIMPORT Nova::Boolean isParallelTo      (const NvGePlanarEnt& otherPlnEnt,
                                       const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isPerpendicularTo (const NvGeLinearEnt3d& linEnt,
+    GE_DLLEXPIMPORT Nova::Boolean isPerpendicularTo (const NvGeLinearEnt3d& linEnt,
                                       const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isPerpendicularTo (const NvGePlanarEnt& linEnt,
+    GE_DLLEXPIMPORT Nova::Boolean isPerpendicularTo (const NvGePlanarEnt& linEnt,
                                       const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Point set equality.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isCoplanarTo      (const NvGePlanarEnt& otherPlnEnt,
+    GE_DLLEXPIMPORT Nova::Boolean isCoplanarTo      (const NvGePlanarEnt& otherPlnEnt,
                                       const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Get methods.

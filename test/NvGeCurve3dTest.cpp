@@ -258,7 +258,7 @@ TEST_F (NvGeCurve3dTest, ParamAtLength_Arc)
   // start lands at the end parameter.
   EXPECT_NEAR (anArc.paramAtLength (0.0, THE_PI), THE_PI / 2.0, 1e-9);
   // And backwards from the end.
-  EXPECT_NEAR (anArc.paramAtLength (THE_PI / 2.0, THE_PI, Adesk::kFalse), 0.0,
+  EXPECT_NEAR (anArc.paramAtLength (THE_PI / 2.0, THE_PI, Nova::kFalse), 0.0,
                1e-9);
 }
 

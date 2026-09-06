@@ -59,7 +59,7 @@ TEST_F (NvGeCircArc2dTest, DefaultConstructor_BuildsUnitFullCircle)
   EXPECT_NEAR (anArc.radius(), 1.0, THE_TEST_TOL);
   EXPECT_NEAR (anArc.startAng(), 0.0, THE_TEST_TOL);
   EXPECT_NEAR (anArc.endAng(), 2.0 * THE_PI, THE_TEST_TOL);
-  EXPECT_TRUE (anArc.isClockWise() == Adesk::kFalse);
+  EXPECT_TRUE (anArc.isClockWise() == Nova::kFalse);
   ExpectNear (anArc.refVec(), 1.0, 0.0);
   ExpectNear (anArc.startPoint(), 1.0, 0.0);
   ExpectNear (anArc.endPoint(), 1.0, 0.0);
@@ -91,10 +91,10 @@ TEST_F (NvGeCircArc2dTest, CenterRadiusConstructor_RejectsNonPositiveRadius)
 TEST_F (NvGeCircArc2dTest, AngleConstructor_CcwArc_RoundTrips)
 {
   const NvGeCircArc2d anArc (NvGePoint2d (0.0, 0.0), 2.0, 0.0, THE_PI / 2.0,
-                             NvGeVector2d (1.0, 0.0), Adesk::kFalse);
+                             NvGeVector2d (1.0, 0.0), Nova::kFalse);
   EXPECT_NEAR (anArc.startAng(), 0.0, THE_TEST_TOL);
   EXPECT_NEAR (anArc.endAng(), THE_PI / 2.0, THE_TEST_TOL);
-  EXPECT_TRUE (anArc.isClockWise() == Adesk::kFalse);
+  EXPECT_TRUE (anArc.isClockWise() == Nova::kFalse);
   ExpectNear (anArc.startPoint(), 2.0, 0.0);
   ExpectNear (anArc.endPoint(), 0.0, 2.0);
 }
@@ -104,10 +104,10 @@ TEST_F (NvGeCircArc2dTest, AngleConstructor_CcwArc_RoundTrips)
 TEST_F (NvGeCircArc2dTest, AngleConstructor_ClockwiseArc_RoundTrips)
 {
   const NvGeCircArc2d anArc (NvGePoint2d (0.0, 0.0), 2.0, THE_PI / 3.0, 5.0 * THE_PI / 3.0,
-                             NvGeVector2d (1.0, 0.0), Adesk::kTrue);
+                             NvGeVector2d (1.0, 0.0), Nova::kTrue);
   EXPECT_NEAR (anArc.startAng(), THE_PI / 3.0, THE_TEST_TOL);
   EXPECT_NEAR (anArc.endAng(), 5.0 * THE_PI / 3.0, THE_TEST_TOL);
-  EXPECT_TRUE (anArc.isClockWise() == Adesk::kTrue);
+  EXPECT_TRUE (anArc.isClockWise() == Nova::kTrue);
   const double aSqrt3 = std::sqrt (3.0);
   ExpectNear (anArc.startPoint(), 1.0, aSqrt3);
   // PointAtAngle (5*PI/3) = 2 * (cos 5*PI/3, sin 5*PI/3) = (1, -sqrt (3)).
@@ -131,7 +131,7 @@ TEST_F (NvGeCircArc2dTest, ThreePointConstructor_BuildsCcwArcThroughMid)
                              NvGePoint2d (-2.0, 0.0));
   ExpectNear (anArc.center(), 0.0, 0.0);
   EXPECT_NEAR (anArc.radius(), 2.0, THE_TEST_TOL);
-  EXPECT_TRUE (anArc.isClockWise() == Adesk::kFalse);
+  EXPECT_TRUE (anArc.isClockWise() == Nova::kFalse);
   EXPECT_NEAR (anArc.startAng(), 0.0, THE_TEST_TOL);
   EXPECT_NEAR (anArc.endAng(), THE_PI, THE_TEST_TOL);
   ExpectNear (anArc.startPoint(), 2.0, 0.0);
@@ -190,7 +190,7 @@ TEST_F (NvGeCircArc2dTest, BulgeConstructor_TanQuarter_QuarterTurn)
   // bulge = tan(ang / 4) with bulgeFlag kFalse: a 90 degree turn gives tan (PI / 8).
   const double aBulge = std::tan (THE_PI / 8.0);
   const NvGeCircArc2d anArc (NvGePoint2d (1.0, 0.0), NvGePoint2d (0.0, 1.0), aBulge,
-                             Adesk::kFalse);
+                             Nova::kFalse);
   EXPECT_NEAR (anArc.radius(), 1.0, THE_TEST_TOL);
   ExpectNear (anArc.center(), 0.0, 0.0);
   ExpectNear (anArc.startPoint(), 1.0, 0.0);
@@ -203,8 +203,8 @@ TEST_F (NvGeCircArc2dTest, IsInside_ClassifiesByRadius)
 {
   const NvGeCircArc2d anArc (NvGePoint2d (1.0, 1.0), 2.0);
   EXPECT_TRUE (anArc.isInside (NvGePoint2d (1.5, 1.0)));
-  EXPECT_TRUE (anArc.isInside (NvGePoint2d (3.5, 1.0)) == Adesk::kFalse);
-  EXPECT_TRUE (anArc.isInside (NvGePoint2d (1.0, -1.5)) == Adesk::kFalse);
+  EXPECT_TRUE (anArc.isInside (NvGePoint2d (3.5, 1.0)) == Nova::kFalse);
+  EXPECT_TRUE (anArc.isInside (NvGePoint2d (1.0, -1.5)) == Nova::kFalse);
 }
 
 //=================================================================================================
@@ -231,7 +231,7 @@ TEST_F (NvGeCircArc2dTest, IntersectWithLine_NoIntersection_ReturnsFalse)
   const NvGeLine2d aLine (NvGePoint2d (0.0, 2.0), NvGeVector2d (1.0, 0.0));
   int anIntn = 7;
   NvGePoint2d aP1, aP2;
-  EXPECT_TRUE (anArc.intersectWith (aLine, anIntn, aP1, aP2) == Adesk::kFalse);
+  EXPECT_TRUE (anArc.intersectWith (aLine, anIntn, aP1, aP2) == Nova::kFalse);
   EXPECT_EQ (anIntn, 0);
 }
 
@@ -291,7 +291,7 @@ TEST_F (NvGeCircArc2dTest, Tangent_InsidePoint_ReturnsFalse)
   NvGeLine2d aLine;
   NvGeError anError = NvGe::kOk;
   EXPECT_TRUE (anArc.tangent (NvGePoint2d (0.5, 0.0), aLine, NvGeContext::gTol, anError)
-               == Adesk::kFalse);
+               == Nova::kFalse);
   EXPECT_EQ (anError, NvGe::kArg1InsideThis);
 }
 
@@ -319,7 +319,7 @@ TEST_F (NvGeCircArc2dTest, SetToComplement_FlipsDirectionKeepingAngles)
 {
   NvGeCircArc2d anArc (NvGePoint2d (0.0, 0.0), 1.0, 0.0, THE_PI / 2.0);
   anArc.setToComplement();
-  EXPECT_TRUE (anArc.isClockWise() == Adesk::kTrue);
+  EXPECT_TRUE (anArc.isClockWise() == Nova::kTrue);
   EXPECT_NEAR (anArc.startAng(), 0.0, THE_TEST_TOL);
   EXPECT_NEAR (anArc.endAng(), THE_PI / 2.0, THE_TEST_TOL);
   EXPECT_NEAR (anArc.radius(), 1.0, THE_TEST_TOL);
@@ -347,9 +347,9 @@ TEST_F (NvGeCircArc2dTest, SetFillet_BetweenTwoAxes_TouchesBothLines)
   NvGeCircArc2d anArc;
   double aParam1 = 0.5;
   double aParam2 = 0.5;
-  Adesk::Boolean aSuccess = Adesk::kFalse;
+  Nova::Boolean aSuccess = Nova::kFalse;
   anArc.set (aLine1, aLine2, 1.0, aParam1, aParam2, aSuccess);
-  EXPECT_TRUE (aSuccess == Adesk::kTrue);
+  EXPECT_TRUE (aSuccess == Nova::kTrue);
   EXPECT_NEAR (anArc.radius(), 1.0, THE_TEST_TOL);
   ExpectNear (anArc.center(), 1.0, 1.0);
   // Parameters of tangency along the carrier lines.
@@ -368,9 +368,9 @@ TEST_F (NvGeCircArc2dTest, SetFillet_ParallelLines_HasNoSolution)
   NvGeCircArc2d anArc;
   double aParam1 = 0.0;
   double aParam2 = 0.0;
-  Adesk::Boolean aSuccess = Adesk::kTrue;
+  Nova::Boolean aSuccess = Nova::kTrue;
   anArc.set (aLine1, aLine2, 1.0, aParam1, aParam2, aSuccess);
-  EXPECT_TRUE (aSuccess == Adesk::kFalse);
+  EXPECT_TRUE (aSuccess == Nova::kFalse);
 }
 
 //=================================================================================================
@@ -385,9 +385,9 @@ TEST_F (NvGeCircArc2dTest, SetFillet_ThreeLines_InscribesIncircle)
   double aParam1 = 0.0;
   double aParam2 = 0.0;
   double aParam3 = 0.0;
-  Adesk::Boolean aSuccess = Adesk::kFalse;
+  Nova::Boolean aSuccess = Nova::kFalse;
   anArc.set (aLine1, aLine2, aLine3, aParam1, aParam2, aParam3, aSuccess);
-  EXPECT_TRUE (aSuccess == Adesk::kTrue);
+  EXPECT_TRUE (aSuccess == Nova::kTrue);
   const double aRadius = 2.0 - std::sqrt (2.0);
   EXPECT_NEAR (anArc.radius(), aRadius, 1e-8);
   ExpectNear (anArc.center(), aRadius, aRadius);
@@ -417,5 +417,5 @@ TEST_F (NvGeCircArc2dTest, IsClosed_TrueOnlyForFullCircle)
 {
   EXPECT_TRUE (NvGeCircArc2d().isClosed());
   const NvGeCircArc2d aQuarter (NvGePoint2d (0.0, 0.0), 1.0, 0.0, THE_PI / 2.0);
-  EXPECT_TRUE (aQuarter.isClosed() == Adesk::kFalse);
+  EXPECT_TRUE (aQuarter.isClosed() == Nova::kFalse);
 }

@@ -200,7 +200,7 @@ NvGeMatrix2d NvGeMatrix2d::inverse() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeMatrix2d::isSingular (const NvGeTol& theTol) const
+Nova::Boolean NvGeMatrix2d::isSingular (const NvGeTol& theTol) const
 {
   // An affine matrix is invertible exactly when its linear part is.
   return std::abs (det()) <= theTol.equalPoint();
@@ -249,7 +249,7 @@ bool NvGeMatrix2d::isEqualTo (const NvGeMatrix2d& theMat, const NvGeTol& theTol)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeMatrix2d::isUniScaledOrtho (const NvGeTol& theTol) const
+Nova::Boolean NvGeMatrix2d::isUniScaledOrtho (const NvGeTol& theTol) const
 {
   const gp_Mat2d aLinear = LinearPart (*this);
   const gp_XY    aCol0   = aLinear.Column (1);
@@ -267,7 +267,7 @@ Adesk::Boolean NvGeMatrix2d::isUniScaledOrtho (const NvGeTol& theTol) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeMatrix2d::isScaledOrtho (const NvGeTol& theTol) const
+Nova::Boolean NvGeMatrix2d::isScaledOrtho (const NvGeTol& theTol) const
 {
   const gp_Mat2d aLinear = LinearPart (*this);
   const gp_XY    aCol0   = aLinear.Column (1);
@@ -317,8 +317,8 @@ NvGeVector2d NvGeMatrix2d::translation() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeMatrix2d::isConformal (double& theScale, double& theAngle,
-                                          Adesk::Boolean& theIsMirror, NvGeVector2d& theReflex) const
+Nova::Boolean NvGeMatrix2d::isConformal (double& theScale, double& theAngle,
+                                          Nova::Boolean& theIsMirror, NvGeVector2d& theReflex) const
 {
   if (!isUniScaledOrtho (NvGeContext::gTol))
   {

@@ -13,9 +13,9 @@ namespace
 {
 
 //! Packs the four published version components into the byte array.
-void PackVersion (Adesk::UInt8 theVersion[10],
-                  Adesk::UInt8 theMajor, Adesk::UInt8 theMinor,
-                  Adesk::UInt8 theCorrective, Adesk::UInt8 theSchema)
+void PackVersion (Nova::UInt8 theVersion[10],
+                  Nova::UInt8 theMajor, Nova::UInt8 theMinor,
+                  Nova::UInt8 theCorrective, Nova::UInt8 theSchema)
 {
   theVersion[0] = theMajor;
   theVersion[1] = theMinor;
@@ -28,7 +28,7 @@ void PackVersion (Adesk::UInt8 theVersion[10],
 }
 
 //! Three-way comparison of two packed versions.
-int CompareVersions (const Adesk::UInt8 theLeft[10], const Adesk::UInt8 theRight[10])
+int CompareVersions (const Nova::UInt8 theLeft[10], const Nova::UInt8 theRight[10])
 {
   for (int aSlot = 0; aSlot < 10; ++aSlot)
   {
@@ -66,43 +66,43 @@ NvGeLibVersion::NvGeLibVersion (const NvGeLibVersion& theSrc)
 
 //=================================================================================================
 
-NvGeLibVersion::NvGeLibVersion (Adesk::UInt8 theMajor, Adesk::UInt8 theMinor,
-                                Adesk::UInt8 theCorrective, Adesk::UInt8 theInternalVersion)
+NvGeLibVersion::NvGeLibVersion (Nova::UInt8 theMajor, Nova::UInt8 theMinor,
+                                Nova::UInt8 theCorrective, Nova::UInt8 theInternalVersion)
 {
   PackVersion (mVersion, theMajor, theMinor, theCorrective, theInternalVersion);
 }
 
 //=================================================================================================
 
-Adesk::UInt8 NvGeLibVersion::majorVersion() const
+Nova::UInt8 NvGeLibVersion::majorVersion() const
 {
   return mVersion[0];
 }
 
 //=================================================================================================
 
-Adesk::UInt8 NvGeLibVersion::minorVersion() const
+Nova::UInt8 NvGeLibVersion::minorVersion() const
 {
   return mVersion[1];
 }
 
 //=================================================================================================
 
-Adesk::UInt8 NvGeLibVersion::correctiveVersion() const
+Nova::UInt8 NvGeLibVersion::correctiveVersion() const
 {
   return mVersion[2];
 }
 
 //=================================================================================================
 
-Adesk::UInt8 NvGeLibVersion::schemaVersion() const
+Nova::UInt8 NvGeLibVersion::schemaVersion() const
 {
   return mVersion[3];
 }
 
 //=================================================================================================
 
-NvGeLibVersion& NvGeLibVersion::setMajorVersion (Adesk::UInt8 theVal)
+NvGeLibVersion& NvGeLibVersion::setMajorVersion (Nova::UInt8 theVal)
 {
   mVersion[0] = theVal;
   return *this;
@@ -110,7 +110,7 @@ NvGeLibVersion& NvGeLibVersion::setMajorVersion (Adesk::UInt8 theVal)
 
 //=================================================================================================
 
-NvGeLibVersion& NvGeLibVersion::setMinorVersion (Adesk::UInt8 theVal)
+NvGeLibVersion& NvGeLibVersion::setMinorVersion (Nova::UInt8 theVal)
 {
   mVersion[1] = theVal;
   return *this;
@@ -118,7 +118,7 @@ NvGeLibVersion& NvGeLibVersion::setMinorVersion (Adesk::UInt8 theVal)
 
 //=================================================================================================
 
-NvGeLibVersion& NvGeLibVersion::setCorrectiveVersion (Adesk::UInt8 theVal)
+NvGeLibVersion& NvGeLibVersion::setCorrectiveVersion (Nova::UInt8 theVal)
 {
   mVersion[2] = theVal;
   return *this;
@@ -126,7 +126,7 @@ NvGeLibVersion& NvGeLibVersion::setCorrectiveVersion (Adesk::UInt8 theVal)
 
 //=================================================================================================
 
-NvGeLibVersion& NvGeLibVersion::setSchemaVersion (Adesk::UInt8 theVal)
+NvGeLibVersion& NvGeLibVersion::setSchemaVersion (Nova::UInt8 theVal)
 {
   mVersion[3] = theVal;
   return *this;
@@ -134,42 +134,42 @@ NvGeLibVersion& NvGeLibVersion::setSchemaVersion (Adesk::UInt8 theVal)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLibVersion::operator == (const NvGeLibVersion& theOther) const
+Nova::Boolean NvGeLibVersion::operator == (const NvGeLibVersion& theOther) const
 {
   return CompareVersions (mVersion, theOther.mVersion) == 0;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLibVersion::operator != (const NvGeLibVersion& theOther) const
+Nova::Boolean NvGeLibVersion::operator != (const NvGeLibVersion& theOther) const
 {
   return CompareVersions (mVersion, theOther.mVersion) != 0;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLibVersion::operator < (const NvGeLibVersion& theOther) const
+Nova::Boolean NvGeLibVersion::operator < (const NvGeLibVersion& theOther) const
 {
   return CompareVersions (mVersion, theOther.mVersion) < 0;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLibVersion::operator <= (const NvGeLibVersion& theOther) const
+Nova::Boolean NvGeLibVersion::operator <= (const NvGeLibVersion& theOther) const
 {
   return CompareVersions (mVersion, theOther.mVersion) <= 0;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLibVersion::operator > (const NvGeLibVersion& theOther) const
+Nova::Boolean NvGeLibVersion::operator > (const NvGeLibVersion& theOther) const
 {
   return CompareVersions (mVersion, theOther.mVersion) > 0;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLibVersion::operator >= (const NvGeLibVersion& theOther) const
+Nova::Boolean NvGeLibVersion::operator >= (const NvGeLibVersion& theOther) const
 {
   return CompareVersions (mVersion, theOther.mVersion) >= 0;
 }

@@ -39,10 +39,10 @@ public:
                                         double param);
     // Singularity
     //
-    GE_DLLEXPIMPORT Adesk::Boolean      isSingular     (const NvGeTol&  tol =
+    GE_DLLEXPIMPORT Nova::Boolean      isSingular     (const NvGeTol&  tol =
                                         NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean      curvature      (double& res);
-    GE_DLLEXPIMPORT Adesk::Boolean      curvature      (double param, double& res);
+    GE_DLLEXPIMPORT Nova::Boolean      curvature      (double& res);
+    GE_DLLEXPIMPORT Nova::Boolean      curvature      (double param, double& res);
     // Set functions.
     //
     GE_DLLEXPIMPORT NvGePointOnCurve2d& setCurve       (const NvGeCurve2d& crv);

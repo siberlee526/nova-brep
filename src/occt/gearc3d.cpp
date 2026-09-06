@@ -805,7 +805,7 @@ NvGePoint3d NvGeCircArc3d::closestPointToPlane (const NvGePlanarEnt& thePlaneEnt
 // purpose  : Intersections with the carrier of a linear entity, restricted
 //            to this arc span and the entity range.
 //=======================================================================
-Adesk::Boolean NvGeCircArc3d::intersectWith (const NvGeLinearEnt3d& theLineEnt, int& theIntN,
+Nova::Boolean NvGeCircArc3d::intersectWith (const NvGeLinearEnt3d& theLineEnt, int& theIntN,
                                              NvGePoint3d& theP1, NvGePoint3d& theP2,
                                              const NvGeTol& theTol) const
 {
@@ -850,7 +850,7 @@ Adesk::Boolean NvGeCircArc3d::intersectWith (const NvGeLinearEnt3d& theLineEnt, 
 //            spans; coplanar carriers use the planar construction, the
 //            general case intersects along the line of the two planes.
 //=======================================================================
-Adesk::Boolean NvGeCircArc3d::intersectWith (const NvGeCircArc3d& theArc, int& theIntN,
+Nova::Boolean NvGeCircArc3d::intersectWith (const NvGeCircArc3d& theArc, int& theIntN,
                                              NvGePoint3d& theP1, NvGePoint3d& theP2,
                                              const NvGeTol& theTol) const
 {
@@ -957,7 +957,7 @@ Adesk::Boolean NvGeCircArc3d::intersectWith (const NvGeCircArc3d& theArc, int& t
 // purpose  : Intersections with the plane, i.e. with the line where the
 //            arc plane and the given plane meet.
 //=======================================================================
-Adesk::Boolean NvGeCircArc3d::intersectWith (const NvGePlanarEnt& thePlaneEnt,
+Nova::Boolean NvGeCircArc3d::intersectWith (const NvGePlanarEnt& thePlaneEnt,
                                              int& theNumOfIntersect,
                                              NvGePoint3d& theP1, NvGePoint3d& theP2,
                                              const NvGeTol& theTol) const
@@ -1024,7 +1024,7 @@ Adesk::Boolean NvGeCircArc3d::intersectWith (const NvGePlanarEnt& thePlaneEnt,
 // purpose  : Intersections of the arc with the line projected onto the arc
 //            plane along theProjDir; reports the paired points on both.
 //=======================================================================
-Adesk::Boolean NvGeCircArc3d::projIntersectWith (const NvGeLinearEnt3d& theLineEnt,
+Nova::Boolean NvGeCircArc3d::projIntersectWith (const NvGeLinearEnt3d& theLineEnt,
                                                  const NvGeVector3d& theProjDir,
                                                  int& theNumInt,
                                                  NvGePoint3d& thePntOnArc1,
@@ -1125,7 +1125,7 @@ Adesk::Boolean NvGeCircArc3d::projIntersectWith (const NvGeLinearEnt3d& theLineE
 // function : tangent
 // purpose  : Tangent line from the point to the carrier circle.
 //=======================================================================
-Adesk::Boolean NvGeCircArc3d::tangent (const NvGePoint3d& thePnt, NvGeLine3d& theLine,
+Nova::Boolean NvGeCircArc3d::tangent (const NvGePoint3d& thePnt, NvGeLine3d& theLine,
                                        const NvGeTol& theTol) const
 {
   NvGeError anError = NvGe::kOk;
@@ -1139,7 +1139,7 @@ Adesk::Boolean NvGeCircArc3d::tangent (const NvGePoint3d& thePnt, NvGeLine3d& th
 //            point of the carrier. The touch point used is the one
 //            counterclockwise of the radial direction.
 //=======================================================================
-Adesk::Boolean NvGeCircArc3d::tangent (const NvGePoint3d& thePnt, NvGeLine3d& theLine,
+Nova::Boolean NvGeCircArc3d::tangent (const NvGePoint3d& thePnt, NvGeLine3d& theLine,
                                        const NvGeTol& theTol, NvGeError& theError) const
 {
   theError = NvGe::kOk;
@@ -1193,7 +1193,7 @@ void NvGeCircArc3d::getPlane (NvGePlane& thePlane) const
 // purpose  : Strict interior test against the full carrier circle, using
 //            the in-plane radial distance.
 //=======================================================================
-Adesk::Boolean NvGeCircArc3d::isInside (const NvGePoint3d& thePnt,
+Nova::Boolean NvGeCircArc3d::isInside (const NvGePoint3d& thePnt,
                                         const NvGeTol& theTol) const
 {
   bool aTrimmed;
@@ -1542,7 +1542,7 @@ NvGeCircArc3d& NvGeCircArc3d::set (const NvGePoint3d& theStart, const NvGePoint3
 NvGeCircArc3d& NvGeCircArc3d::set (const NvGeCurve3d& theCurve1,
                                    const NvGeCurve3d& theCurve2,
                                    double theRadius, double& theParam1, double& theParam2,
-                                   Adesk::Boolean& theSuccess)
+                                   Nova::Boolean& theSuccess)
 {
   theSuccess = false;
   if (!(theRadius > 0.0))
@@ -1639,7 +1639,7 @@ NvGeCircArc3d& NvGeCircArc3d::set (const NvGeCurve3d& theCurve1,
                                    const NvGeCurve3d& theCurve3,
                                    double& theParam1, double& theParam2,
                                    double& theParam3,
-                                   Adesk::Boolean& theSuccess)
+                                   Nova::Boolean& theSuccess)
 {
   theSuccess = false;
   FilletLine aLines[3];

@@ -18,7 +18,7 @@ NvGeSplineEnt3d : public NvGeCurve3d
 public:
     // Definition of spline
     //
-    GE_DLLEXPIMPORT Adesk::Boolean    isRational            () const;
+    GE_DLLEXPIMPORT Nova::Boolean    isRational            () const;
     GE_DLLEXPIMPORT int               degree                () const;
     GE_DLLEXPIMPORT int               order                 () const;
     GE_DLLEXPIMPORT int               numKnots              () const;
@@ -35,7 +35,7 @@ public:
 
     // Interpolation data
     //
-    GE_DLLEXPIMPORT Adesk::Boolean    hasFitData            () const;
+    GE_DLLEXPIMPORT Nova::Boolean    hasFitData            () const;
 
     // Editting
     //

@@ -33,7 +33,7 @@ public:
 			                   NvGePoint2d& end) const;
     GE_DLLEXPIMPORT NvGeCurve2d&   reverseParam();
 	GE_DLLEXPIMPORT NvGeCurve2d&   setInterval();
-	GE_DLLEXPIMPORT Adesk::Boolean setInterval(const NvGeInterval& intrvl);
+	GE_DLLEXPIMPORT Nova::Boolean setInterval(const NvGeInterval& intrvl);
 
     // Distance to other geometric objects.
     //
@@ -67,17 +67,17 @@ public:
     // Second parameter contains initial guess value and also contains output point.
     // Returns true or false depending on whether a normal point was found.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean getNormalPoint (const NvGePoint2d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean getNormalPoint (const NvGePoint2d& pnt,
 	                           NvGePointOnCurve2d& pntOnCrv,
                                    const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Tests if point is on curve.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isOn(const NvGePoint2d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean isOn(const NvGePoint2d& pnt,
                         const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isOn(const NvGePoint2d& pnt, double& param,
+    GE_DLLEXPIMPORT Nova::Boolean isOn(const NvGePoint2d& pnt, double& param,
                         const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isOn(double param,
+    GE_DLLEXPIMPORT Nova::Boolean isOn(double param,
                         const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Parameter of the point on curve.  Contract: point IS on curve
@@ -94,9 +94,9 @@ public:
 
     // Geometric inquiry methods.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isClosed  (const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isPeriodic(double& period) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isLinear  (NvGeLine2d& line,
+    GE_DLLEXPIMPORT Nova::Boolean isClosed  (const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isPeriodic(double& period) const;
+    GE_DLLEXPIMPORT Nova::Boolean isLinear  (NvGeLine2d& line,
                               const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Length based methods.
@@ -104,17 +104,17 @@ public:
     GE_DLLEXPIMPORT double         length       (double fromParam, double toParam,
                                  double tol = NvGeContext::gTol.equalPoint()) const;
     GE_DLLEXPIMPORT double         paramAtLength(double datumParam, double length,
-                                 Adesk::Boolean posParamDir = Adesk::kTrue,
+                                 Nova::Boolean posParamDir = Nova::kTrue,
                                  double tol = NvGeContext::gTol.equalPoint()) const;
-    GE_DLLEXPIMPORT Adesk::Boolean area         (double startParam, double endParam,
+    GE_DLLEXPIMPORT Nova::Boolean area         (double startParam, double endParam,
                                  double& value,
                                  const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Degeneracy.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isDegenerate(NvGe::EntityId& degenerateType,
+    GE_DLLEXPIMPORT Nova::Boolean isDegenerate(NvGe::EntityId& degenerateType,
                                 const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isDegenerate(NvGeEntity2d*& pConvertedEntity,
+    GE_DLLEXPIMPORT Nova::Boolean isDegenerate(NvGeEntity2d*& pConvertedEntity,
                                 const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Modify methods.
@@ -124,7 +124,7 @@ public:
 
 	// Explode curve into its component sub-curves.
 	//
-	GE_DLLEXPIMPORT Adesk::Boolean explode      (NvGeVoidPointerArray& explodedCurves,
+	GE_DLLEXPIMPORT Nova::Boolean explode      (NvGeVoidPointerArray& explodedCurves,
 	                             NvGeIntArray& newExplodedCurve,
 				     const NvGeInterval* intrvl = NULL ) const;
 
@@ -153,8 +153,8 @@ public:
 
     // Return start and end points.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean hasStartPoint(NvGePoint2d& startPoint) const;
-    GE_DLLEXPIMPORT Adesk::Boolean hasEndPoint  (NvGePoint2d& endPoint) const;
+    GE_DLLEXPIMPORT Nova::Boolean hasStartPoint(NvGePoint2d& startPoint) const;
+    GE_DLLEXPIMPORT Nova::Boolean hasEndPoint  (NvGePoint2d& endPoint) const;
 
     // Evaluate methods.
     //

@@ -71,7 +71,7 @@ occ::handle<Geom_Curve> DegenerateSplineCurve ()
 // function : isRational
 // purpose  : True when the stored curve carries weights.
 //=======================================================================
-Adesk::Boolean NvGeSplineEnt3d::isRational () const
+Nova::Boolean NvGeSplineEnt3d::isRational () const
 {
   return SplineOf (mpImpEnt->Geom())->IsRational();
 }
@@ -190,7 +190,7 @@ NvGePoint3d NvGeSplineEnt3d::endPoint () const
 //            wrapper maps that form onto the degree 1 B-spline whose poles
 //            are the fit points, so the degree decides.
 //=======================================================================
-Adesk::Boolean NvGeSplineEnt3d::hasFitData () const
+Nova::Boolean NvGeSplineEnt3d::hasFitData () const
 {
   return SplineOf (mpImpEnt->Geom())->Degree() == 1;
 }

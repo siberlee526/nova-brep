@@ -228,7 +228,7 @@ public:
     T*                  asArrayPtr  ();
 
     // begin() and end() methods return iterators which allow things like
-    // range based for loops, std::sort, std::for_each etc to use AcArrays
+    // range based for loops, std::sort, std::for_each etc to use NvArrays
     // E.g.: for (const auto & elt : arr) sum += elt; 
     //
     T * begin() { return mpArray; }
@@ -270,7 +270,7 @@ protected:
 #pragma pack (pop)
 
 #ifdef GE_LOCATED_NEW
-#error acarray.h doesn't expect GE_LOCATED_NEW!
+#error NvArray.h doesn't expect GE_LOCATED_NEW!
 #endif
 
 #pragma pack (push, 8)
@@ -885,10 +885,10 @@ template <class T> void NvArrayValidateParams(bool bSameBuffer,
                                               T* pDest, int nBufLen,
                                               const T * pSource, int nCount)
 {
-    ADESK_UNREFED_PARAM(pDest);
-    ADESK_UNREFED_PARAM(nBufLen);
-    ADESK_UNREFED_PARAM(pSource);
-    ADESK_UNREFED_PARAM(nCount);
+    NOVA_UNREFED_PARAM(pDest);
+    NOVA_UNREFED_PARAM(nBufLen);
+    NOVA_UNREFED_PARAM(pSource);
+    NOVA_UNREFED_PARAM(nCount);
     NV_ARRAY_ASSERT(nCount >= 0);
     NV_ARRAY_ASSERT(nCount <= nBufLen);
     NV_ARRAY_ASSERT(nCount <= NvArray<T>::maxLength());
@@ -905,7 +905,7 @@ template <class T> void NvArrayValidateParams(bool bSameBuffer,
 
 #include "nvarrayhelper.h"
 
-#ifdef _Ac_String_h_
+#ifdef _Nv_String_h_
 typedef
 NvArray< NvString, NvArrayObjectCopyReallocator< NvString > > AcStringArray;
 #endif

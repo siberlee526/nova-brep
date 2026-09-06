@@ -123,13 +123,13 @@ occ::handle<Geom_Curve> CaptureCurve (void* theCurveDef, bool theMakeCopy, const
 
 //! Installs a fresh holder, replacing the base placeholder impl.
 void InstallData (NvGeImpEntity3d*& theImp, void* theCurveDef,
-                  NvGe::ExternalEntityKind theKind, Adesk::Boolean theMakeCopy,
+                  NvGe::ExternalEntityKind theKind, Nova::Boolean theMakeCopy,
                   const char* theMethod)
 {
   occ::handle<NvGeExternalCurve3dData> aData = new NvGeExternalCurve3dData();
   aData->ExternalDef = theCurveDef;
   aData->Kind = theKind;
-  aData->IsOwner = theMakeCopy != Adesk::kFalse;
+  aData->IsOwner = theMakeCopy != Nova::kFalse;
   if (theCurveDef != nullptr)
   {
     // Validate and capture the geometry BEFORE touching this entity, so a
@@ -151,7 +151,7 @@ void InstallData (NvGeImpEntity3d*& theImp, void* theCurveDef,
 
 NvGeExternalCurve3d::NvGeExternalCurve3d()
 {
-  InstallData (mpImpEnt, nullptr, NvGe::kExternalEntityUndefined, Adesk::kFalse,
+  InstallData (mpImpEnt, nullptr, NvGe::kExternalEntityUndefined, Nova::kFalse,
                "NvGeExternalCurve3d");
 }
 
@@ -165,14 +165,14 @@ NvGeExternalCurve3d::NvGeExternalCurve3d (const NvGeExternalCurve3d& theSource)
 //=================================================================================================
 
 NvGeExternalCurve3d::NvGeExternalCurve3d (void* theCurveDef, NvGe::ExternalEntityKind theCurveKind,
-                                          Adesk::Boolean theMakeCopy)
+                                          Nova::Boolean theMakeCopy)
 {
   InstallData (mpImpEnt, theCurveDef, theCurveKind, theMakeCopy, "NvGeExternalCurve3d");
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isLine() const
+Nova::Boolean NvGeExternalCurve3d::isLine() const
 {
   const NvGeExternalCurve3dData* aData = DataOf (mpImpEnt);
   return !aData->Curve.IsNull()
@@ -181,7 +181,7 @@ Adesk::Boolean NvGeExternalCurve3d::isLine() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isRay() const
+Nova::Boolean NvGeExternalCurve3d::isRay() const
 {
   const NvGeExternalCurve3dData* aData = DataOf (mpImpEnt);
   const occ::handle<Geom_TrimmedCurve> aTrimmed = aData->Curve.IsNull()
@@ -194,7 +194,7 @@ Adesk::Boolean NvGeExternalCurve3d::isRay() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isLineSeg() const
+Nova::Boolean NvGeExternalCurve3d::isLineSeg() const
 {
   const NvGeExternalCurve3dData* aData = DataOf (mpImpEnt);
   const occ::handle<Geom_TrimmedCurve> aTrimmed = aData->Curve.IsNull()
@@ -207,7 +207,7 @@ Adesk::Boolean NvGeExternalCurve3d::isLineSeg() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isCircArc() const
+Nova::Boolean NvGeExternalCurve3d::isCircArc() const
 {
   const NvGeExternalCurve3dData* aData = DataOf (mpImpEnt);
   return !aData->Curve.IsNull()
@@ -216,7 +216,7 @@ Adesk::Boolean NvGeExternalCurve3d::isCircArc() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isEllipArc() const
+Nova::Boolean NvGeExternalCurve3d::isEllipArc() const
 {
   const NvGeExternalCurve3dData* aData = DataOf (mpImpEnt);
   return !aData->Curve.IsNull()
@@ -225,7 +225,7 @@ Adesk::Boolean NvGeExternalCurve3d::isEllipArc() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isNurbCurve() const
+Nova::Boolean NvGeExternalCurve3d::isNurbCurve() const
 {
   const NvGeExternalCurve3dData* aData = DataOf (mpImpEnt);
   return !aData->Curve.IsNull()
@@ -234,14 +234,14 @@ Adesk::Boolean NvGeExternalCurve3d::isNurbCurve() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isDefined() const
+Nova::Boolean NvGeExternalCurve3d::isDefined() const
 {
   return !DataOf (mpImpEnt)->Curve.IsNull();
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isNativeCurve (NvGeCurve3d*& theNativeCurve) const
+Nova::Boolean NvGeExternalCurve3d::isNativeCurve (NvGeCurve3d*& theNativeCurve) const
 {
   const NvGeExternalCurve3dData* aData = DataOf (mpImpEnt);
   if (aData->Curve.IsNull())
@@ -275,7 +275,7 @@ NvGe::ExternalEntityKind NvGeExternalCurve3d::externalCurveKind() const
 
 NvGeExternalCurve3d& NvGeExternalCurve3d::set (void* theCurveDef,
                                                NvGe::ExternalEntityKind theCurveKind,
-                                               Adesk::Boolean theMakeCopy)
+                                               Nova::Boolean theMakeCopy)
 {
   InstallData (mpImpEnt, theCurveDef, theCurveKind, theMakeCopy, "set");
   return *this;
@@ -291,7 +291,7 @@ NvGeExternalCurve3d& NvGeExternalCurve3d::operator = (const NvGeExternalCurve3d&
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve3d::isOwnerOfCurve() const
+Nova::Boolean NvGeExternalCurve3d::isOwnerOfCurve() const
 {
   return DataOf (mpImpEnt)->IsOwner;
 }

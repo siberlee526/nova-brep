@@ -3,7 +3,7 @@
 // A curve boundary pairs 3d contour curves with their 2d parameter images
 // (curves in the surface parameter domain) plus per-curve orientation
 // flags. It is a plain (non-entity) class with its own impl pointer,
-// mirroring the ARX AcGeCurveBoundary contract.
+// mirroring the ARX NvGeCurveBoundary contract.
 
 #include <gecbndry.h>
 
@@ -24,8 +24,8 @@ class NvGeImpCurveBoundary
 public:
   std::vector<NvGeEntity3d*> Crv3d;       // owned when IsOwner
   std::vector<NvGeCurve2d*>  Crv2d;       // owned when IsOwner
-  Adesk::Boolean*            Orientation3d = nullptr; // owning arrays
-  Adesk::Boolean*            Orientation2d = nullptr;
+  Nova::Boolean*            Orientation3d = nullptr; // owning arrays
+  Nova::Boolean*            Orientation2d = nullptr;
   bool                       IsOwner = false;
 
   ~NvGeImpCurveBoundary()
@@ -60,14 +60,14 @@ public:
   void SetFrom (int theNumElements,
                 const NvGeEntity3d* const* theCrv3d,
                 const NvGeCurve2d* const* theCrv2d,
-                const Adesk::Boolean* theOrientation3d,
-                const Adesk::Boolean* theOrientation2d,
+                const Nova::Boolean* theOrientation3d,
+                const Nova::Boolean* theOrientation2d,
                 bool theMakeCopy)
   {
     Clear();
     IsOwner = theMakeCopy;
-    Orientation3d = new Adesk::Boolean [theNumElements > 0 ? theNumElements : 1];
-    Orientation2d = new Adesk::Boolean [theNumElements > 0 ? theNumElements : 1];
+    Orientation3d = new Nova::Boolean [theNumElements > 0 ? theNumElements : 1];
+    Orientation2d = new Nova::Boolean [theNumElements > 0 ? theNumElements : 1];
     for (int anIdx = 0; anIdx < theNumElements; ++anIdx)
     {
       NvGeEntity3d* aCurve3d = theMakeCopy && theCrv3d != nullptr && theCrv3d[anIdx] != nullptr
@@ -116,9 +116,9 @@ NvGeCurveBoundary::NvGeCurveBoundary()
 NvGeCurveBoundary::NvGeCurveBoundary (int theNumberOfCurves,
                                       const NvGeEntity3d* const* theCrv3d,
                                       const NvGeCurve2d* const* theCrv2d,
-                                      Adesk::Boolean* theOrientation3d,
-                                      Adesk::Boolean* theOrientation2d,
-                                      Adesk::Boolean theMakeCopy)
+                                      Nova::Boolean* theOrientation3d,
+                                      Nova::Boolean* theOrientation2d,
+                                      Nova::Boolean theMakeCopy)
 : mpImpBnd (new NvGeImpCurveBoundary()),
   mDelBnd (1)
 {
@@ -162,14 +162,14 @@ NvGeCurveBoundary& NvGeCurveBoundary::operator = (const NvGeCurveBoundary& theSr
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveBoundary::isDegenerate() const
+Nova::Boolean NvGeCurveBoundary::isDegenerate() const
 {
   return mpImpBnd->Crv3d.size() <= 1;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveBoundary::isDegenerate (NvGePosition3d& theDegenPoint,
+Nova::Boolean NvGeCurveBoundary::isDegenerate (NvGePosition3d& theDegenPoint,
                                                 NvGeCurve2d** theParamCurve) const
 {
   if (!isDegenerate() || mpImpBnd->Crv3d.empty())
@@ -204,8 +204,8 @@ int NvGeCurveBoundary::numElements() const
 void NvGeCurveBoundary::getContour (int& theN,
                                     NvGeEntity3d*** theCrv3d,
                                     NvGeCurve2d*** theParamGeometry,
-                                    Adesk::Boolean** theOrientation3d,
-                                    Adesk::Boolean** theOrientation2d) const
+                                    Nova::Boolean** theOrientation3d,
+                                    Nova::Boolean** theOrientation2d) const
 {
   theN = numElements();
   *theCrv3d = theN > 0 ? const_cast<NvGeEntity3d**> (mpImpBnd->Crv3d.data()) : nullptr;
@@ -219,9 +219,9 @@ void NvGeCurveBoundary::getContour (int& theN,
 NvGeCurveBoundary& NvGeCurveBoundary::set (int theNumElements,
                                            const NvGeEntity3d* const* theCrv3d,
                                            const NvGeCurve2d* const* theCrv2d,
-                                           Adesk::Boolean* theOrientation3d,
-                                           Adesk::Boolean* theOrientation2d,
-                                           Adesk::Boolean theMakeCopy)
+                                           Nova::Boolean* theOrientation3d,
+                                           Nova::Boolean* theOrientation2d,
+                                           Nova::Boolean theMakeCopy)
 {
   if (theNumElements < 0)
   {
@@ -234,7 +234,7 @@ NvGeCurveBoundary& NvGeCurveBoundary::set (int theNumElements,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveBoundary::isOwnerOfCurves() const
+Nova::Boolean NvGeCurveBoundary::isOwnerOfCurves() const
 {
   return mpImpBnd->IsOwner;
 }

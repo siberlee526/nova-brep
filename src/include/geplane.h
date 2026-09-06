@@ -31,11 +31,11 @@ public:
 
     // Intersection
     //
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith    (const NvGeLinearEnt3d& linEnt, NvGePoint3d& resultPnt,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith    (const NvGeLinearEnt3d& linEnt, NvGePoint3d& resultPnt,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith    (const NvGePlane& otherPln, NvGeLine3d& resultLine,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith    (const NvGePlane& otherPln, NvGeLine3d& resultLine,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith    (const NvGeBoundedPlane& bndPln, NvGeLineSeg3d& resultLineSeg,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith    (const NvGeBoundedPlane& bndPln, NvGeLineSeg3d& resultLineSeg,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Geometry redefinition.

@@ -101,7 +101,7 @@ occ::handle<Geom2d_BSplineCurve> EditableSplineOf (NvGeImpEntity3d*& theImp, con
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSplineEnt2d::isRational () const
+Nova::Boolean NvGeSplineEnt2d::isRational () const
 {
   return SplineOf (mpImpEnt, "isRational")->IsRational();
 }
@@ -208,7 +208,7 @@ NvGePoint2d NvGeSplineEnt2d::endPoint () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSplineEnt2d::hasFitData () const
+Nova::Boolean NvGeSplineEnt2d::hasFitData () const
 {
   // In this representation the only spline entities with fit data are
   // degree-1 polylines, whose poles are the fit points.

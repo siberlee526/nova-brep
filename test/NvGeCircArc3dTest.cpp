@@ -362,7 +362,7 @@ TEST_F (NvGeCircArc3dTest, FilletTwoLines_TangencyNearestSeeds)
   NvGeCircArc3d aFillet;
   double aParam1 = 1.0;
   double aParam2 = 1.0;
-  Adesk::Boolean aSuccess = Adesk::kFalse;
+  Nova::Boolean aSuccess = Nova::kFalse;
   aFillet.set (aLine1, aLine2, 1.0, aParam1, aParam2, aSuccess);
 
   EXPECT_TRUE (aSuccess);
@@ -382,7 +382,7 @@ TEST_F (NvGeCircArc3dTest, FilletLineAndCircle_TangencyNearestSeeds)
   NvGeCircArc3d aFillet;
   double aParam1 = 5.0;
   double aParam2 = 0.0;
-  Adesk::Boolean aSuccess = Adesk::kFalse;
+  Nova::Boolean aSuccess = Nova::kFalse;
   aFillet.set (aLine, aCircle, 1.0, aParam1, aParam2, aSuccess);
 
   EXPECT_TRUE (aSuccess);
@@ -409,7 +409,7 @@ TEST_F (NvGeCircArc3dTest, FilletThreeLines_IncircleOfTriangle)
   double aParam1 = 1.0;
   double aParam2 = 1.0;
   double aParam3 = 1.0;
-  Adesk::Boolean aSuccess = Adesk::kFalse;
+  Nova::Boolean aSuccess = Nova::kFalse;
   aFillet.set (aLine1, aLine2, aLine3, aParam1, aParam2, aParam3, aSuccess);
 
   EXPECT_TRUE (aSuccess);
@@ -432,12 +432,12 @@ TEST_F (NvGeCircArc3dTest, Fillet_UnsupportedOrParallelCarriers_ReportFailure)
   NvGeCircArc3d aFillet;
   double aParam1 = 1.0;
   double aParam2 = 1.0;
-  Adesk::Boolean aSuccess = Adesk::kFalse;
+  Nova::Boolean aSuccess = Nova::kFalse;
 
   aFillet.set (aLine1, aParallel, 1.0, aParam1, aParam2, aSuccess);
   EXPECT_FALSE (aSuccess);
 
-  aSuccess = Adesk::kFalse;
+  aSuccess = Nova::kFalse;
   aFillet.set (aLine1, aSpline, 1.0, aParam1, aParam2, aSuccess);
   EXPECT_FALSE (aSuccess);
 }

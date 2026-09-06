@@ -472,10 +472,10 @@
      
 // private:
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus writeBoolean(NvGeFiler*, Adesk::Boolean,
+//     Acad::ErrorStatus writeBoolean(NvGeFiler*, Nova::Boolean,
 //                                 const NvGeLibVersion&);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus readBoolean(NvGeFiler*, Adesk::Boolean*,
+//     Acad::ErrorStatus readBoolean(NvGeFiler*, Nova::Boolean*,
 //                                const NvGeLibVersion&);
 //     static
 //     Acad::ErrorStatus writeBool(NvGeFiler*, bool,
@@ -484,10 +484,10 @@
 //     Acad::ErrorStatus readBool(NvGeFiler*, bool*,
 //                                const NvGeLibVersion&);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus writeLong(NvGeFiler*, Adesk::Int32,
+//     Acad::ErrorStatus writeLong(NvGeFiler*, Nova::Int32,
 //                              const NvGeLibVersion&);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus readLong(NvGeFiler*, Adesk::Int32*,
+//     Acad::ErrorStatus readLong(NvGeFiler*, Nova::Int32*,
 //                             const NvGeLibVersion&);
 //     GE_DLLEXPIMPORT static
 //     Acad::ErrorStatus writeDouble(NvGeFiler*, double,
@@ -520,30 +520,30 @@
 //     Acad::ErrorStatus readVector3d(NvGeFiler*, NvGeVector3d*,
 //                                 const NvGeLibVersion&);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus writeAcGeSurface(NvGeFiler*, const NvGeSurface&,
+//     Acad::ErrorStatus writeNvGeSurface(NvGeFiler*, const NvGeSurface&,
 //                                     const NvGeLibVersion& version);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus readAcGeSurface(NvGeFiler*, NvGeSurface&,
+//     Acad::ErrorStatus readNvGeSurface(NvGeFiler*, NvGeSurface&,
 //                                    const NvGeLibVersion& version);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus writeAcGeEntity2d(NvGeFiler* filer,
+//     Acad::ErrorStatus writeNvGeEntity2d(NvGeFiler* filer,
 // 	            const NvGeEntity2d& ent, const NvGeLibVersion& version);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus readAcGeEntity2d(NvGeFiler* filer, NvGeEntity2d*& ent,
+//     Acad::ErrorStatus readNvGeEntity2d(NvGeFiler* filer, NvGeEntity2d*& ent,
 // 	            NvGe::EntityId id, const NvGeLibVersion& version);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus writeAcGeEntity3d(NvGeFiler* filer,
+//     Acad::ErrorStatus writeNvGeEntity3d(NvGeFiler* filer,
 // 	            const NvGeEntity3d& ent, const NvGeLibVersion& version);
 //     GE_DLLEXPIMPORT static
-//     Acad::ErrorStatus readAcGeEntity3d(NvGeFiler* filer, NvGeEntity3d*& ent,
+//     Acad::ErrorStatus readNvGeEntity3d(NvGeFiler* filer, NvGeEntity3d*& ent,
 // 	            NvGe::EntityId id, const NvGeLibVersion& version);
 
 //     static
 //     Acad::ErrorStatus writeBytes(NvGeFiler* filer, const void* buf,
-//                                  Adesk::UInt32 len, const NvGeLibVersion& version);
+//                                  Nova::UInt32 len, const NvGeLibVersion& version);
 //     static
 //     Acad::ErrorStatus readBytes(NvGeFiler* filer, void* buf,
-//                                 Adesk::UInt32 len, const NvGeLibVersion& version);
+//                                 Nova::UInt32 len, const NvGeLibVersion& version);
 
 // 	friend class NvGeEllipArcParamOffset;
 

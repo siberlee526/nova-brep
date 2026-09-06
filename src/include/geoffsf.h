@@ -21,21 +21,21 @@ public:
     NvGeOffsetSurface();
     NvGeOffsetSurface(NvGeSurface* baseSurface,
                       double offsetDist,
-                      Adesk::Boolean makeCopy = Adesk::kTrue);
+                      Nova::Boolean makeCopy = Nova::kTrue);
     NvGeOffsetSurface(const NvGeOffsetSurface& offset);
 
     // Test whether this offset surface can be converted to a simple surface
     //
-    Adesk::Boolean    isPlane        () const;
-    Adesk::Boolean    isBoundedPlane () const;
-    Adesk::Boolean    isSphere       () const;
-    Adesk::Boolean    isCylinder     () const;
-    Adesk::Boolean    isCone         () const;
-    Adesk::Boolean    isTorus        () const;
+    Nova::Boolean    isPlane        () const;
+    Nova::Boolean    isBoundedPlane () const;
+    Nova::Boolean    isSphere       () const;
+    Nova::Boolean    isCylinder     () const;
+    Nova::Boolean    isCone         () const;
+    Nova::Boolean    isTorus        () const;
 
     // Convert this offset surface to a simple surface
     //
-        Adesk::Boolean    getSurface(NvGeSurface*&) const;
+        Nova::Boolean    getSurface(NvGeSurface*&) const;
 
     // Get a copy of the construction surface.
     //
@@ -46,7 +46,7 @@ public:
     // Reset surface
     //
     NvGeOffsetSurface& set        (NvGeSurface*, double offsetDist,
-                                    Adesk::Boolean makeCopy = Adesk::kTrue);
+                                    Nova::Boolean makeCopy = Nova::kTrue);
 
     // Assignment operator.
     //

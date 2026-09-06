@@ -931,16 +931,16 @@ int64_t NvString::asHex64(int theFlags) const
 
 //=================================================================================================
 
-Adesk::UInt64 NvString::asUDeci64(int theFlags) const
+Nova::UInt64 NvString::asUDeci64(int theFlags) const
 {
-  return ParseAs<Adesk::UInt64>(this->m_wsz, false, false, theFlags);
+  return ParseAs<Nova::UInt64>(this->m_wsz, false, false, theFlags);
 }
 
 //=================================================================================================
 
-Adesk::UInt64 NvString::asUHex64(int theFlags) const
+Nova::UInt64 NvString::asUHex64(int theFlags) const
 {
-  return ParseAs<Adesk::UInt64>(this->m_wsz, true, false, theFlags);
+  return ParseAs<Nova::UInt64>(this->m_wsz, true, false, theFlags);
 }
 
 // asNvDbHandle is intentionally not defined: the NvDbHandle return type is

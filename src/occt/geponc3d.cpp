@@ -131,7 +131,7 @@ NvGeVector3d EvaluateDeriv (const occ::handle<Geom_Curve>& theCurve, double theP
 }
 
 //! Curvature |v1 x v2| / |v1|^3 at theParam; false at a singular point.
-Adesk::Boolean CurvatureAt (const occ::handle<Geom_Curve>& theCurve, double theParam,
+Nova::Boolean CurvatureAt (const occ::handle<Geom_Curve>& theCurve, double theParam,
                             double& theRes)
 {
   gp_Pnt aPnt;
@@ -286,7 +286,7 @@ NvGeVector3d NvGePointOnCurve3d::deriv (int theOrder, const NvGeCurve3d& theCurv
 
 //=================================================================================================
 
-Adesk::Boolean NvGePointOnCurve3d::isSingular (const NvGeTol& theTol) const
+Nova::Boolean NvGePointOnCurve3d::isSingular (const NvGeTol& theTol) const
 {
   // Predicate: degenerate input reports false instead of throwing.
   if (mpImpEnt == nullptr)
@@ -311,7 +311,7 @@ Adesk::Boolean NvGePointOnCurve3d::isSingular (const NvGeTol& theTol) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGePointOnCurve3d::curvature (double& theRes)
+Nova::Boolean NvGePointOnCurve3d::curvature (double& theRes)
 {
   const NvGePointOnCurve3dData* aData = BoundDataOf (mpImpEnt, "curvature");
   return CurvatureAt (CurveGeomOf (aData), aData->Param, theRes);
@@ -319,7 +319,7 @@ Adesk::Boolean NvGePointOnCurve3d::curvature (double& theRes)
 
 //=================================================================================================
 
-Adesk::Boolean NvGePointOnCurve3d::curvature (double theParam, double& theRes)
+Nova::Boolean NvGePointOnCurve3d::curvature (double theParam, double& theRes)
 {
   setParameter (theParam);
   return curvature (theRes);

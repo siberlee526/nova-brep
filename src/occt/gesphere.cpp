@@ -289,7 +289,7 @@ NvGePoint3d NvGeSphere::southPole() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSphere::isOuterNormal() const
+Nova::Boolean NvGeSphere::isOuterNormal() const
 {
   // OCCT builds elementary surfaces with the normal directed away from the
   // material side; for the sphere this is the outer normal.
@@ -298,7 +298,7 @@ Adesk::Boolean NvGeSphere::isOuterNormal() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSphere::isClosed (const NvGeTol& theTol) const
+Nova::Boolean NvGeSphere::isClosed (const NvGeTol& theTol) const
 {
   // Closed means a full sphere: the u range covers a whole revolution and
   // the v range reaches both poles.
@@ -377,7 +377,7 @@ NvGeSphere& NvGeSphere::operator = (const NvGeSphere& theSrc)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeSphere::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& theIntn,
+Nova::Boolean NvGeSphere::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& theIntn,
                                           NvGePoint3d& thePnt1, NvGePoint3d& thePnt2,
                                           const NvGeTol& theTol) const
 {

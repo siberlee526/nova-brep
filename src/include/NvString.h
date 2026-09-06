@@ -248,12 +248,12 @@ public:
     /// <summary>Parse the current string as decimal, return an unsigned int64.</summary>
     /// <param name="nFlags">input bits specifying how to do the parsing</param>
     /// <returns>The int value parsed from the string.</returns>
-    NVBASE_PORT Adesk::UInt64 asUDeci64(int nFlags = kParseDefault) const;
+    NVBASE_PORT Nova::UInt64 asUDeci64(int nFlags = kParseDefault) const;
 
     /// <summary>Parse the current string as hexadecimal, return an unsigned int64.</summary>
     /// <param name="nFlags">input bits specifying how to do the parsing</param>
     /// <returns>The int value parsed from the string.</returns>
-    NVBASE_PORT Adesk::UInt64 asUHex64(int nFlags = kParseDefault) const;
+    NVBASE_PORT Nova::UInt64 asUHex64(int nFlags = kParseDefault) const;
 
     /// <summary>Parse the current string as hexadecimal.  Return the handle..</summary>
     /// <param name="nFlags">input bits specifying how to do the parsing</param>

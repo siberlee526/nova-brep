@@ -15,23 +15,23 @@ NvGeLinearEnt2d : public NvGeCurve2d
 public:
     // Intersection with other geometric objects.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean   intersectWith  (const NvGeLinearEnt2d& line, NvGePoint2d& intPnt,
+    GE_DLLEXPIMPORT Nova::Boolean   intersectWith  (const NvGeLinearEnt2d& line, NvGePoint2d& intPnt,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Find the overlap with other NvGeLinearEnt object
     //
-    GE_DLLEXPIMPORT Adesk::Boolean   overlap        (const NvGeLinearEnt2d& line,
+    GE_DLLEXPIMPORT Nova::Boolean   overlap        (const NvGeLinearEnt2d& line,
                                      NvGeLinearEnt2d*& overlap,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
     // Direction tests.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean   isParallelTo   (const NvGeLinearEnt2d& line,
+    GE_DLLEXPIMPORT Nova::Boolean   isParallelTo   (const NvGeLinearEnt2d& line,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean   isPerpendicularTo(const NvGeLinearEnt2d& line,
+    GE_DLLEXPIMPORT Nova::Boolean   isPerpendicularTo(const NvGeLinearEnt2d& line,
                                       const NvGeTol& tol = NvGeContext::gTol) const;
     // Test if two lines are colinear.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean   isColinearTo   (const NvGeLinearEnt2d& line,
+    GE_DLLEXPIMPORT Nova::Boolean   isColinearTo   (const NvGeLinearEnt2d& line,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
     // Perpendicular through a given point
     //

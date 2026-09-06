@@ -64,7 +64,7 @@ public:
   gp_Pnt2d            SurfParam;               // (u, v) on the surface
   NvGe::csiConfig     Lower = NvGe::kXUnknown; // neighborhood below on the curve
   NvGe::csiConfig     Higher = NvGe::kXUnknown; // neighborhood above on the curve
-  Adesk::Boolean      SmallAngle = false;      // grazing (near-tangent) crossing
+  Nova::Boolean      SmallAngle = false;      // grazing (near-tangent) crossing
 };
 
 //! Storage behind NvGeCurveSurfInt: inputs and eager results.
@@ -428,7 +428,7 @@ void NvGeCurveSurfInt::getPointOnSurface (int theIntNum, NvGePointOnSurface& the
 //=================================================================================================
 
 void NvGeCurveSurfInt::getIntConfigs (int theIntNum, NvGe::csiConfig& theLower,
-                                      NvGe::csiConfig& theHigher, Adesk::Boolean& theSmallAngle,
+                                      NvGe::csiConfig& theHigher, Nova::Boolean& theSmallAngle,
                                       NvGeIntersectError& theErr) const
 {
   const NvGeCurveSurfIntData* aData = DataOf (mpImpEnt);

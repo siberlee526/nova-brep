@@ -11,14 +11,14 @@ class NvHeapOperators {
             void *p = ::acHeapAlloc(nullptr,size);
             if (p)
                 return p;
-            ADESK_UNREACHABLE;
+            NOVA_UNREACHABLE;
         }
 
         static void* operator new[](size_t size) {
             void *p = ::acHeapAlloc(nullptr, size);
             if (p)
                 return p;
-            ADESK_UNREACHABLE;
+            NOVA_UNREACHABLE;
         }
 
         static void* operator new(size_t size, const char *,
@@ -27,7 +27,7 @@ class NvHeapOperators {
             void * p = ::acHeapAlloc(nullptr, size);
             if (p)
                 return p;
-            ADESK_UNREACHABLE;
+            NOVA_UNREACHABLE;
         }
 
         static void* operator new[](size_t size,
@@ -36,7 +36,7 @@ class NvHeapOperators {
             void *p = ::acHeapAlloc(nullptr, size);
             if (p)
                 return p;
-            ADESK_UNREACHABLE;
+            NOVA_UNREACHABLE;
         }
 
         static void operator delete(void *p) {   

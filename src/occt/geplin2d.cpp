@@ -220,7 +220,7 @@ std::vector<NvGePoint2d> ApproximatePoints (const NvGeCurve2d& theCurve, double 
     const NvGePoint2d aCenter = anArc.center();
     const NvGeVector2d aRef = anArc.refVec();
     const double aRadius = std::max (anArc.radius(), gp::Resolution());
-    double aSweep = anArc.isClockWise() == Adesk::kTrue
+    double aSweep = anArc.isClockWise() == Nova::kTrue
       ? NormalizeAngle (anArc.startAng() - anArc.endAng())
       : NormalizeAngle (anArc.endAng() - anArc.startAng());
     if (aSweep <= THE_FULL_SWEEP_TOL)
@@ -234,7 +234,7 @@ std::vector<NvGePoint2d> ApproximatePoints (const NvGeCurve2d& theCurve, double 
       aStep = THE_TWO_PI / 8.0;   // cap the segment count for tiny tolerances
     }
     const int aSegCount = std::max (1, static_cast<int> (std::ceil (aSweep / aStep)));
-    const double aSign = (anArc.isClockWise() == Adesk::kTrue) ? -1.0 : 1.0;
+    const double aSign = (anArc.isClockWise() == Nova::kTrue) ? -1.0 : 1.0;
     for (int i = 0; i <= aSegCount; ++i)
     {
       const double anAngle = anArc.startAng() + aSign * aSweep * (static_cast<double> (i) / static_cast<double> (aSegCount));
@@ -256,7 +256,7 @@ std::vector<NvGePoint2d> ApproximatePoints (const NvGeCurve2d& theCurve, double 
     const double aMinorR = std::max (anEll.minorRadius(), gp::Resolution());
     // Minimal curvature radius of the ellipse: b^2 / a.
     const double aRhoMin = std::max (aMinorR * aMinorR / aMajorR, gp::Resolution());
-    double aSweep = anEll.isClockWise() == Adesk::kTrue
+    double aSweep = anEll.isClockWise() == Nova::kTrue
       ? NormalizeAngle (anEll.startAng() - anEll.endAng())
       : NormalizeAngle (anEll.endAng() - anEll.startAng());
     if (aSweep <= THE_FULL_SWEEP_TOL)
@@ -269,7 +269,7 @@ std::vector<NvGePoint2d> ApproximatePoints (const NvGeCurve2d& theCurve, double 
       aStep = THE_TWO_PI / 8.0;
     }
     const int aSegCount = std::max (1, static_cast<int> (std::ceil (aSweep / aStep)));
-    const double aSign = (anEll.isClockWise() == Adesk::kTrue) ? -1.0 : 1.0;
+    const double aSign = (anEll.isClockWise() == Nova::kTrue) ? -1.0 : 1.0;
     for (int i = 0; i <= aSegCount; ++i)
     {
       const double anAngle = anEll.startAng() + aSign * aSweep * (static_cast<double> (i) / static_cast<double> (aSegCount));

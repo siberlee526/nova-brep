@@ -1,5 +1,5 @@
 // gekvec.cpp - implementation of NvGeKnotVector, the knot vector of the
-// NURBS classes (AutoCAD AcGeKnotVector clone with the Nv prefix).
+// NURBS classes (AutoCAD NvGeKnotVector clone with the Nv prefix).
 //
 // A knot vector is a growable array of non-decreasing doubles together with
 // a knot tolerance. The storage lives in the NvGeDoubleArray member mData,
@@ -141,21 +141,21 @@ NvGeKnotVector& NvGeKnotVector::operator = (const NvGeDoubleArray& theSrc)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeKnotVector::isEqualTo (const NvGeKnotVector& theOther) const
+Nova::Boolean NvGeKnotVector::isEqualTo (const NvGeKnotVector& theOther) const
 {
   if (mData.logicalLength() != theOther.mData.logicalLength())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   // Component-wise comparison within the knot tolerance of this vector.
   for (int aKnot = 0; aKnot < mData.logicalLength(); ++aKnot)
   {
     if (std::abs (mData[aKnot] - theOther.mData[aKnot]) > mTolerance)
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
   }
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -324,13 +324,13 @@ void NvGeKnotVector::getDistinctKnots (NvGeDoubleArray& theKnots) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeKnotVector::contains (double theParam) const
+Nova::Boolean NvGeKnotVector::contains (double theParam) const
 {
   // Range containment, in the sense of NvGeInterval::contains: the parameter
   // lies between the first and the last knot (inclusive within tolerance).
   if (mData.isEmpty())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   return theParam >= mData.first() - mTolerance
       && theParam <= mData.last() + mTolerance;
@@ -338,7 +338,7 @@ Adesk::Boolean NvGeKnotVector::contains (double theParam) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeKnotVector::isOn (double theKnot) const
+Nova::Boolean NvGeKnotVector::isOn (double theKnot) const
 {
   // Knot membership: the value coincides with one of the knots within the
   // knot tolerance.
@@ -347,14 +347,14 @@ Adesk::Boolean NvGeKnotVector::isOn (double theKnot) const
   {
     if (std::abs (mData[aIndex] - theKnot) <= mTolerance)
     {
-      return Adesk::kTrue;
+      return Nova::kTrue;
     }
     if (mData[aIndex] > theKnot + mTolerance)
     {
       break; // knots are non-decreasing, no later knot can coincide
     }
   }
-  return Adesk::kFalse;
+  return Nova::kFalse;
 }
 
 //=================================================================================================
@@ -622,7 +622,7 @@ int NvGeKnotVector::length () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeKnotVector::isEmpty () const
+Nova::Boolean NvGeKnotVector::isEmpty () const
 {
   return mData.isEmpty();
 }

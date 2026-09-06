@@ -57,7 +57,7 @@ NvHeapBlockHeader* HeaderOf (void* thePtr)
 
 //=================================================================================================
 
-AcHeapHandle acHeapCreate (Adesk::UInt32 theFlags)
+AcHeapHandle acHeapCreate (Nova::UInt32 theFlags)
 {
   (void)theFlags; // no pool flags are honored by the CRT-backed heap
   return NextHeapHandle();

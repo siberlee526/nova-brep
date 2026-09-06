@@ -113,7 +113,7 @@ void NvGeLinearEnt2d::getLine (NvGeLine2d& theLine) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt2d::intersectWith (const NvGeLinearEnt2d& theLine, NvGePoint2d& theIntPnt,
+Nova::Boolean NvGeLinearEnt2d::intersectWith (const NvGeLinearEnt2d& theLine, NvGePoint2d& theIntPnt,
                                                const NvGeTol& theTol) const
 {
   const NvGeVector2d aDir1 = direction();
@@ -155,7 +155,7 @@ Adesk::Boolean NvGeLinearEnt2d::intersectWith (const NvGeLinearEnt2d& theLine, N
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt2d::overlap (const NvGeLinearEnt2d& theLine,
+Nova::Boolean NvGeLinearEnt2d::overlap (const NvGeLinearEnt2d& theLine,
                                          NvGeLinearEnt2d*& theOverlap,
                                          const NvGeTol& theTol) const
 {
@@ -205,7 +205,7 @@ Adesk::Boolean NvGeLinearEnt2d::overlap (const NvGeLinearEnt2d& theLine,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt2d::isParallelTo (const NvGeLinearEnt2d& theLine,
+Nova::Boolean NvGeLinearEnt2d::isParallelTo (const NvGeLinearEnt2d& theLine,
                                               const NvGeTol& theTol) const
 {
   const NvGeVector2d aDir1 = direction();
@@ -215,7 +215,7 @@ Adesk::Boolean NvGeLinearEnt2d::isParallelTo (const NvGeLinearEnt2d& theLine,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt2d::isPerpendicularTo (const NvGeLinearEnt2d& theLine,
+Nova::Boolean NvGeLinearEnt2d::isPerpendicularTo (const NvGeLinearEnt2d& theLine,
                                                    const NvGeTol& theTol) const
 {
   const NvGeVector2d aDir1 = direction();
@@ -225,7 +225,7 @@ Adesk::Boolean NvGeLinearEnt2d::isPerpendicularTo (const NvGeLinearEnt2d& theLin
 
 //=================================================================================================
 
-Adesk::Boolean NvGeLinearEnt2d::isColinearTo (const NvGeLinearEnt2d& theLine,
+Nova::Boolean NvGeLinearEnt2d::isColinearTo (const NvGeLinearEnt2d& theLine,
                                               const NvGeTol& theTol) const
 {
   if (!isParallelTo (theLine, theTol))

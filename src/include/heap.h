@@ -6,7 +6,7 @@
 
 
 typedef void* AcHeapHandle;
-ACPAL_PORT AcHeapHandle acHeapCreate(Adesk::UInt32 flags);
+ACPAL_PORT AcHeapHandle acHeapCreate(Nova::UInt32 flags);
 ACPAL_PORT void acHeapDestroy(AcHeapHandle heap);
 ACPAL_PORT void* acHeapAlloc(AcHeapHandle heap, size_t size);
 ACPAL_PORT void* acTryHeapAlloc(AcHeapHandle heap, size_t size);

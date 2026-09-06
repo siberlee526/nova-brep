@@ -265,7 +265,7 @@ NvGePoint3d::operator [] (unsigned int i)
     return *(&x+i);
 }
 
-#define ADSK_ACGEPOINT3D_DEFINED
+#define NOVA_NVGEPOINT3D_DEFINED
 #include "nvarrayhelper.h"
 
 #pragma pack (pop)

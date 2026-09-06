@@ -452,7 +452,7 @@ NvGePoint3d NvGeEllipArc3d::closestPointToPlane (const NvGePlanarEnt& thePlaneEn
 // purpose  : Intersections with the carrier of a linear entity, restricted
 //            to this arc span and the entity range.
 //=======================================================================
-Adesk::Boolean NvGeEllipArc3d::intersectWith (const NvGeLinearEnt3d& theLineEnt, int& theIntN,
+Nova::Boolean NvGeEllipArc3d::intersectWith (const NvGeLinearEnt3d& theLineEnt, int& theIntN,
                                               NvGePoint3d& theP1, NvGePoint3d& theP2,
                                               const NvGeTol& theTol) const
 {
@@ -497,7 +497,7 @@ Adesk::Boolean NvGeEllipArc3d::intersectWith (const NvGeLinearEnt3d& theLineEnt,
 // purpose  : Intersections with the plane, i.e. with the line where the
 //            ellipse plane and the given plane meet.
 //=======================================================================
-Adesk::Boolean NvGeEllipArc3d::intersectWith (const NvGePlanarEnt& thePlaneEnt,
+Nova::Boolean NvGeEllipArc3d::intersectWith (const NvGePlanarEnt& thePlaneEnt,
                                               int& theNumOfIntersect,
                                               NvGePoint3d& theP1, NvGePoint3d& theP2,
                                               const NvGeTol& theTol) const
@@ -553,7 +553,7 @@ Adesk::Boolean NvGeEllipArc3d::intersectWith (const NvGePlanarEnt& thePlaneEnt,
 //            ellipse plane along theProjDir; reports the paired points on
 //            both.
 //=======================================================================
-Adesk::Boolean NvGeEllipArc3d::projIntersectWith (const NvGeLinearEnt3d& theLineEnt,
+Nova::Boolean NvGeEllipArc3d::projIntersectWith (const NvGeLinearEnt3d& theLineEnt,
                                                   const NvGeVector3d& theProjDir,
                                                   int& theNumInt,
                                                   NvGePoint3d& thePntOnEllipse1,
@@ -664,7 +664,7 @@ void NvGeEllipArc3d::getPlane (NvGePlane& thePlane) const
 // function : isCircular
 // purpose  : True when the radii coincide within the point tolerance.
 //=======================================================================
-Adesk::Boolean NvGeEllipArc3d::isCircular (const NvGeTol& theTol) const
+Nova::Boolean NvGeEllipArc3d::isCircular (const NvGeTol& theTol) const
 {
   bool aTrimmed;
   double aFirst, aLast;
@@ -679,7 +679,7 @@ Adesk::Boolean NvGeEllipArc3d::isCircular (const NvGeTol& theTol) const
 // purpose  : Strict interior test against the full carrier ellipse, using
 //            the in-plane radial distance to the boundary.
 //=======================================================================
-Adesk::Boolean NvGeEllipArc3d::isInside (const NvGePoint3d& thePnt,
+Nova::Boolean NvGeEllipArc3d::isInside (const NvGePoint3d& thePnt,
                                          const NvGeTol& theTol) const
 {
   bool aTrimmed;

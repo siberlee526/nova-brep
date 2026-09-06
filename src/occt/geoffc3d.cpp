@@ -134,7 +134,7 @@ double NvGeOffsetCurve3d::offsetDistance() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeOffsetCurve3d::paramDirection() const
+Nova::Boolean NvGeOffsetCurve3d::paramDirection() const
 {
   // The offset follows the basis parameterization: same direction, so the
   // parameter mapping of the base curve is preserved.

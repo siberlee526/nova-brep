@@ -69,26 +69,26 @@ public:
         // Possible errors:  k0This.  Returns object unchanged on error. 
     GE_DLLEXPIMPORT double         length      () const;
     GE_DLLEXPIMPORT double         lengthSqrd  () const;
-    GE_DLLEXPIMPORT Adesk::Boolean isUnitLength(const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isZeroLength(const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isUnitLength(const NvGeTol& tol = NvGeContext::gTol) const;
+    GE_DLLEXPIMPORT Nova::Boolean isZeroLength(const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Direction tests.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isParallelTo(const NvGeVector2d& vec,
+    GE_DLLEXPIMPORT Nova::Boolean isParallelTo(const NvGeVector2d& vec,
                                 const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isParallelTo(const NvGeVector2d& vec,
+    GE_DLLEXPIMPORT Nova::Boolean isParallelTo(const NvGeVector2d& vec,
                                 const NvGeTol& tol, NvGeError& flag) const;
         // Possible errors:  k0This, k0Arg1. 
         // Returns kFalse on error.
-    GE_DLLEXPIMPORT Adesk::Boolean isCodirectionalTo(const NvGeVector2d& vec,
+    GE_DLLEXPIMPORT Nova::Boolean isCodirectionalTo(const NvGeVector2d& vec,
                                 const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isCodirectionalTo(const NvGeVector2d& vec,
+    GE_DLLEXPIMPORT Nova::Boolean isCodirectionalTo(const NvGeVector2d& vec,
                         const NvGeTol& tol, NvGeError& flag) const;
         // Possible errors:  k0This, k0Arg1. 
         // Returns kFalse on error.
-    GE_DLLEXPIMPORT Adesk::Boolean isPerpendicularTo(const NvGeVector2d& vec,
+    GE_DLLEXPIMPORT Nova::Boolean isPerpendicularTo(const NvGeVector2d& vec,
                                      const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isPerpendicularTo(const NvGeVector2d& vec,
+    GE_DLLEXPIMPORT Nova::Boolean isPerpendicularTo(const NvGeVector2d& vec,
                         const NvGeTol& tol, NvGeError& flag) const;
         // Possible errors:  k0This, k0Arg1. 
         // Returns kFalse on error.
@@ -312,7 +312,7 @@ NvGeVector2d::operator [] (unsigned int i)
     return *(&x+i);
 }
 
-#define ADSK_ACGEVECTOR2D_DEFINED
+#define NOVA_NVGEVECTOR2D_DEFINED
 #include "nvarrayhelper.h"
 
 #pragma pack (pop)

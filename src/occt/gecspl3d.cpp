@@ -533,7 +533,7 @@ NvGeCubicSplineCurve3d::NvGeCubicSplineCurve3d (const NvGeCurve3d& theCurve, dou
 NvGeCubicSplineCurve3d::NvGeCubicSplineCurve3d (const NvGeKnotVector& theKnots,
                                                 const NvGePoint3dArray& theFitPoints,
                                                 const NvGeVector3dArray& theFirstDerivs,
-                                                Adesk::Boolean theIsPeriodic)
+                                                Nova::Boolean theIsPeriodic)
 {
   if (mDelEnt && mpImpEnt != nullptr)
   {
@@ -566,7 +566,7 @@ NvGeCubicSplineCurve3d::NvGeCubicSplineCurve3d (const NvGeKnotVector& theKnots,
                          " be strictly increasing");
     }
   }
-  aData.Periodic = theIsPeriodic != Adesk::kFalse;
+  aData.Periodic = theIsPeriodic != Nova::kFalse;
   aData.Tolerance = NvGeContext::gTol;
   mpImpEnt = new NvGeImpEntity3d (NvGe::kCubicSplineCurve3d,
                                   occ::handle<Geom_BSplineCurve> (HermiteSpline (aData,

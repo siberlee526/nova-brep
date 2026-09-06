@@ -40,10 +40,10 @@ public:
    	GE_DLLEXPIMPORT NvGeLineSeg3d& set          (const NvGeCurve3d& curve1,
                                  const NvGeCurve3d& curve2,
                                  double& param1, double& param2,
-                                 Adesk::Boolean& success);
+                                 Nova::Boolean& success);
   	GE_DLLEXPIMPORT NvGeLineSeg3d& set          (const NvGeCurve3d& curve,
                                  const NvGePoint3d& point, double& param,
-                                 Adesk::Boolean& success);
+                                 Nova::Boolean& success);
 
 
     // Assignment operator.

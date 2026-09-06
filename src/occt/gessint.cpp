@@ -422,7 +422,7 @@ int NvGeSurfSurfInt::numResults (NvGe::NvGeIntersectError& theErr) const
 
 //=================================================================================================
 
-NvGeCurve3d* NvGeSurfSurfInt::intCurve (int theIntNum, Adesk::Boolean theIsExternal,
+NvGeCurve3d* NvGeSurfSurfInt::intCurve (int theIntNum, Nova::Boolean theIsExternal,
                                         NvGe::NvGeIntersectError& theErr) const
 {
   const NvGeSurfSurfIntData* aData = DataOf (mpImpEnt);
@@ -444,8 +444,8 @@ NvGeCurve3d* NvGeSurfSurfInt::intCurve (int theIntNum, Adesk::Boolean theIsExter
 
 //=================================================================================================
 
-NvGeCurve2d* NvGeSurfSurfInt::intParamCurve (int theIntNum, Adesk::Boolean theIsExternal,
-                                             Adesk::Boolean theIsFirst,
+NvGeCurve2d* NvGeSurfSurfInt::intParamCurve (int theIntNum, Nova::Boolean theIsExternal,
+                                             Nova::Boolean theIsFirst,
                                              NvGe::NvGeIntersectError& theErr) const
 {
   const NvGeSurfSurfIntData* aData = DataOf (mpImpEnt);

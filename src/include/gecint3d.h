@@ -48,11 +48,11 @@ public:
     GE_DLLEXPIMPORT void               getPointOnCurve2 (int intNum, NvGePointOnCurve3d& pntOnCrv) const;
     GE_DLLEXPIMPORT void			   getIntConfigs    (int intNum, NvGe::NvGeXConfig& config1wrt2, 
                                          NvGe::NvGeXConfig& config2wrt1) const;
-    GE_DLLEXPIMPORT Adesk::Boolean     isTangential     (int intNum) const;
-    GE_DLLEXPIMPORT Adesk::Boolean     isTransversal    (int intNum) const;
+    GE_DLLEXPIMPORT Nova::Boolean     isTangential     (int intNum) const;
+    GE_DLLEXPIMPORT Nova::Boolean     isTransversal    (int intNum) const;
     GE_DLLEXPIMPORT double             intPointTol      (int intNum) const;
     GE_DLLEXPIMPORT int                overlapCount     () const;
-	GE_DLLEXPIMPORT Adesk::Boolean	   overlapDirection () const;
+	GE_DLLEXPIMPORT Nova::Boolean	   overlapDirection () const;
     GE_DLLEXPIMPORT void               getOverlapRanges (int overlapNum,
                                          NvGeInterval& range1,
                                          NvGeInterval& range2) const;

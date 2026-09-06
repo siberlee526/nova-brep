@@ -65,7 +65,7 @@ public:
   std::vector<gp_Pnt2d>          Points;
   std::vector<NvGe::NvGeXConfig> Config1; // curve1 relative to curve2
   std::vector<NvGe::NvGeXConfig> Config2; // curve2 relative to curve1
-  std::vector<Adesk::Boolean>    Tangential;
+  std::vector<Nova::Boolean>    Tangential;
   std::vector<double>            PointTols;
 
   // Tangential overlap segments: parameter ranges on both curves.
@@ -73,7 +73,7 @@ public:
   std::vector<double> OvLast1;
   std::vector<double> OvFirst2;
   std::vector<double> OvLast2;
-  Adesk::Boolean      OverlapDir = true;
+  Nova::Boolean      OverlapDir = true;
 
   occ::handle<NvGeEntityData> Clone() const override
   {
@@ -388,9 +388,9 @@ void PermutePoints (NvGeCurveCurveInt2dData& theData, const std::vector<int>& th
   };
   aPermuteCfg (theData.Config1);
   aPermuteCfg (theData.Config2);
-  auto aPermuteFlg = [theOrder] (std::vector<Adesk::Boolean>& theVec)
+  auto aPermuteFlg = [theOrder] (std::vector<Nova::Boolean>& theVec)
   {
-    std::vector<Adesk::Boolean> aCopy = theVec;
+    std::vector<Nova::Boolean> aCopy = theVec;
     for (size_t anIdx = 0; anIdx < theOrder.size(); ++anIdx)
     {
       theVec[anIdx] = aCopy[theOrder[anIdx]];
@@ -561,7 +561,7 @@ void NvGeCurveCurveInt2d::getIntConfigs (int theIntNum, NvGe::NvGeXConfig& theCo
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveCurveInt2d::isTangential (int theIntNum) const
+Nova::Boolean NvGeCurveCurveInt2d::isTangential (int theIntNum) const
 {
   const NvGeCurveCurveInt2dData* aData = DataOf (mpImpEnt);
   if (theIntNum < 0 || theIntNum >= static_cast<int> (aData->Tangential.size()))
@@ -573,7 +573,7 @@ Adesk::Boolean NvGeCurveCurveInt2d::isTangential (int theIntNum) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveCurveInt2d::isTransversal (int theIntNum) const
+Nova::Boolean NvGeCurveCurveInt2d::isTransversal (int theIntNum) const
 {
   const NvGeCurveCurveInt2dData* aData = DataOf (mpImpEnt);
   if (theIntNum < 0 || theIntNum >= static_cast<int> (aData->Tangential.size()))
@@ -601,7 +601,7 @@ int NvGeCurveCurveInt2d::overlapCount () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveCurveInt2d::overlapDirection () const
+Nova::Boolean NvGeCurveCurveInt2d::overlapDirection () const
 {
   return DataOf (mpImpEnt)->OverlapDir;
 }

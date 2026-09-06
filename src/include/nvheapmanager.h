@@ -27,7 +27,7 @@ public:
     }
     static void operator delete(void* p, void* pParent)
     {
-        ADESK_UNREFED_PARAM(pParent); // avoid unreferenced parameter warning C4100
+        NOVA_UNREFED_PARAM(pParent); // avoid unreferenced parameter warning C4100
         return acStackHeapFree(p);
     }
 

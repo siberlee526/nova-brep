@@ -158,12 +158,12 @@ NvGeOffsetSurface::NvGeOffsetSurface ()
 //=================================================================================================
 
 NvGeOffsetSurface::NvGeOffsetSurface (NvGeSurface* theBaseSurface, double theOffsetDist,
-                                      Adesk::Boolean theMakeCopy)
+                                      Nova::Boolean theMakeCopy)
 {
   // Validate and build BEFORE touching this entity, so a rejection leaves
   // the offset surface unchanged.
   const occ::handle<Geom_Surface> aBasis = BasisHandleOf (theBaseSurface,
-                                                          theMakeCopy != Adesk::kFalse,
+                                                          theMakeCopy != Nova::kFalse,
                                                           "NvGeOffsetSurface");
   const occ::handle<Geom_Surface> anOffset = MakeOffset (aBasis, theOffsetDist,
                                                          "NvGeOffsetSurface");
@@ -184,7 +184,7 @@ NvGeOffsetSurface::NvGeOffsetSurface (const NvGeOffsetSurface& theOffset)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeOffsetSurface::isPlane () const
+Nova::Boolean NvGeOffsetSurface::isPlane () const
 {
   const occ::handle<Geom_OffsetSurface> anOffset = OffsetOrNullOf (mpImpEnt);
   return !anOffset.IsNull()
@@ -193,12 +193,12 @@ Adesk::Boolean NvGeOffsetSurface::isPlane () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeOffsetSurface::isBoundedPlane () const
+Nova::Boolean NvGeOffsetSurface::isBoundedPlane () const
 {
   const occ::handle<Geom_OffsetSurface> anOffset = OffsetOrNullOf (mpImpEnt);
   if (anOffset.IsNull())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const occ::handle<Geom_RectangularTrimmedSurface> aTrimmed =
     occ::down_cast<Geom_RectangularTrimmedSurface> (anOffset->BasisSurface());
@@ -208,7 +208,7 @@ Adesk::Boolean NvGeOffsetSurface::isBoundedPlane () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeOffsetSurface::isSphere () const
+Nova::Boolean NvGeOffsetSurface::isSphere () const
 {
   const occ::handle<Geom_OffsetSurface> anOffset = OffsetOrNullOf (mpImpEnt);
   return !anOffset.IsNull()
@@ -217,7 +217,7 @@ Adesk::Boolean NvGeOffsetSurface::isSphere () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeOffsetSurface::isCylinder () const
+Nova::Boolean NvGeOffsetSurface::isCylinder () const
 {
   const occ::handle<Geom_OffsetSurface> anOffset = OffsetOrNullOf (mpImpEnt);
   return !anOffset.IsNull()
@@ -226,7 +226,7 @@ Adesk::Boolean NvGeOffsetSurface::isCylinder () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeOffsetSurface::isCone () const
+Nova::Boolean NvGeOffsetSurface::isCone () const
 {
   const occ::handle<Geom_OffsetSurface> anOffset = OffsetOrNullOf (mpImpEnt);
   return !anOffset.IsNull()
@@ -235,7 +235,7 @@ Adesk::Boolean NvGeOffsetSurface::isCone () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeOffsetSurface::isTorus () const
+Nova::Boolean NvGeOffsetSurface::isTorus () const
 {
   const occ::handle<Geom_OffsetSurface> anOffset = OffsetOrNullOf (mpImpEnt);
   return !anOffset.IsNull()
@@ -244,13 +244,13 @@ Adesk::Boolean NvGeOffsetSurface::isTorus () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
+Nova::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
 {
   theSurface = nullptr;
   const occ::handle<Geom_OffsetSurface> anOffset = OffsetOrNullOf (mpImpEnt);
   if (anOffset.IsNull())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const double aDist = anOffset->Offset();
   const occ::handle<Geom_Surface> aBasis = anOffset->BasisSurface();
@@ -264,7 +264,7 @@ Adesk::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
     aShift.Multiply (NormalSense (aPos) * aDist);
     theSurface = new NvGePlane (PointOf (aPos.Location().Translated (aShift)),
                                 VectorOf (aPos.XDirection()), VectorOf (aPos.YDirection()));
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
 
   // Rectangular-trimmed plane: a bounded plane of the same parametric box.
@@ -276,7 +276,7 @@ Adesk::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
       occ::down_cast<Geom_Plane> (aTrimmed->BasisSurface());
     if (aBasisPlane.IsNull())
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
     double u1 = 0.0;
     double u2 = 0.0;
@@ -300,7 +300,7 @@ Adesk::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
     theSurface = new NvGeBoundedPlane (PointOf (anOrigin),
                                        NvGeVector3d (anUVec.X(), anUVec.Y(), anUVec.Z()),
                                        NvGeVector3d (aVVec.X(), aVVec.Y(), aVVec.Z()));
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
 
   // Sphere: a concentric sphere with the radius grown (or shrunk) by the
@@ -313,10 +313,10 @@ Adesk::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
     const double aRadius = aSphere->Radius() + NormalSense (aPos) * aDist;
     if (aRadius <= 0.0)
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
     theSurface = new NvGeSphere (aRadius, PointOf (aPos.Location()));
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
 
   // Cylinder: a coaxial cylinder with the radius grown (or shrunk) by the
@@ -329,11 +329,11 @@ Adesk::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
     const double aRadius = aCylinder->Radius() + NormalSense (aPos) * aDist;
     if (aRadius <= 0.0)
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
     theSurface = new NvGeCylinder (aRadius, PointOf (aPos.Location()),
                                    VectorOf (aPos.Direction()));
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
 
   // Cone: the same half angle; the base circle radius grows by
@@ -349,13 +349,13 @@ Adesk::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
     const double aBaseRadius = aCone->RefRadius() + aSense * aDist * aCos;
     if (aBaseRadius <= 0.0)
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
     gp_Vec aShift (aPos.Direction());
     aShift.Multiply (-aSense * aDist * aSin);
     theSurface = new NvGeCone (aCos, aSin, PointOf (aPos.Location().Translated (aShift)),
                                aBaseRadius, VectorOf (aPos.Direction()));
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
 
   // Torus: the same major radius and center; the minor radius grows (or
@@ -367,14 +367,14 @@ Adesk::Boolean NvGeOffsetSurface::getSurface (NvGeSurface*& theSurface) const
     const double aMinor = aTorus->MinorRadius() + NormalSense (aPos) * aDist;
     if (aMinor <= 0.0)
     {
-      return Adesk::kFalse;
+      return Nova::kFalse;
     }
     theSurface = new NvGeTorus (aTorus->MajorRadius(), aMinor,
                                 PointOf (aPos.Location()), VectorOf (aPos.Direction()));
-    return Adesk::kTrue;
+    return Nova::kTrue;
   }
 
-  return Adesk::kFalse;
+  return Nova::kFalse;
 }
 
 //=================================================================================================
@@ -398,12 +398,12 @@ double NvGeOffsetSurface::offsetDist () const
 //=================================================================================================
 
 NvGeOffsetSurface& NvGeOffsetSurface::set (NvGeSurface* theBaseSurface, double theOffsetDist,
-                                           Adesk::Boolean theMakeCopy)
+                                           Nova::Boolean theMakeCopy)
 {
   // Build the new geometry BEFORE touching this entity, so a rejection
   // leaves the offset surface unchanged.
   const occ::handle<Geom_Surface> aBasis = BasisHandleOf (theBaseSurface,
-                                                          theMakeCopy != Adesk::kFalse, "set");
+                                                          theMakeCopy != Nova::kFalse, "set");
   const occ::handle<Geom_Surface> anOffset = MakeOffset (aBasis, theOffsetDist, "set");
   if (mpImpEnt->RefCount() > 1)
   {

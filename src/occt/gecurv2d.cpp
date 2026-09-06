@@ -423,7 +423,7 @@ NvGeCurve2d& NvGeCurve2d::setInterval ()
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::setInterval (const NvGeInterval& theIntrvl)
+Nova::Boolean NvGeCurve2d::setInterval (const NvGeInterval& theIntrvl)
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   double aNatFirst = 0.0;
@@ -582,7 +582,7 @@ void NvGeCurve2d::getClosestPointTo (const NvGeCurve2d& theCurve, NvGePointOnCur
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::getNormalPoint (const NvGePoint2d& thePnt, NvGePointOnCurve2d& thePntOnCrv,
+Nova::Boolean NvGeCurve2d::getNormalPoint (const NvGePoint2d& thePnt, NvGePointOnCurve2d& thePntOnCrv,
                                             const NvGeTol& theTol) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
@@ -623,14 +623,14 @@ Adesk::Boolean NvGeCurve2d::getNormalPoint (const NvGePoint2d& thePnt, NvGePoint
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::isOn (const NvGePoint2d& thePnt, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve2d::isOn (const NvGePoint2d& thePnt, const NvGeTol& theTol) const
 {
   return distanceTo (thePnt, theTol) <= theTol.equalPoint();
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::isOn (const NvGePoint2d& thePnt, double& theParam, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve2d::isOn (const NvGePoint2d& thePnt, double& theParam, const NvGeTol& theTol) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   double aParam = 0.0;
@@ -647,7 +647,7 @@ Adesk::Boolean NvGeCurve2d::isOn (const NvGePoint2d& thePnt, double& theParam, c
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::isOn (double theParam, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve2d::isOn (double theParam, const NvGeTol& theTol) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   const double aFirst = PlainParam (aCurve->FirstParameter());
@@ -692,7 +692,7 @@ void NvGeCurve2d::getTrimmedOffset (double theDistance, NvGeVoidPointerArray& th
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::isClosed (const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve2d::isClosed (const NvGeTol& theTol) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   const double aFirst = PlainParam (aCurve->FirstParameter());
@@ -715,7 +715,7 @@ Adesk::Boolean NvGeCurve2d::isClosed (const NvGeTol& theTol) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::isPeriodic (double& thePeriod) const
+Nova::Boolean NvGeCurve2d::isPeriodic (double& thePeriod) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   // A trimmed restriction carries a sub-range of the periodic domain and is
@@ -742,7 +742,7 @@ Adesk::Boolean NvGeCurve2d::isPeriodic (double& thePeriod) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::isLinear (NvGeLine2d& theLine, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve2d::isLinear (NvGeLine2d& theLine, const NvGeTol& theTol) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   const occ::handle<Geom2d_Line> aLine = occ::down_cast<Geom2d_Line> (BasisOf (aCurve));
@@ -804,7 +804,7 @@ double NvGeCurve2d::length (double theFromParam, double theToParam, double theTo
 
 //=================================================================================================
 
-double NvGeCurve2d::paramAtLength (double theDatumParam, double theLength, Adesk::Boolean thePosParamDir,
+double NvGeCurve2d::paramAtLength (double theDatumParam, double theLength, Nova::Boolean thePosParamDir,
                                    double theTol) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
@@ -843,7 +843,7 @@ double NvGeCurve2d::paramAtLength (double theDatumParam, double theLength, Adesk
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::area (double theStartParam, double theEndParam, double& theValue,
+Nova::Boolean NvGeCurve2d::area (double theStartParam, double theEndParam, double& theValue,
                                   const NvGeTol&) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
@@ -874,7 +874,7 @@ Adesk::Boolean NvGeCurve2d::area (double theStartParam, double theEndParam, doub
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::isDegenerate (NvGe::EntityId& theDegenerateType, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve2d::isDegenerate (NvGe::EntityId& theDegenerateType, const NvGeTol& theTol) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   const double aFirst = PlainParam (aCurve->FirstParameter());
@@ -905,7 +905,7 @@ Adesk::Boolean NvGeCurve2d::isDegenerate (NvGe::EntityId& theDegenerateType, con
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::isDegenerate (NvGeEntity2d*& theConvertedEntity, const NvGeTol& theTol) const
+Nova::Boolean NvGeCurve2d::isDegenerate (NvGeEntity2d*& theConvertedEntity, const NvGeTol& theTol) const
 {
   NvGe::EntityId aType = NvGe::kEntity2d;
   if (!isDegenerate (aType, theTol))
@@ -957,7 +957,7 @@ void NvGeCurve2d::getSplitCurves (double theParam, NvGeCurve2d*& thePiece1, NvGe
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::explode (NvGeVoidPointerArray&, NvGeIntArray&, const NvGeInterval*) const
+Nova::Boolean NvGeCurve2d::explode (NvGeVoidPointerArray&, NvGeIntArray&, const NvGeInterval*) const
 {
   // A generic curve has no sub-curve structure to explode into.
   return false;
@@ -1070,7 +1070,7 @@ NvGeBoundBlock2d NvGeCurve2d::orthoBoundBlock (const NvGeInterval& theRange) con
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::hasStartPoint (NvGePoint2d& theStartPoint) const
+Nova::Boolean NvGeCurve2d::hasStartPoint (NvGePoint2d& theStartPoint) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   const double aFirst = aCurve->FirstParameter();
@@ -1084,7 +1084,7 @@ Adesk::Boolean NvGeCurve2d::hasStartPoint (NvGePoint2d& theStartPoint) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurve2d::hasEndPoint (NvGePoint2d& theEndPoint) const
+Nova::Boolean NvGeCurve2d::hasEndPoint (NvGePoint2d& theEndPoint) const
 {
   const occ::handle<Geom2d_Curve> aCurve = NvGeCurve2dOf (mpImpEnt);
   const double aLast = aCurve->LastParameter();

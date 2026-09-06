@@ -16,15 +16,15 @@ NvGeLinearEnt3d : public NvGeCurve3d
 public:
     // Intersection with other geometric objects.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith (const NvGeLinearEnt3d& line,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith (const NvGeLinearEnt3d& line,
                                   NvGePoint3d& intPt,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean intersectWith (const NvGePlanarEnt& plane, NvGePoint3d& intPnt,
+    GE_DLLEXPIMPORT Nova::Boolean intersectWith (const NvGePlanarEnt& plane, NvGePoint3d& intPnt,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Projection-intersection with other geometric objects.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean projIntersectWith(const NvGeLinearEnt3d& line,
+    GE_DLLEXPIMPORT Nova::Boolean projIntersectWith(const NvGeLinearEnt3d& line,
                                   const NvGeVector3d& projDir,
                                   NvGePoint3d& pntOnThisLine,
                                   NvGePoint3d& pntOnOtherLine,
@@ -32,35 +32,35 @@ public:
 
     // Find the overlap with other NvGeLinearEnt object
     //
-    GE_DLLEXPIMPORT Adesk::Boolean overlap       (const NvGeLinearEnt3d& line,
+    GE_DLLEXPIMPORT Nova::Boolean overlap       (const NvGeLinearEnt3d& line,
                                   NvGeLinearEnt3d*& overlap,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Containment tests.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isOn          (const NvGePoint3d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean isOn          (const NvGePoint3d& pnt,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isOn          (const NvGePoint3d& pnt, double& param,
+    GE_DLLEXPIMPORT Nova::Boolean isOn          (const NvGePoint3d& pnt, double& param,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isOn          (double param,
+    GE_DLLEXPIMPORT Nova::Boolean isOn          (double param,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isOn          (const NvGePlane& plane,
+    GE_DLLEXPIMPORT Nova::Boolean isOn          (const NvGePlane& plane,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Direction tests.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isParallelTo  (const NvGeLinearEnt3d& line,
+    GE_DLLEXPIMPORT Nova::Boolean isParallelTo  (const NvGeLinearEnt3d& line,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isParallelTo  (const NvGePlanarEnt& plane,
+    GE_DLLEXPIMPORT Nova::Boolean isParallelTo  (const NvGePlanarEnt& plane,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isPerpendicularTo(const NvGeLinearEnt3d& line,
+    GE_DLLEXPIMPORT Nova::Boolean isPerpendicularTo(const NvGeLinearEnt3d& line,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
-    GE_DLLEXPIMPORT Adesk::Boolean isPerpendicularTo(const NvGePlanarEnt& plane,
+    GE_DLLEXPIMPORT Nova::Boolean isPerpendicularTo(const NvGePlanarEnt& plane,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Test if two lines are colinear.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean isColinearTo  (const NvGeLinearEnt3d& line,
+    GE_DLLEXPIMPORT Nova::Boolean isColinearTo  (const NvGeLinearEnt3d& line,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 
     // Perpendicular through a given point

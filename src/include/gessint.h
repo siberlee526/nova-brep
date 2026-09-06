@@ -50,9 +50,9 @@ public:
     //
     int                numResults (NvGe::NvGeIntersectError& err) const;
                     // Counts the number of intersection results of any dimension.
-    NvGeCurve3d*   intCurve (int intNum, Adesk::Boolean isExternal, NvGe::NvGeIntersectError& err) const; 
+    NvGeCurve3d*   intCurve (int intNum, Nova::Boolean isExternal, NvGe::NvGeIntersectError& err) const; 
 					// Returns NULL if the dimension of  this intersection is not 1.
-    NvGeCurve2d*   intParamCurve(int num, Adesk::Boolean isExternal, Adesk::Boolean isFirst, NvGe::NvGeIntersectError& err) const;
+    NvGeCurve2d*   intParamCurve(int num, Nova::Boolean isExternal, Nova::Boolean isFirst, NvGe::NvGeIntersectError& err) const;
 					// Returns NULL if the dimension of  this intersection is not 1.
                     // if isFirst returns parameter curve on 1st surface, otherwise returns parameter curve on 2nd surface.
 	NvGePoint3d  intPoint (int intNum, NvGe::NvGeIntersectError& err) const;

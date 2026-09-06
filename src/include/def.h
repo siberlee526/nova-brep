@@ -20,7 +20,7 @@
     #error Visual C++ or Clang compiler is required.
 #endif
 
-#if defined(ACPAL_API) || !defined(_ADESK_CROSS_PLATFORM_) || defined(ACPAL_TEST)
+#if defined(ACPAL_API) || !defined(_NOVA_CROSS_PLATFORM_) || defined(ACPAL_TEST)
 #define AC_NON_CROSS_PLATFORM_API
 #endif
 

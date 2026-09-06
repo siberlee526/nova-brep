@@ -15,13 +15,13 @@ NvGeExternalBoundedSurface : public NvGeSurface
 public:
    NvGeExternalBoundedSurface();
    NvGeExternalBoundedSurface(void* surfaceDef, NvGe::ExternalEntityKind surfaceKind,
-                              Adesk::Boolean makeCopy = Adesk::kTrue);
+                              Nova::Boolean makeCopy = Nova::kTrue);
    NvGeExternalBoundedSurface(const NvGeExternalBoundedSurface&);
 
    // Surface data.
    //
    NvGe::ExternalEntityKind   externalSurfaceKind  () const;
-   Adesk::Boolean             isDefined            () const;
+   Nova::Boolean             isDefined            () const;
    void                       getExternalSurface   (void*& surfaceDef) const;
 
     // Access to unbounded surface.
@@ -32,13 +32,13 @@ public:
 	void getBaseSurface        (NvGeExternalSurface& unboundedSurfaceDef) const;
 
     // Type queries on the unbounded base surface.
-    Adesk::Boolean isPlane() const;
-    Adesk::Boolean isSphere() const;
-    Adesk::Boolean isCylinder() const;
-    Adesk::Boolean isCone() const;
-    Adesk::Boolean isTorus() const;
-    Adesk::Boolean isNurbs() const;
-    Adesk::Boolean isExternalSurface() const;
+    Nova::Boolean isPlane() const;
+    Nova::Boolean isSphere() const;
+    Nova::Boolean isCylinder() const;
+    Nova::Boolean isCone() const;
+    Nova::Boolean isTorus() const;
+    Nova::Boolean isNurbs() const;
+    Nova::Boolean isExternalSurface() const;
 
          // Access to the boundary data.
     //
@@ -49,7 +49,7 @@ public:
     //
     NvGeExternalBoundedSurface& set  (void* surfaceDef,
                                       NvGe::ExternalEntityKind surfaceKind,
-                                      Adesk::Boolean makeCopy = Adesk::kTrue);
+                                      Nova::Boolean makeCopy = Nova::kTrue);
 
     // Assignment operator.
     //
@@ -57,7 +57,7 @@ public:
 
     // Surface ownership.
     //
-        Adesk::Boolean               isOwnerOfSurface() const;
+        Nova::Boolean               isOwnerOfSurface() const;
     NvGeExternalBoundedSurface&  setToOwnSurface();
 };
 

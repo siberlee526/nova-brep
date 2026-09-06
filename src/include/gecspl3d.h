@@ -45,7 +45,7 @@ public:
     GE_DLLEXPIMPORT NvGeCubicSplineCurve3d(const NvGeKnotVector& knots,
 	                   const NvGePoint3dArray& fitPnts,
 			   const NvGeVector3dArray& firstDerivs,
-	                   Adesk::Boolean isPeriodic = Adesk::kFalse);
+	                   Nova::Boolean isPeriodic = Nova::kFalse);
 
     // Definition of spline
     //

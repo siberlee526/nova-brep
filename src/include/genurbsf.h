@@ -30,10 +30,10 @@ public:
 
    // Geometric properties.
    //
-   Adesk::Boolean   isRationalInU      () const;
-   Adesk::Boolean   isPeriodicInU      (double&) const;
-   Adesk::Boolean   isRationalInV      () const;
-   Adesk::Boolean   isPeriodicInV      (double&) const;
+   Nova::Boolean   isRationalInU      () const;
+   Nova::Boolean   isPeriodicInU      (double&) const;
+   Nova::Boolean   isRationalInV      () const;
+   Nova::Boolean   isPeriodicInV      (double&) const;
 
    int singularityInU () const;
    int singularityInV () const;
@@ -45,7 +45,7 @@ public:
    int            degreeInV            () const;
    int            numControlPointsInV  () const;
    void           getControlPoints     (NvGePoint3dArray& points) const;
-   Adesk::Boolean getWeights           (NvGeDoubleArray& weights) const;
+   Nova::Boolean getWeights           (NvGeDoubleArray& weights) const;
 
    int       numKnotsInU    () const;
    void      getUKnots      (NvGeKnotVector& uKnots) const;

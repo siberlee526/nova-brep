@@ -327,7 +327,7 @@ NvGeEllipArc2d::NvGeEllipArc2d (const NvGeCircArc2d& theArc)
   {
     mpImpEnt->Unref();
   }
-  const bool isClockWise = theArc.isClockWise() == Adesk::kTrue;
+  const bool isClockWise = theArc.isClockWise() == Nova::kTrue;
   const NvGeVector2d aRef = theArc.refVec();
   EllDef aDef;
   aDef.Center = theArc.center();
@@ -390,7 +390,7 @@ NvGeEllipArc2d::NvGeEllipArc2d (const NvGePoint2d& theCent, const NvGeVector2d& 
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEllipArc2d::intersectWith (const NvGeLinearEnt2d& theLine, int& theIntn,
+Nova::Boolean NvGeEllipArc2d::intersectWith (const NvGeLinearEnt2d& theLine, int& theIntn,
                                               NvGePoint2d& theP1, NvGePoint2d& theP2,
                                               const NvGeTol& theTol) const
 {
@@ -459,7 +459,7 @@ Adesk::Boolean NvGeEllipArc2d::intersectWith (const NvGeLinearEnt2d& theLine, in
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEllipArc2d::isCircular (const NvGeTol& theTol) const
+Nova::Boolean NvGeEllipArc2d::isCircular (const NvGeTol& theTol) const
 {
   const EllDef aDef = EllDefOf (mpImpEnt, "isCircular");
   return std::abs (aDef.MajorRadius - aDef.MinorRadius) <= theTol.equalPoint();
@@ -467,7 +467,7 @@ Adesk::Boolean NvGeEllipArc2d::isCircular (const NvGeTol& theTol) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEllipArc2d::isInside (const NvGePoint2d& thePnt, const NvGeTol& theTol) const
+Nova::Boolean NvGeEllipArc2d::isInside (const NvGePoint2d& thePnt, const NvGeTol& theTol) const
 {
   const EllDef aDef = EllDefOf (mpImpEnt, "isInside");
   const NvGeVector2d aRel (thePnt.x - aDef.Center.x, thePnt.y - aDef.Center.y);
@@ -546,7 +546,7 @@ NvGePoint2d NvGeEllipArc2d::endPoint () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEllipArc2d::isClockWise () const
+Nova::Boolean NvGeEllipArc2d::isClockWise () const
 {
   return EllDefOf (mpImpEnt, "isClockWise").IsClockWise;
 }
@@ -661,7 +661,7 @@ NvGeEllipArc2d& NvGeEllipArc2d::set (const NvGePoint2d& theCent,
 
 NvGeEllipArc2d& NvGeEllipArc2d::set (const NvGeCircArc2d& theArc)
 {
-  const bool isClockWise = theArc.isClockWise() == Adesk::kTrue;
+  const bool isClockWise = theArc.isClockWise() == Nova::kTrue;
   const NvGeVector2d aRef = theArc.refVec();
   EllDef aDef;
   aDef.Center = theArc.center();

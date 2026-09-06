@@ -248,7 +248,7 @@ NvGeMatrix3d NvGeMatrix3d::inverse (const NvGeTol& theTol) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeMatrix3d::isSingular (const NvGeTol& theTol) const
+Nova::Boolean NvGeMatrix3d::isSingular (const NvGeTol& theTol) const
 {
   return std::abs (det()) <= theTol.equalPoint();
 }
@@ -297,7 +297,7 @@ bool NvGeMatrix3d::isEqualTo (const NvGeMatrix3d& theMat, const NvGeTol& theTol)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeMatrix3d::isUniScaledOrtho (const NvGeTol& theTol) const
+Nova::Boolean NvGeMatrix3d::isUniScaledOrtho (const NvGeTol& theTol) const
 {
   const double aTolVec = theTol.equalVector();
   double aNorms[3];
@@ -336,7 +336,7 @@ Adesk::Boolean NvGeMatrix3d::isUniScaledOrtho (const NvGeTol& theTol) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeMatrix3d::isScaledOrtho (const NvGeTol& theTol) const
+Nova::Boolean NvGeMatrix3d::isScaledOrtho (const NvGeTol& theTol) const
 {
   const double aTolVec = theTol.equalVector();
   for (int aCol = 0; aCol < 3; ++aCol)
@@ -918,7 +918,7 @@ NvGeMatrix2d NvGeMatrix3d::convertToLocal (NvGeVector3d& theNormal, double& theE
 
 //=================================================================================================
 
-Adesk::Boolean NvGeMatrix3d::inverse (NvGeMatrix3d& theInvMat, double theTol) const
+Nova::Boolean NvGeMatrix3d::inverse (NvGeMatrix3d& theInvMat, double theTol) const
 {
   if (std::abs (det()) <= theTol)
   {

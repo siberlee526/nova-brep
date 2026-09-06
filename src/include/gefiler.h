@@ -16,7 +16,7 @@
 // class NvString;
 
 // class 
-//  ADESK_NO_VTABLE
+//  NOVA_NO_VTABLE
 // NvGeFiler
 // {
 // protected:
@@ -25,9 +25,9 @@
 //     // Read/write functions.
 //     //
 //     GE_DLLEXPIMPORT virtual
-//     Acad::ErrorStatus      readBoolean(Adesk::Boolean*) = 0; 
+//     Acad::ErrorStatus      readBoolean(Nova::Boolean*) = 0; 
 //     GE_DLLEXPIMPORT virtual
-//     Acad::ErrorStatus      writeBoolean(Adesk::Boolean) = 0;
+//     Acad::ErrorStatus      writeBoolean(Nova::Boolean) = 0;
 
 //     GE_DLLEXPIMPORT virtual
 //     Acad::ErrorStatus      readBool(bool*) = 0; 
@@ -50,9 +50,9 @@
 //     Acad::ErrorStatus      writeShort(short) = 0;
      
 //     GE_DLLEXPIMPORT virtual
-//     Acad::ErrorStatus      readLong(Adesk::Int32*) = 0; 
+//     Acad::ErrorStatus      readLong(Nova::Int32*) = 0; 
 //     GE_DLLEXPIMPORT virtual
-//     Acad::ErrorStatus      writeLong(Adesk::Int32) = 0;
+//     Acad::ErrorStatus      writeLong(Nova::Int32) = 0;
      
 //     // Unicode: this is assumed to be a binary value, not a text character!
 //     GE_DLLEXPIMPORT virtual
@@ -66,9 +66,9 @@
 //     Acad::ErrorStatus      writeUShort(unsigned short) = 0;
      
 //     GE_DLLEXPIMPORT virtual
-//     Acad::ErrorStatus      readULong(Adesk::UInt32*) = 0; 
+//     Acad::ErrorStatus      readULong(Nova::UInt32*) = 0; 
 //     GE_DLLEXPIMPORT virtual
-//     Acad::ErrorStatus      writeULong(Adesk::UInt32) = 0;
+//     Acad::ErrorStatus      writeULong(Nova::UInt32) = 0;
           
 //     GE_DLLEXPIMPORT virtual
 //     Acad::ErrorStatus      readDouble(double*) = 0; 
@@ -101,9 +101,9 @@
 //     AcDbDwgFiler*          dwgFiler();
 
 //     GE_DLLEXPIMPORT virtual
-//     Acad::ErrorStatus      readBytes(void*, Adesk::UInt32) = 0;
+//     Acad::ErrorStatus      readBytes(void*, Nova::UInt32) = 0;
 //     GE_DLLEXPIMPORT virtual
-//     Acad::ErrorStatus      writeBytes(const void*, Adesk::UInt32) = 0;
+//     Acad::ErrorStatus      writeBytes(const void*, Nova::UInt32) = 0;
 // };
 
 // inline

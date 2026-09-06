@@ -116,7 +116,7 @@ TEST_F (NvGeNurbSurfaceTest, DefinitionRoundTrip_PreservesBilinearDefinition)
   ExpectPointNear (anOutPoles[3], 2.0, 3.0, 2.0, THE_TEST_TOL);
 
   // Non-rational: the weights array stays empty.
-  EXPECT_EQ (aNurb.getWeights (anOutWeights), Adesk::kFalse);
+  EXPECT_EQ (aNurb.getWeights (anOutWeights), Nova::kFalse);
   EXPECT_TRUE (anOutWeights.isEmpty());
 
   // Knot vectors come back flat (each knot repeated per multiplicity).
@@ -223,11 +223,11 @@ TEST_F (NvGeNurbSurfaceTest, RationalWeights_RoundTrip)
   const NvGeNurbSurface aNurb (1, 1, NvGe::kOpen, NvGe::kOpen, 2, 2,
                                aPoles, aWeights, aUKnots, aVKnots);
 
-  EXPECT_EQ (aNurb.isRationalInU(), Adesk::kTrue);
-  EXPECT_EQ (aNurb.isRationalInV(), Adesk::kTrue);
+  EXPECT_EQ (aNurb.isRationalInU(), Nova::kTrue);
+  EXPECT_EQ (aNurb.isRationalInV(), Nova::kTrue);
 
   NvGeDoubleArray anOutWeights;
-  EXPECT_EQ (aNurb.getWeights (anOutWeights), Adesk::kTrue);
+  EXPECT_EQ (aNurb.getWeights (anOutWeights), Nova::kTrue);
   ASSERT_EQ (anOutWeights.length(), 4);
   EXPECT_NEAR (anOutWeights[0], 1.0, THE_TEST_TOL);
   EXPECT_NEAR (anOutWeights[1], 2.0, THE_TEST_TOL);

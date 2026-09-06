@@ -354,7 +354,7 @@ TEST_F (NvGeCurve2dTest, ParamAtLength)
   EXPECT_NEAR (anArc.paramAtLength (0.0, THE_PI / 2.0), THE_PI / 4.0, THE_PROJECT_TOL);
   EXPECT_NEAR (anArc.paramAtLength (0.0, THE_PI), THE_PI / 2.0, THE_PROJECT_TOL); // reaches the end
   EXPECT_NEAR (anArc.paramAtLength (0.0, 0.0), 0.0, THE_TEST_TOL);                // <= tol: the datum
-  EXPECT_NEAR (anArc.paramAtLength (THE_PI / 2.0, THE_PI / 2.0, Adesk::kFalse),
+  EXPECT_NEAR (anArc.paramAtLength (THE_PI / 2.0, THE_PI / 2.0, Nova::kFalse),
                THE_PI / 4.0, THE_PROJECT_TOL);
 }
 

@@ -66,7 +66,7 @@ public:
   std::vector<gp_Pnt>            Points;
   std::vector<NvGe::NvGeXConfig> Config1; // curve1 relative to curve2
   std::vector<NvGe::NvGeXConfig> Config2; // curve2 relative to curve1
-  std::vector<Adesk::Boolean>    Tangential;
+  std::vector<Nova::Boolean>    Tangential;
   std::vector<double>            PointTols;
 
   occ::handle<NvGeEntityData> Clone() const override
@@ -373,9 +373,9 @@ void PermutePoints (NvGeCurveCurveInt3dData& theData, const std::vector<int>& th
   };
   aPermuteCfg (theData.Config1);
   aPermuteCfg (theData.Config2);
-  auto aPermuteFlg = [theOrder] (std::vector<Adesk::Boolean>& theVec)
+  auto aPermuteFlg = [theOrder] (std::vector<Nova::Boolean>& theVec)
   {
-    std::vector<Adesk::Boolean> aCopy = theVec;
+    std::vector<Nova::Boolean> aCopy = theVec;
     for (size_t anIdx = 0; anIdx < theOrder.size(); ++anIdx)
     {
       theVec[anIdx] = aCopy[theOrder[anIdx]];
@@ -552,7 +552,7 @@ void NvGeCurveCurveInt3d::getIntConfigs (int theIntNum, NvGe::NvGeXConfig& theCo
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveCurveInt3d::isTangential (int theIntNum) const
+Nova::Boolean NvGeCurveCurveInt3d::isTangential (int theIntNum) const
 {
   const NvGeCurveCurveInt3dData* aData = DataOf (mpImpEnt);
   if (theIntNum < 0 || theIntNum >= static_cast<int> (aData->Tangential.size()))
@@ -564,7 +564,7 @@ Adesk::Boolean NvGeCurveCurveInt3d::isTangential (int theIntNum) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveCurveInt3d::isTransversal (int theIntNum) const
+Nova::Boolean NvGeCurveCurveInt3d::isTransversal (int theIntNum) const
 {
   const NvGeCurveCurveInt3dData* aData = DataOf (mpImpEnt);
   if (theIntNum < 0 || theIntNum >= static_cast<int> (aData->Tangential.size()))
@@ -595,7 +595,7 @@ int NvGeCurveCurveInt3d::overlapCount () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCurveCurveInt3d::overlapDirection () const
+Nova::Boolean NvGeCurveCurveInt3d::overlapDirection () const
 {
   return false;
 }

@@ -148,7 +148,7 @@ NvGeScale2d& NvGeScale2d::invert()
 
 //=================================================================================================
 
-Adesk::Boolean NvGeScale2d::isProportional (const NvGeTol& theTol) const
+Nova::Boolean NvGeScale2d::isProportional (const NvGeTol& theTol) const
 {
   return std::abs (std::abs (sx) - std::abs (sy)) <= theTol.equalVector();
 }

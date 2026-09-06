@@ -52,7 +52,7 @@ occ::handle<Geom_Plane> PlaneOf (const NvGeImpEntity3d* theImp)
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlanarEnt::intersectWith (const NvGeLinearEnt3d& theLinEnt,
+Nova::Boolean NvGePlanarEnt::intersectWith (const NvGeLinearEnt3d& theLinEnt,
                                              NvGePoint3d& thePnt, const NvGeTol& theTol) const
 {
   // Ray-plane intersection along the line parameterization.
@@ -158,7 +158,7 @@ NvGePoint3d NvGePlanarEnt::closestPointToPlanarEnt (const NvGePlanarEnt& theOthe
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlanarEnt::isParallelTo (const NvGeLinearEnt3d& theLinEnt,
+Nova::Boolean NvGePlanarEnt::isParallelTo (const NvGeLinearEnt3d& theLinEnt,
                                             const NvGeTol& theTol) const
 {
   return std::abs (normal().dotProduct (theLinEnt.direction())) <= theTol.equalVector();
@@ -166,7 +166,7 @@ Adesk::Boolean NvGePlanarEnt::isParallelTo (const NvGeLinearEnt3d& theLinEnt,
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlanarEnt::isParallelTo (const NvGePlanarEnt& theOtherPlnEnt,
+Nova::Boolean NvGePlanarEnt::isParallelTo (const NvGePlanarEnt& theOtherPlnEnt,
                                             const NvGeTol& theTol) const
 {
   const NvGeVector3d aN1 = normal();
@@ -179,7 +179,7 @@ Adesk::Boolean NvGePlanarEnt::isParallelTo (const NvGePlanarEnt& theOtherPlnEnt,
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlanarEnt::isPerpendicularTo (const NvGeLinearEnt3d& theLinEnt,
+Nova::Boolean NvGePlanarEnt::isPerpendicularTo (const NvGeLinearEnt3d& theLinEnt,
                                                  const NvGeTol& theTol) const
 {
   return std::abs (normal().dotProduct (theLinEnt.direction()) - 1.0) <= theTol.equalVector()
@@ -188,7 +188,7 @@ Adesk::Boolean NvGePlanarEnt::isPerpendicularTo (const NvGeLinearEnt3d& theLinEn
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlanarEnt::isPerpendicularTo (const NvGePlanarEnt& theLinEnt,
+Nova::Boolean NvGePlanarEnt::isPerpendicularTo (const NvGePlanarEnt& theLinEnt,
                                                  const NvGeTol& theTol) const
 {
   return std::abs (normal().dotProduct (theLinEnt.normal())) <= theTol.equalVector();
@@ -196,7 +196,7 @@ Adesk::Boolean NvGePlanarEnt::isPerpendicularTo (const NvGePlanarEnt& theLinEnt,
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlanarEnt::isCoplanarTo (const NvGePlanarEnt& theOtherPlnEnt,
+Nova::Boolean NvGePlanarEnt::isCoplanarTo (const NvGePlanarEnt& theOtherPlnEnt,
                                             const NvGeTol& theTol) const
 {
   if (!isParallelTo (theOtherPlnEnt, theTol))

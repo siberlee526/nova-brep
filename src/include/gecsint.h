@@ -55,7 +55,7 @@ public:
     void               getPointOnCurve (int intNum, NvGePointOnCurve3d&, NvGeIntersectError& err) const;
     void               getPointOnSurface (int intNum, NvGePointOnSurface&, NvGeIntersectError& err) const;
     void			   getIntConfigs (int intNum, NvGe::csiConfig& lower, 
-								NvGe::csiConfig& higher, Adesk::Boolean& smallAngle, NvGeIntersectError& err) const;
+								NvGe::csiConfig& higher, Nova::Boolean& smallAngle, NvGeIntersectError& err) const;
 
         
    

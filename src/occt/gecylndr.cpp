@@ -326,7 +326,7 @@ NvGeVector3d NvGeCylinder::refAxis() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCylinder::isOuterNormal() const
+Nova::Boolean NvGeCylinder::isOuterNormal() const
 {
   // OCCT builds elementary surfaces with the normal oriented towards the
   // outside region of the cylinder.
@@ -335,7 +335,7 @@ Adesk::Boolean NvGeCylinder::isOuterNormal() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCylinder::isClosed (const NvGeTol& theTol) const
+Nova::Boolean NvGeCylinder::isClosed (const NvGeTol& theTol) const
 {
   // Closed means a full revolution in u; a bounded height still leaves a
   // closed tube.
@@ -412,7 +412,7 @@ NvGeCylinder& NvGeCylinder::operator = (const NvGeCylinder& theSrc)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCylinder::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& theIntn,
+Nova::Boolean NvGeCylinder::intersectWith (const NvGeLinearEnt3d& theLinEnt, int& theIntn,
                                             NvGePoint3d& thePnt1, NvGePoint3d& thePnt2,
                                             const NvGeTol& theTol) const
 {

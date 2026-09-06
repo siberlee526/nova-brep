@@ -21,7 +21,7 @@ public:
     GE_DLLEXPIMPORT const NvGeCurve3d*  curve             () const;
     GE_DLLEXPIMPORT NvGeVector3d        normal            () const; 
     GE_DLLEXPIMPORT double              offsetDistance    () const;
-	GE_DLLEXPIMPORT Adesk::Boolean		paramDirection    () const;
+	GE_DLLEXPIMPORT Nova::Boolean		paramDirection    () const;
 	GE_DLLEXPIMPORT NvGeMatrix3d		transformation    () const;
 
 	// Set methods

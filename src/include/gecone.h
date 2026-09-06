@@ -43,8 +43,8 @@ public:
     NvGeVector3d     axisOfSymmetry    () const;
     NvGeVector3d     refAxis           () const;
     NvGePoint3d      apex              () const;
-    Adesk::Boolean   isClosed          (const NvGeTol& tol = NvGeContext::gTol) const;
-    Adesk::Boolean   isOuterNormal     () const;
+    Nova::Boolean   isClosed          (const NvGeTol& tol = NvGeContext::gTol) const;
+    Nova::Boolean   isOuterNormal     () const;
 
 
     NvGeCone&        setBaseRadius     (double radius);
@@ -67,7 +67,7 @@ public:
 
     // Intersection with a linear entity
     //
-    Adesk::Boolean   intersectWith     (const NvGeLinearEnt3d& linEnt, int& intn,
+    Nova::Boolean   intersectWith     (const NvGeLinearEnt3d& linEnt, int& intn,
                                         NvGePoint3d& p1, NvGePoint3d& p2,
                                         const NvGeTol& tol = NvGeContext::gTol) const;
 };

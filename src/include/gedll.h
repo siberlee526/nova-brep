@@ -9,7 +9,7 @@
 #endif
 
 #ifdef  NVGE_INTERNAL
-#define GE_DLLEXPIMPORT ADESK_EXPORT
+#define GE_DLLEXPIMPORT NOVA_EXPORT
 #define GE_DLLDATAEXIMP __declspec(dllexport)
 #else
 //don't use __declspec(dllimport) so that we can use the .objs with both static and dynamc linking

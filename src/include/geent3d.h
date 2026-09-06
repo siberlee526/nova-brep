@@ -17,7 +17,7 @@ public:
 
     // Run time type information.
     //
-    GE_DLLEXPIMPORT Adesk::Boolean   isKindOf    (NvGe::EntityId entType) const;
+    GE_DLLEXPIMPORT Nova::Boolean   isKindOf    (NvGe::EntityId entType) const;
     GE_DLLEXPIMPORT NvGe::EntityId   type        () const;
 
     // Make a copy of the entity.
@@ -27,9 +27,9 @@ public:
 
     // Equivalence
     //
-    GE_DLLEXPIMPORT Adesk::Boolean   operator == (const NvGeEntity3d& entity) const;
-    GE_DLLEXPIMPORT Adesk::Boolean   operator != (const NvGeEntity3d& entity) const;
-    GE_DLLEXPIMPORT Adesk::Boolean   isEqualTo   (const NvGeEntity3d& ent,
+    GE_DLLEXPIMPORT Nova::Boolean   operator == (const NvGeEntity3d& entity) const;
+    GE_DLLEXPIMPORT Nova::Boolean   operator != (const NvGeEntity3d& entity) const;
+    GE_DLLEXPIMPORT Nova::Boolean   isEqualTo   (const NvGeEntity3d& ent,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
     // Matrix multiplication
     //
@@ -43,7 +43,7 @@ public:
                                   = NvGePoint3d::kOrigin);
     // Point containment
     //
-    GE_DLLEXPIMPORT Adesk::Boolean   isOn        (const NvGePoint3d& pnt,
+    GE_DLLEXPIMPORT Nova::Boolean   isOn        (const NvGePoint3d& pnt,
                                   const NvGeTol& tol = NvGeContext::gTol) const;
 protected:
     friend class NvGeImpEntity3d;

@@ -214,7 +214,7 @@ double NvGePlane::signedDistanceTo (const NvGePoint3d& thePnt) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlane::intersectWith (const NvGeLinearEnt3d& theLinEnt, NvGePoint3d& theResultPnt,
+Nova::Boolean NvGePlane::intersectWith (const NvGeLinearEnt3d& theLinEnt, NvGePoint3d& theResultPnt,
                                          const NvGeTol& theTol) const
 {
   return NvGePlanarEnt::intersectWith (theLinEnt, theResultPnt, theTol);
@@ -222,7 +222,7 @@ Adesk::Boolean NvGePlane::intersectWith (const NvGeLinearEnt3d& theLinEnt, NvGeP
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlane::intersectWith (const NvGePlane& theOtherPln, NvGeLine3d& theResultLine,
+Nova::Boolean NvGePlane::intersectWith (const NvGePlane& theOtherPln, NvGeLine3d& theResultLine,
                                          const NvGeTol& theTol) const
 {
   const gp_Pln aPln1 = PlaneOf (mpImpEnt)->Pln();
@@ -254,7 +254,7 @@ Adesk::Boolean NvGePlane::intersectWith (const NvGePlane& theOtherPln, NvGeLine3
 
 //=================================================================================================
 
-Adesk::Boolean NvGePlane::intersectWith (const NvGeBoundedPlane& theBndPln,
+Nova::Boolean NvGePlane::intersectWith (const NvGeBoundedPlane& theBndPln,
                                          NvGeLineSeg3d& theResultLineSeg,
                                          const NvGeTol& theTol) const
 {

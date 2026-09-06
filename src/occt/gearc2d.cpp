@@ -660,7 +660,7 @@ NvGeCircArc2d::NvGeCircArc2d (const NvGePoint2d& theCent, double theRadius)
 
 NvGeCircArc2d::NvGeCircArc2d (const NvGePoint2d& theCent, double theRadius,
                               double theStartAngle, double theEndAngle,
-                              const NvGeVector2d& theRefVec, Adesk::Boolean theIsClockWise)
+                              const NvGeVector2d& theRefVec, Nova::Boolean theIsClockWise)
 {
   if (mDelEnt && mpImpEnt != nullptr)
   {
@@ -672,7 +672,7 @@ NvGeCircArc2d::NvGeCircArc2d (const NvGePoint2d& theCent, double theRadius,
   aDef.StartAngle = theStartAngle;
   aDef.EndAngle = theEndAngle;
   aDef.RefVec = theRefVec;
-  aDef.IsClockWise = theIsClockWise == Adesk::kTrue;
+  aDef.IsClockWise = theIsClockWise == Nova::kTrue;
   NormalizeArcDef (aDef);
   mpImpEnt = new NvGeImpEntity3d (NvGe::kCircArc2d, BuildGeometry (aDef, "NvGeCircArc2d"));
   mpImpEnt->Ref();
@@ -701,7 +701,7 @@ NvGeCircArc2d::NvGeCircArc2d (const NvGePoint2d& theStart, const NvGePoint2d& th
 //=================================================================================================
 
 NvGeCircArc2d::NvGeCircArc2d (const NvGePoint2d& theStart, const NvGePoint2d& theEnd,
-                              double theBulge, Adesk::Boolean theBulgeFlag)
+                              double theBulge, Nova::Boolean theBulgeFlag)
 {
   if (mDelEnt && mpImpEnt != nullptr)
   {
@@ -709,7 +709,7 @@ NvGeCircArc2d::NvGeCircArc2d (const NvGePoint2d& theStart, const NvGePoint2d& th
   }
   mpImpEnt = new NvGeImpEntity3d (NvGe::kCircArc2d,
                                   BuildGeometry (ArcFromBulge (theStart, theEnd, theBulge,
-                                                               theBulgeFlag == Adesk::kTrue,
+                                                               theBulgeFlag == Nova::kTrue,
                                                                NvGeContext::gTol,
                                                                "NvGeCircArc2d"),
                                                  "NvGeCircArc2d"));
@@ -718,7 +718,7 @@ NvGeCircArc2d::NvGeCircArc2d (const NvGePoint2d& theStart, const NvGePoint2d& th
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCircArc2d::intersectWith (const NvGeLinearEnt2d& theLine, int& theIntn,
+Nova::Boolean NvGeCircArc2d::intersectWith (const NvGeLinearEnt2d& theLine, int& theIntn,
                                              NvGePoint2d& theP1, NvGePoint2d& theP2,
                                              const NvGeTol& theTol) const
 {
@@ -778,7 +778,7 @@ Adesk::Boolean NvGeCircArc2d::intersectWith (const NvGeLinearEnt2d& theLine, int
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCircArc2d::intersectWith (const NvGeCircArc2d& theArc, int& theIntn,
+Nova::Boolean NvGeCircArc2d::intersectWith (const NvGeCircArc2d& theArc, int& theIntn,
                                              NvGePoint2d& theP1, NvGePoint2d& theP2,
                                              const NvGeTol& theTol) const
 {
@@ -847,7 +847,7 @@ Adesk::Boolean NvGeCircArc2d::intersectWith (const NvGeCircArc2d& theArc, int& t
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCircArc2d::tangent (const NvGePoint2d& thePnt, NvGeLine2d& theLine,
+Nova::Boolean NvGeCircArc2d::tangent (const NvGePoint2d& thePnt, NvGeLine2d& theLine,
                                        const NvGeTol& theTol) const
 {
   NvGeError anError = NvGe::kOk;
@@ -856,7 +856,7 @@ Adesk::Boolean NvGeCircArc2d::tangent (const NvGePoint2d& thePnt, NvGeLine2d& th
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCircArc2d::tangent (const NvGePoint2d& thePnt, NvGeLine2d& theLine,
+Nova::Boolean NvGeCircArc2d::tangent (const NvGePoint2d& thePnt, NvGeLine2d& theLine,
                                        const NvGeTol& theTol, NvGeError& theError) const
 {
   const ArcDef aDef = ArcDefOf (mpImpEnt, "tangent");
@@ -885,7 +885,7 @@ Adesk::Boolean NvGeCircArc2d::tangent (const NvGePoint2d& thePnt, NvGeLine2d& th
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCircArc2d::isInside (const NvGePoint2d& thePnt, const NvGeTol& theTol) const
+Nova::Boolean NvGeCircArc2d::isInside (const NvGePoint2d& thePnt, const NvGeTol& theTol) const
 {
   const ArcDef aDef = ArcDefOf (mpImpEnt, "isInside");
   return PointDistance (thePnt, aDef.Center) < aDef.Radius - theTol.equalPoint();
@@ -921,7 +921,7 @@ double NvGeCircArc2d::endAng () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeCircArc2d::isClockWise () const
+Nova::Boolean NvGeCircArc2d::isClockWise () const
 {
   return ArcDefOf (mpImpEnt, "isClockWise").IsClockWise;
 }
@@ -1021,7 +1021,7 @@ NvGeCircArc2d& NvGeCircArc2d::set (const NvGePoint2d& theCent, double theRadius)
 
 NvGeCircArc2d& NvGeCircArc2d::set (const NvGePoint2d& theCent, double theRadius,
                                    double theAng1, double theAng2,
-                                   const NvGeVector2d& theRefVec, Adesk::Boolean theIsClockWise)
+                                   const NvGeVector2d& theRefVec, Nova::Boolean theIsClockWise)
 {
   ArcDef aDef;
   aDef.Center = theCent;
@@ -1029,7 +1029,7 @@ NvGeCircArc2d& NvGeCircArc2d::set (const NvGePoint2d& theCent, double theRadius,
   aDef.StartAngle = theAng1;
   aDef.EndAngle = theAng2;
   aDef.RefVec = theRefVec;
-  aDef.IsClockWise = theIsClockWise == Adesk::kTrue;
+  aDef.IsClockWise = theIsClockWise == Nova::kTrue;
   NormalizeArcDef (aDef);
   ReplaceGeometry (mpImpEnt, BuildGeometry (aDef, "set"));
   return *this;
@@ -1066,11 +1066,11 @@ NvGeCircArc2d& NvGeCircArc2d::set (const NvGePoint2d& theStart, const NvGePoint2
 //=================================================================================================
 
 NvGeCircArc2d& NvGeCircArc2d::set (const NvGePoint2d& theStart, const NvGePoint2d& theEnd,
-                                   double theBulge, Adesk::Boolean theBulgeFlag)
+                                   double theBulge, Nova::Boolean theBulgeFlag)
 {
   ReplaceGeometry (mpImpEnt,
                    BuildGeometry (ArcFromBulge (theStart, theEnd, theBulge,
-                                                theBulgeFlag == Adesk::kTrue,
+                                                theBulgeFlag == Nova::kTrue,
                                                 NvGeContext::gTol, "set"),
                                   "set"));
   return *this;
@@ -1080,9 +1080,9 @@ NvGeCircArc2d& NvGeCircArc2d::set (const NvGePoint2d& theStart, const NvGePoint2
 
 NvGeCircArc2d& NvGeCircArc2d::set (const NvGeCurve2d& theCurve1, const NvGeCurve2d& theCurve2,
                                    double theRadius, double& theParam1, double& theParam2,
-                                   Adesk::Boolean& theSuccess)
+                                   Nova::Boolean& theSuccess)
 {
-  theSuccess = Adesk::kFalse;
+  theSuccess = Nova::kFalse;
   const NvGeTol& aTol = NvGeContext::gTol;
   if (theRadius <= aTol.equalPoint())
   {
@@ -1140,7 +1140,7 @@ NvGeCircArc2d& NvGeCircArc2d::set (const NvGeCurve2d& theCurve1, const NvGeCurve
   ReplaceGeometry (mpImpEnt, BuildGeometry (aDef, "set"));
   theParam1 = ParamOfPoint (aSite1, aBestT1);
   theParam2 = ParamOfPoint (aSite2, aBestT2);
-  theSuccess = Adesk::kTrue;
+  theSuccess = Nova::kTrue;
   return *this;
 }
 
@@ -1149,9 +1149,9 @@ NvGeCircArc2d& NvGeCircArc2d::set (const NvGeCurve2d& theCurve1, const NvGeCurve
 NvGeCircArc2d& NvGeCircArc2d::set (const NvGeCurve2d& theCurve1, const NvGeCurve2d& theCurve2,
                                    const NvGeCurve2d& theCurve3,
                                    double& theParam1, double& theParam2, double& theParam3,
-                                   Adesk::Boolean& theSuccess)
+                                   Nova::Boolean& theSuccess)
 {
-  theSuccess = Adesk::kFalse;
+  theSuccess = Nova::kFalse;
   const NvGeTol& aTol = NvGeContext::gTol;
   // Only three carrier lines are supported: the candidate circles are the
   // inscribed and escribed circles of the triangle they form.
@@ -1269,7 +1269,7 @@ NvGeCircArc2d& NvGeCircArc2d::set (const NvGeCurve2d& theCurve1, const NvGeCurve
   theParam1 = ParamOfPoint (aSite1, aBestT[0]);
   theParam2 = ParamOfPoint (aSite2, aBestT[1]);
   theParam3 = ParamOfPoint (aSite3, TangencyPointOf (aSite3, aBestRadius, aBestCenter));
-  theSuccess = Adesk::kTrue;
+  theSuccess = Nova::kTrue;
   return *this;
 }
 

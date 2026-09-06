@@ -34,7 +34,7 @@ public:
     NvGePoint3d     center         () const;
     NvGeVector3d    axisOfSymmetry () const;
     NvGeVector3d    refAxis        () const;
-    Adesk::Boolean  isOuterNormal  () const;
+    Nova::Boolean  isOuterNormal  () const;
 
     NvGeTorus&      setMajorRadius (double radius);
     NvGeTorus&      setMinorRadius (double radius);
@@ -55,7 +55,7 @@ public:
 
     // Intersection with a linear entity
     //
-    Adesk::Boolean  intersectWith  (const NvGeLinearEnt3d& linEnt, int& intn,
+    Nova::Boolean  intersectWith  (const NvGeLinearEnt3d& linEnt, int& intn,
                                     NvGePoint3d& p1, NvGePoint3d& p2,
                                     NvGePoint3d& p3, NvGePoint3d& p4,
                                     const NvGeTol& tol = NvGeContext::gTol) const;
@@ -66,12 +66,12 @@ public:
     // Exactly one of the first four functions should return TRUE
     // for any given torus.
     //
-    Adesk::Boolean isLemon     () const;
-    Adesk::Boolean isApple     () const;
-    Adesk::Boolean isVortex    () const;
-    Adesk::Boolean isDoughnut  () const;
-    Adesk::Boolean isDegenerate() const;
-    Adesk::Boolean isHollow    () const;
+    Nova::Boolean isLemon     () const;
+    Nova::Boolean isApple     () const;
+    Nova::Boolean isVortex    () const;
+    Nova::Boolean isDoughnut  () const;
+    Nova::Boolean isDegenerate() const;
+    Nova::Boolean isHollow    () const;
 };
 
 #pragma pack (pop)

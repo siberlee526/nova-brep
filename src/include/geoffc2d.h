@@ -19,7 +19,7 @@ public:
 	//
     GE_DLLEXPIMPORT const NvGeCurve2d*  curve             () const;
     GE_DLLEXPIMPORT double              offsetDistance    () const;
-	GE_DLLEXPIMPORT Adesk::Boolean		paramDirection    () const;
+	GE_DLLEXPIMPORT Nova::Boolean		paramDirection    () const;
 	GE_DLLEXPIMPORT NvGeMatrix2d		transformation    () const;
 
 	// Set methods

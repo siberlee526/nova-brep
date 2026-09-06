@@ -20,7 +20,7 @@ NvGeExternalSurface : public NvGeSurface
 public:
    NvGeExternalSurface();
    NvGeExternalSurface(void* surfaceDef, NvGe::ExternalEntityKind surfaceKind,
-                       Adesk::Boolean makeCopy = Adesk::kTrue);
+                       Nova::Boolean makeCopy = Nova::kTrue);
    NvGeExternalSurface(const NvGeExternalSurface&);
 
    // Defining surface.
@@ -31,17 +31,17 @@ public:
    //
    NvGe::ExternalEntityKind  externalSurfaceKind() const;
 
-   Adesk::Boolean    isPlane      () const;
-   Adesk::Boolean    isSphere     () const;
-   Adesk::Boolean    isCylinder   () const;
-   Adesk::Boolean    isCone       () const;
-   Adesk::Boolean    isTorus      () const;
-   Adesk::Boolean    isNurbSurface() const;
-   Adesk::Boolean    isDefined    () const;
+   Nova::Boolean    isPlane      () const;
+   Nova::Boolean    isSphere     () const;
+   Nova::Boolean    isCylinder   () const;
+   Nova::Boolean    isCone       () const;
+   Nova::Boolean    isTorus      () const;
+   Nova::Boolean    isNurbSurface() const;
+   Nova::Boolean    isDefined    () const;
 
    // Conversion to gelib entity
    //
-   Adesk::Boolean isNativeSurface(NvGeSurface*& nativeSurface) const;
+   Nova::Boolean isNativeSurface(NvGeSurface*& nativeSurface) const;
 
    // Assignment operator.
    //
@@ -51,10 +51,10 @@ public:
    //
    NvGeExternalSurface& set(void* surfaceDef,
                             NvGe::ExternalEntityKind surfaceKind,
-                            Adesk::Boolean makeCopy = Adesk::kTrue);
+                            Nova::Boolean makeCopy = Nova::kTrue);
    // Ownership of surface.
    //
-   Adesk::Boolean       isOwnerOfSurface    () const;
+   Nova::Boolean       isOwnerOfSurface    () const;
    NvGeExternalSurface& setToOwnSurface     ();
 };
 

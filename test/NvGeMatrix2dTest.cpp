@@ -286,7 +286,7 @@ TEST_F (NvGeMatrix2dTest, IsConformal_Rotation_ReturnsScaleAndAngle)
 {
   double aScale = 0.0;
   double anAngle = 0.0;
-  Adesk::Boolean anIsMirror = true;
+  Nova::Boolean anIsMirror = true;
   NvGeVector2d aReflex;
 
   NvGeMatrix2d aRot = NvGeMatrix2d::rotation (THE_PI / 3.0);
@@ -308,7 +308,7 @@ TEST_F (NvGeMatrix2dTest, IsConformal_Mirror_ReturnsReflexAxis)
 {
   double aScale = 0.0;
   double anAngle = 0.0;
-  Adesk::Boolean anIsMirror = false;
+  Nova::Boolean anIsMirror = false;
   NvGeVector2d aReflex;
 
   // scale * reflection about the x-axis: | 2  0 |
@@ -338,7 +338,7 @@ TEST_F (NvGeMatrix2dTest, IsConformal_NonConformal_ReturnsFalse)
 {
   double aScale = 0.0;
   double anAngle = 0.0;
-  Adesk::Boolean anIsMirror = false;
+  Nova::Boolean anIsMirror = false;
   NvGeVector2d aReflex;
 
   NvGeMatrix2d aShear; // shear is not angle-preserving

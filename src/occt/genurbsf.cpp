@@ -379,46 +379,46 @@ NvGeNurbSurface& NvGeNurbSurface::operator = (const NvGeNurbSurface& theNurb)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbSurface::isRationalInU () const
+Nova::Boolean NvGeNurbSurface::isRationalInU () const
 {
-  return SplineOf (mpImpEnt)->IsURational() ? Adesk::kTrue : Adesk::kFalse;
+  return SplineOf (mpImpEnt)->IsURational() ? Nova::kTrue : Nova::kFalse;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbSurface::isPeriodicInU (double& thePeriod) const
+Nova::Boolean NvGeNurbSurface::isPeriodicInU (double& thePeriod) const
 {
   const occ::handle<Geom_BSplineSurface> aSpline = SplineOf (mpImpEnt);
   if (!aSpline->IsUPeriodic())
   {
     thePeriod = 0.0;
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const NCollection_Array1<double>& aKnots = aSpline->UKnots();
   thePeriod = aKnots.Value (aKnots.Upper()) - aKnots.Value (aKnots.Lower());
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbSurface::isRationalInV () const
+Nova::Boolean NvGeNurbSurface::isRationalInV () const
 {
-  return SplineOf (mpImpEnt)->IsVRational() ? Adesk::kTrue : Adesk::kFalse;
+  return SplineOf (mpImpEnt)->IsVRational() ? Nova::kTrue : Nova::kFalse;
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbSurface::isPeriodicInV (double& thePeriod) const
+Nova::Boolean NvGeNurbSurface::isPeriodicInV (double& thePeriod) const
 {
   const occ::handle<Geom_BSplineSurface> aSpline = SplineOf (mpImpEnt);
   if (!aSpline->IsVPeriodic())
   {
     thePeriod = 0.0;
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   const NCollection_Array1<double>& aKnots = aSpline->VKnots();
   thePeriod = aKnots.Value (aKnots.Upper()) - aKnots.Value (aKnots.Lower());
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -501,13 +501,13 @@ void NvGeNurbSurface::getControlPoints (NvGePoint3dArray& thePoints) const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeNurbSurface::getWeights (NvGeDoubleArray& theWeights) const
+Nova::Boolean NvGeNurbSurface::getWeights (NvGeDoubleArray& theWeights) const
 {
   const occ::handle<Geom_BSplineSurface> aSpline = SplineOf (mpImpEnt);
   theWeights.removeAll();
   if (!aSpline->IsURational() && !aSpline->IsVRational())
   {
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   for (int u = 1; u <= aSpline->NbUPoles(); ++u)
   {
@@ -516,7 +516,7 @@ Adesk::Boolean NvGeNurbSurface::getWeights (NvGeDoubleArray& theWeights) const
       theWeights.append (aSpline->Weight (u, v));
     }
   }
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================

@@ -3,7 +3,7 @@
 // A 2d vector stores plain (x, y) components. Operations following from
 // elementary trigonometry (rotation, mirroring, angles) are written directly
 // from their defining formulas; tolerance-dependent queries compare against
-// NvGeTol::equalVector(), mirroring the ARX AcGeVector2d semantics.
+// NvGeTol::equalVector(), mirroring the ARX NvGeVector2d semantics.
 // Multiplication by a matrix applies its linear part only: a direction has
 // no position, so the translation column never participates.
 
@@ -171,14 +171,14 @@ double NvGeVector2d::length () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeVector2d::isUnitLength (const NvGeTol& theTol) const
+Nova::Boolean NvGeVector2d::isUnitLength (const NvGeTol& theTol) const
 {
   return std::abs (length() - 1.0) <= theTol.equalVector();
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeVector2d::isZeroLength (const NvGeTol& theTol) const
+Nova::Boolean NvGeVector2d::isZeroLength (const NvGeTol& theTol) const
 {
   return length() <= theTol.equalVector();
 }
@@ -187,14 +187,14 @@ Adesk::Boolean NvGeVector2d::isZeroLength (const NvGeTol& theTol) const
 
 // Parallel when the magnitude of the cross product (the area of the
 // parallelogram spanned by the two vectors) is within the vector tolerance.
-Adesk::Boolean NvGeVector2d::isParallelTo (const NvGeVector2d& theVec, const NvGeTol& theTol) const
+Nova::Boolean NvGeVector2d::isParallelTo (const NvGeVector2d& theVec, const NvGeTol& theTol) const
 {
   return std::abs (x * theVec.y - y * theVec.x) <= theTol.equalVector();
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeVector2d::isParallelTo (const NvGeVector2d& theVec, const NvGeTol& theTol,
+Nova::Boolean NvGeVector2d::isParallelTo (const NvGeVector2d& theVec, const NvGeTol& theTol,
                                            NvGeError& theFlag) const
 {
   if (isZeroLength (theTol))
@@ -216,7 +216,7 @@ Adesk::Boolean NvGeVector2d::isParallelTo (const NvGeVector2d& theVec, const NvG
 // Codirectional adds the same-direction requirement to parallelism: the dot
 // product of two parallel vectors is positive exactly when they point the
 // same way.
-Adesk::Boolean NvGeVector2d::isCodirectionalTo (const NvGeVector2d& theVec,
+Nova::Boolean NvGeVector2d::isCodirectionalTo (const NvGeVector2d& theVec,
                                                 const NvGeTol& theTol) const
 {
   return isParallelTo (theVec, theTol) && this->dotProduct (theVec) > 0.0;
@@ -224,7 +224,7 @@ Adesk::Boolean NvGeVector2d::isCodirectionalTo (const NvGeVector2d& theVec,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeVector2d::isCodirectionalTo (const NvGeVector2d& theVec, const NvGeTol& theTol,
+Nova::Boolean NvGeVector2d::isCodirectionalTo (const NvGeVector2d& theVec, const NvGeTol& theTol,
                                                 NvGeError& theFlag) const
 {
   if (isZeroLength (theTol))
@@ -243,7 +243,7 @@ Adesk::Boolean NvGeVector2d::isCodirectionalTo (const NvGeVector2d& theVec, cons
 
 //=================================================================================================
 
-Adesk::Boolean NvGeVector2d::isPerpendicularTo (const NvGeVector2d& theVec,
+Nova::Boolean NvGeVector2d::isPerpendicularTo (const NvGeVector2d& theVec,
                                                 const NvGeTol& theTol) const
 {
   return std::abs (this->dotProduct (theVec)) <= theTol.equalVector();
@@ -251,7 +251,7 @@ Adesk::Boolean NvGeVector2d::isPerpendicularTo (const NvGeVector2d& theVec,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeVector2d::isPerpendicularTo (const NvGeVector2d& theVec, const NvGeTol& theTol,
+Nova::Boolean NvGeVector2d::isPerpendicularTo (const NvGeVector2d& theVec, const NvGeTol& theTol,
                                                 NvGeError& theFlag) const
 {
   if (isZeroLength (theTol))

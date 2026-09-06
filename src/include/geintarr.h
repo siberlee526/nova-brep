@@ -9,7 +9,7 @@
 
 #include "nvarray.h"
 typedef NvArray<int> NvGeIntArray;
-typedef NvArray<Adesk::IntPtr> NvGeIntPtrArray;
+typedef NvArray<Nova::IntPtr> NvGeIntPtrArray;
 
 #if GE_LOCATED_NEW
 GE_DLLEXPIMPORT

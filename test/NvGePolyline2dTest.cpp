@@ -123,7 +123,7 @@ TEST_F (NvGePolyline2dTest, SplineEntData_DescribesDegreeOneInterpolant)
   const NvGePolyline2d aPoly (MakeThreePoints());
   EXPECT_EQ (aPoly.degree(), 1);
   EXPECT_EQ (aPoly.order(), 2);
-  EXPECT_TRUE (aPoly.isRational() == Adesk::kFalse);
+  EXPECT_TRUE (aPoly.isRational() == Nova::kFalse);
   EXPECT_TRUE (aPoly.hasFitData());
   EXPECT_EQ (aPoly.numControlPoints(), 3);
   // Continuity: -1 at clamped ends, 0 (C1) at interior knots.

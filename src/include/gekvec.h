@@ -37,7 +37,7 @@ public:
 
     // Equality test
     //
-    GE_DLLEXPIMPORT Adesk::Boolean      isEqualTo (const NvGeKnotVector& other) const;
+    GE_DLLEXPIMPORT Nova::Boolean      isEqualTo (const NvGeKnotVector& other) const;
 
     // Inquiry functions
     //
@@ -52,8 +52,8 @@ public:
     GE_DLLEXPIMPORT int                 getInterval        (int ord, double par,
                                             NvGeInterval& interval ) const;
     GE_DLLEXPIMPORT void                getDistinctKnots   (NvGeDoubleArray& knots) const;
-    GE_DLLEXPIMPORT Adesk::Boolean      contains           (double param) const;
-    GE_DLLEXPIMPORT Adesk::Boolean      isOn               (double knot) const;
+    GE_DLLEXPIMPORT Nova::Boolean      contains           (double param) const;
+    GE_DLLEXPIMPORT Nova::Boolean      isOn               (double knot) const;
 
     // Edit function
     //
@@ -82,7 +82,7 @@ public:
     // Array length.
     //
     GE_DLLEXPIMPORT int                 length             () const; // Logical length.
-    GE_DLLEXPIMPORT Adesk::Boolean      isEmpty            () const;
+    GE_DLLEXPIMPORT Nova::Boolean      isEmpty            () const;
     GE_DLLEXPIMPORT int                 logicalLength      () const;
     GE_DLLEXPIMPORT NvGeKnotVector&     setLogicalLength   (int);
     GE_DLLEXPIMPORT int                 physicalLength     () const;
@@ -104,7 +104,7 @@ protected:
     NvGeDoubleArray    mData;
     double             mTolerance;
 
-    Adesk::Boolean     isValid (int) const;
+    Nova::Boolean     isValid (int) const;
 };
 
 // Inline methods.
@@ -117,7 +117,7 @@ inline NvGeKnotVector&
 NvGeKnotVector::setTolerance(double eps)
 { mTolerance = eps;	return *this;}
 
-inline Adesk::Boolean
+inline Nova::Boolean
 NvGeKnotVector::isValid(int i) const
 { return i >= 0 && i < mData.logicalLength(); }
 

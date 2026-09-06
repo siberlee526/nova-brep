@@ -43,15 +43,15 @@ public:
 
     // Containment and intersection tests
     //
-    GE_DLLEXPIMPORT Adesk::Boolean    contains    (const NvGePoint2d& point) const;
-    GE_DLLEXPIMPORT Adesk::Boolean    isDisjoint  (const NvGeBoundBlock2d& block)
+    GE_DLLEXPIMPORT Nova::Boolean    contains    (const NvGePoint2d& point) const;
+    GE_DLLEXPIMPORT Nova::Boolean    isDisjoint  (const NvGeBoundBlock2d& block)
                                                  const;
     // Assignment operator
     //
     GE_DLLEXPIMPORT NvGeBoundBlock2d& operator =  (const NvGeBoundBlock2d& block);
 
-	GE_DLLEXPIMPORT Adesk::Boolean    isBox     () const;
-	GE_DLLEXPIMPORT NvGeBoundBlock2d& setToBox  (Adesk::Boolean);
+	GE_DLLEXPIMPORT Nova::Boolean    isBox     () const;
+	GE_DLLEXPIMPORT NvGeBoundBlock2d& setToBox  (Nova::Boolean);
 };
 
 

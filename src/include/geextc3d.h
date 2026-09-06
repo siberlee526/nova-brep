@@ -23,19 +23,19 @@ public:
     NvGeExternalCurve3d();
     NvGeExternalCurve3d(const NvGeExternalCurve3d& src);
     NvGeExternalCurve3d(void* curveDef, NvGe::ExternalEntityKind curveKind,
-                            Adesk::Boolean makeCopy = Adesk::kTrue);
+                            Nova::Boolean makeCopy = Nova::kTrue);
 
-    Adesk::Boolean isLine     () const;
-    Adesk::Boolean isRay      () const;
-    Adesk::Boolean isLineSeg  () const;
-    Adesk::Boolean isCircArc  () const;
-    Adesk::Boolean isEllipArc () const;
-    Adesk::Boolean isNurbCurve() const;
-    Adesk::Boolean isDefined  () const;
+    Nova::Boolean isLine     () const;
+    Nova::Boolean isRay      () const;
+    Nova::Boolean isLineSeg  () const;
+    Nova::Boolean isCircArc  () const;
+    Nova::Boolean isEllipArc () const;
+    Nova::Boolean isNurbCurve() const;
+    Nova::Boolean isDefined  () const;
 
     // Conversion to native gelib curve
     //
-    Adesk::Boolean isNativeCurve  (NvGeCurve3d*& nativeCurve) const;
+    Nova::Boolean isNativeCurve  (NvGeCurve3d*& nativeCurve) const;
     void           getExternalCurve (void*& curveDef) const;
 
     // Type of the external curve.
@@ -45,14 +45,14 @@ public:
     // Reset surface
     //
     NvGeExternalCurve3d& set(void* curveDef, NvGe::ExternalEntityKind curveKind,
-                             Adesk::Boolean makeCopy = Adesk::kTrue);
+                             Nova::Boolean makeCopy = Nova::kTrue);
     // Assignment operator
     //
     NvGeExternalCurve3d& operator = (const NvGeExternalCurve3d& src);
 
     // Ownership of curve
     //
-    Adesk::Boolean       isOwnerOfCurve   () const;
+    Nova::Boolean       isOwnerOfCurve   () const;
     NvGeExternalCurve3d& setToOwnCurve    ();
 };
 

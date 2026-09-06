@@ -5,11 +5,11 @@
 #include <string.h>
 #include <cassert>
 
-#if defined(__STDC_LIB_EXT1__) || defined(_MSC_VER) && !defined(_ADESK_MAC_)
+#if defined(__STDC_LIB_EXT1__) || defined(_MSC_VER) && !defined(_NOVA_MAC_)
 //Visual C++ 2015 provides these functions
 //
 #define snwprintf_s _snwprintf_s    // K.3.9.1.3 The snwprintf_s function in spec
-#elif defined (_ADESK_MAC_)
+#elif defined (_NOVA_MAC_)
 // mac already emulates these
 #include <assert.h>
 #include "ms_crtdef.h"
@@ -286,7 +286,7 @@ int swscanf_s(const wchar_t* buf, const wchar_t* format, Args... args)
     // swprintf doesn't work on some android devices/simulators, especially api-level 19
     // put an assert here so that we can avoid wasting time to debug weird behavior caused by it
     // if you run into this assert, try another simulator.
-#if defined(_ADESK_ANDROID_)
+#if defined(_NOVA_ANDROID_)
     int a = 0;
     assert(1 == swscanf(L"1", L"%d", &a));
 #endif
@@ -303,7 +303,7 @@ int sscanf_s(const char* buf, const char* format, Args... args)
     // swprintf doesn't work on some android devices/simulators, especially api-level 19
     // put an assert here so that we can avoid wasting time to debug weird behavior caused by it
     // if you run into this assert, try another simulator.
-#if defined(_ADESK_ANDROID_)
+#if defined(_NOVA_ANDROID_)
     int a = 0;
     assert(1 == swscanf(L"1", L"%d", &a));
 #endif

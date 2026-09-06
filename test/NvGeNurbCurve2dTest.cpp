@@ -39,14 +39,14 @@ TEST_F (NvGeNurbCurve2dTest, DefaultConstructor_IsDegenerateAtOrigin)
   EXPECT_TRUE (aSpline.endPoint().isEqualTo (NvGePoint2d (0.0, 0.0)));
 
   int aDegree = 0;
-  Adesk::Boolean aRational = Adesk::kFalse;
-  Adesk::Boolean aPeriodic = Adesk::kFalse;
+  Nova::Boolean aRational = Nova::kFalse;
+  Nova::Boolean aPeriodic = Nova::kFalse;
   NvGeKnotVector aKnots;
   NvGePoint2dArray aPnts;
   NvGeDoubleArray aWeights;
   aSpline.getDefinitionData (aDegree, aRational, aPeriodic, aKnots, aPnts, aWeights);
   EXPECT_EQ (aDegree, 1);
-  EXPECT_FALSE (aRational != Adesk::kFalse);
+  EXPECT_FALSE (aRational != Nova::kFalse);
 }
 
 TEST_F (NvGeNurbCurve2dTest, FitConstructor_PassesThroughFitPoints)
@@ -58,7 +58,7 @@ TEST_F (NvGeNurbCurve2dTest, FitConstructor_PassesThroughFitPoints)
 
   const NvGeNurbCurve2d aSpline (aFitPnts,
                                  NvGeVector2d (1.0, 0.0), NvGeVector2d (1.0, 0.0),
-                                 Adesk::kTrue, Adesk::kTrue);
+                                 Nova::kTrue, Nova::kTrue);
 
   EXPECT_EQ (aSpline.numFitPoints(), 3);
 
@@ -107,18 +107,18 @@ TEST_F (NvGeNurbCurve2dTest, DefinitionConstructor_DefinitionRoundTrip)
     aPnts.append (NvGePoint2d (i * 1.0, i % 2 == 0 ? 0.0 : 1.0));
   }
 
-  const NvGeNurbCurve2d aSpline (3, aKnots, aPnts, Adesk::kFalse);
+  const NvGeNurbCurve2d aSpline (3, aKnots, aPnts, Nova::kFalse);
 
   int aDegree = 0;
-  Adesk::Boolean aRational = Adesk::kFalse;
-  Adesk::Boolean aPeriodic = Adesk::kFalse;
+  Nova::Boolean aRational = Nova::kFalse;
+  Nova::Boolean aPeriodic = Nova::kFalse;
   NvGeKnotVector anOutKnots;
   NvGePoint2dArray anOutPnts;
   NvGeDoubleArray anOutWeights;
   aSpline.getDefinitionData (aDegree, aRational, aPeriodic, anOutKnots, anOutPnts, anOutWeights);
   EXPECT_EQ (aDegree, 3);
-  EXPECT_FALSE (aRational != Adesk::kFalse);
-  EXPECT_FALSE (aPeriodic != Adesk::kFalse);
+  EXPECT_FALSE (aRational != Nova::kFalse);
+  EXPECT_FALSE (aPeriodic != Nova::kFalse);
   EXPECT_EQ (anOutKnots.length(), 9);       // flat knot vector
   EXPECT_EQ (anOutPnts.length(), 5);
   EXPECT_EQ (aSpline.numWeights(), 0);
@@ -142,7 +142,7 @@ TEST_F (NvGeNurbCurve2dTest, WeightsConstructor_IsRational)
     aWeights.append (i == 2 ? 2.0 : 1.0);
   }
 
-  const NvGeNurbCurve2d aSpline (3, aKnots, aPnts, aWeights, Adesk::kFalse);
+  const NvGeNurbCurve2d aSpline (3, aKnots, aPnts, aWeights, Nova::kFalse);
 
   EXPECT_EQ (aSpline.numWeights(), 5);
   EXPECT_NEAR (aSpline.weightAt (2), 2.0, THE_TEST_TOL);
@@ -155,8 +155,8 @@ TEST_F (NvGeNurbCurve2dTest, LineSegConstructor_IsDegreeOneSegment)
   const NvGeNurbCurve2d aSpline (NvGeLineSeg2d (NvGePoint2d (0.0, 0.0), NvGePoint2d (4.0, 3.0)));
 
   int aDegree = 0;
-  Adesk::Boolean aRational = Adesk::kFalse;
-  Adesk::Boolean aPeriodic = Adesk::kFalse;
+  Nova::Boolean aRational = Nova::kFalse;
+  Nova::Boolean aPeriodic = Nova::kFalse;
   NvGeKnotVector aKnots;
   NvGePoint2dArray aPnts;
   NvGeDoubleArray aWeights;
@@ -179,14 +179,14 @@ TEST_F (NvGeNurbCurve2dTest, EllipseConstructor_IsRationalConic)
   const NvGeNurbCurve2d aSpline (anEllipse);
 
   int aDegree = 0;
-  Adesk::Boolean aRational = Adesk::kFalse;
-  Adesk::Boolean aPeriodic = Adesk::kFalse;
+  Nova::Boolean aRational = Nova::kFalse;
+  Nova::Boolean aPeriodic = Nova::kFalse;
   NvGeKnotVector aKnots;
   NvGePoint2dArray aPnts;
   NvGeDoubleArray aWeights;
   aSpline.getDefinitionData (aDegree, aRational, aPeriodic, aKnots, aPnts, aWeights);
   EXPECT_EQ (aDegree, 2);
-  EXPECT_TRUE (aRational != Adesk::kFalse);
+  EXPECT_TRUE (aRational != Nova::kFalse);
   EXPECT_GT (aSpline.numWeights(), 0);
 
   // The spline parameterization reproduces the ellipse angles.
@@ -296,7 +296,7 @@ TEST_F (NvGeNurbCurve2dTest, HardTrimByParams_NarrowsInterval)
     aPnts.append (NvGePoint2d (i * 0.5, 0.0));
   }
 
-  NvGeNurbCurve2d aSpline (3, aKnots, aPnts, Adesk::kFalse);
+  NvGeNurbCurve2d aSpline (3, aKnots, aPnts, Nova::kFalse);
   const NvGePoint2d aMidStart = aSpline.evalPoint (0.5);
 
   aSpline.hardTrimByParams (0.5, 1.5);
@@ -316,8 +316,8 @@ TEST_F (NvGeNurbCurve2dTest, MakeClosedThenOpen_RestoresPoleCount)
   NvGeNurbCurve2d aSpline (aFitPnts);
 
   int aDegree = 0;
-  Adesk::Boolean aRational = Adesk::kFalse;
-  Adesk::Boolean aPeriodic = Adesk::kFalse;
+  Nova::Boolean aRational = Nova::kFalse;
+  Nova::Boolean aPeriodic = Nova::kFalse;
   NvGeKnotVector aKnots;
   NvGePoint2dArray aPnts;
   NvGeDoubleArray aWeights;
@@ -343,17 +343,17 @@ TEST_F (NvGeNurbCurve2dTest, MakePeriodicThenNonPeriodic_TogglesFlag)
 
   aSpline.makePeriodic();
   int aDegree = 0;
-  Adesk::Boolean aRational = Adesk::kFalse;
-  Adesk::Boolean aPeriodic = Adesk::kFalse;
+  Nova::Boolean aRational = Nova::kFalse;
+  Nova::Boolean aPeriodic = Nova::kFalse;
   NvGeKnotVector aKnots;
   NvGePoint2dArray aPnts;
   NvGeDoubleArray aWeights;
   aSpline.getDefinitionData (aDegree, aRational, aPeriodic, aKnots, aPnts, aWeights);
-  EXPECT_TRUE (aPeriodic != Adesk::kFalse);
+  EXPECT_TRUE (aPeriodic != Nova::kFalse);
 
   aSpline.makeNonPeriodic();
   aSpline.getDefinitionData (aDegree, aRational, aPeriodic, aKnots, aPnts, aWeights);
-  EXPECT_FALSE (aPeriodic != Adesk::kFalse);
+  EXPECT_FALSE (aPeriodic != Nova::kFalse);
 }
 
 TEST_F (NvGeNurbCurve2dTest, ElevateDegree_RaisesDegreeKeepsEnds)
@@ -364,8 +364,8 @@ TEST_F (NvGeNurbCurve2dTest, ElevateDegree_RaisesDegreeKeepsEnds)
   aSpline.elevateDegree (2);
 
   int aDegree = 0;
-  Adesk::Boolean aRational = Adesk::kFalse;
-  Adesk::Boolean aPeriodic = Adesk::kFalse;
+  Nova::Boolean aRational = Nova::kFalse;
+  Nova::Boolean aPeriodic = Nova::kFalse;
   NvGeKnotVector aKnots;
   NvGePoint2dArray aPnts;
   NvGeDoubleArray aWeights;
@@ -391,7 +391,7 @@ TEST_F (NvGeNurbCurve2dTest, AddKnot_PreservesShape)
     aPnts.append (NvGePoint2d (i * 0.5, i % 2 == 0 ? 0.0 : 1.0));
   }
 
-  NvGeNurbCurve2d aSpline (3, aKnots, aPnts, Adesk::kFalse);
+  NvGeNurbCurve2d aSpline (3, aKnots, aPnts, Nova::kFalse);
   const NvGePoint2d aBefore1 = aSpline.evalPoint (0.3);
   const NvGePoint2d aBefore2 = aSpline.evalPoint (1.7);
 
@@ -417,7 +417,7 @@ TEST_F (NvGeNurbCurve2dTest, AddControlPointAt_RoundTrip)
     aPnts.append (NvGePoint2d (i * 0.5, 0.0));
   }
 
-  NvGeNurbCurve2d aSpline (3, aKnots, aPnts, Adesk::kFalse);
+  NvGeNurbCurve2d aSpline (3, aKnots, aPnts, Nova::kFalse);
   ASSERT_EQ (aSpline.numControlPoints(), 5);
 
   // Knots strictly before 0.5: only knot 0 with multiplicity 4, so the new
@@ -446,7 +446,7 @@ TEST_F (NvGeNurbCurve2dTest, GetParamsOfC1Discontinuity_FindsC0Knot)
     aPnts.append (NvGePoint2d (i * 0.5, 0.0));
   }
 
-  const NvGeNurbCurve2d aSpline (2, aKnots, aPnts, Adesk::kFalse);
+  const NvGeNurbCurve2d aSpline (2, aKnots, aPnts, Nova::kFalse);
 
   NvGeDoubleArray aParams;
   EXPECT_TRUE (aSpline.getParamsOfC1Discontinuity (aParams));
@@ -472,7 +472,7 @@ TEST_F (NvGeNurbCurve2dTest, CopyOnWrite_CopyThenModifyOriginal_CopyUnaffected)
     aWeights.append (1.0);
   }
 
-  const NvGeNurbCurve2d aSource (3, aKnots, aPnts, aWeights, Adesk::kFalse);
+  const NvGeNurbCurve2d aSource (3, aKnots, aPnts, aWeights, Nova::kFalse);
   const NvGeNurbCurve2d aCopy (aSource);
 
   NvGeNurbCurve2d aMutable (aSource);
@@ -501,7 +501,7 @@ TEST_F (NvGeNurbCurve2dTest, OperatorAssign_IndependentAfterModify)
     aWeights.append (1.0);
   }
 
-  const NvGeNurbCurve2d aSource (3, aKnots, aPnts, aWeights, Adesk::kFalse);
+  const NvGeNurbCurve2d aSource (3, aKnots, aPnts, aWeights, Nova::kFalse);
   NvGeNurbCurve2d aCopy;
   aCopy = aSource;
 
@@ -519,8 +519,8 @@ TEST_F (NvGeNurbCurve2dTest, EvalMode_TogglesOnFitSpline)
   aFitPnts.append (NvGePoint2d (2.0, 0.0));
 
   NvGeNurbCurve2d aSpline (aFitPnts);
-  EXPECT_FALSE (aSpline.evalMode() != Adesk::kFalse);
+  EXPECT_FALSE (aSpline.evalMode() != Nova::kFalse);
 
-  aSpline.setEvalMode (Adesk::kTrue);
-  EXPECT_TRUE (aSpline.evalMode() != Adesk::kFalse);
+  aSpline.setEvalMode (Nova::kTrue);
+  EXPECT_TRUE (aSpline.evalMode() != Nova::kFalse);
 }

@@ -107,13 +107,13 @@ occ::handle<Geom_Surface> CaptureSurface (void* theSurfaceDef, bool theMakeCopy,
 
 //! Installs a fresh holder, replacing the base placeholder impl.
 void InstallData (NvGeImpEntity3d*& theImp, void* theSurfaceDef,
-                  NvGe::ExternalEntityKind theKind, Adesk::Boolean theMakeCopy,
+                  NvGe::ExternalEntityKind theKind, Nova::Boolean theMakeCopy,
                   const char* theMethod)
 {
   occ::handle<NvGeExternalSurfData> aData = new NvGeExternalSurfData();
   aData->ExternalDef = theSurfaceDef;
   aData->Kind = theKind;
-  aData->IsOwner = theMakeCopy != Adesk::kFalse;
+  aData->IsOwner = theMakeCopy != Nova::kFalse;
   if (theSurfaceDef != nullptr)
   {
     // Validate and capture the geometry BEFORE touching this entity, so a
@@ -135,7 +135,7 @@ void InstallData (NvGeImpEntity3d*& theImp, void* theSurfaceDef,
 
 NvGeExternalSurface::NvGeExternalSurface ()
 {
-  InstallData (mpImpEnt, nullptr, NvGe::kExternalEntityUndefined, Adesk::kFalse,
+  InstallData (mpImpEnt, nullptr, NvGe::kExternalEntityUndefined, Nova::kFalse,
                "NvGeExternalSurface");
 }
 
@@ -143,7 +143,7 @@ NvGeExternalSurface::NvGeExternalSurface ()
 
 NvGeExternalSurface::NvGeExternalSurface (void* theSurfaceDef,
                                           NvGe::ExternalEntityKind theSurfaceKind,
-                                          Adesk::Boolean theMakeCopy)
+                                          Nova::Boolean theMakeCopy)
 {
   InstallData (mpImpEnt, theSurfaceDef, theSurfaceKind, theMakeCopy, "NvGeExternalSurface");
 }
@@ -171,7 +171,7 @@ NvGe::ExternalEntityKind NvGeExternalSurface::externalSurfaceKind () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isPlane () const
+Nova::Boolean NvGeExternalSurface::isPlane () const
 {
   const NvGeExternalSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -180,7 +180,7 @@ Adesk::Boolean NvGeExternalSurface::isPlane () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isSphere () const
+Nova::Boolean NvGeExternalSurface::isSphere () const
 {
   const NvGeExternalSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -189,7 +189,7 @@ Adesk::Boolean NvGeExternalSurface::isSphere () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isCylinder () const
+Nova::Boolean NvGeExternalSurface::isCylinder () const
 {
   const NvGeExternalSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -198,7 +198,7 @@ Adesk::Boolean NvGeExternalSurface::isCylinder () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isCone () const
+Nova::Boolean NvGeExternalSurface::isCone () const
 {
   const NvGeExternalSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -207,7 +207,7 @@ Adesk::Boolean NvGeExternalSurface::isCone () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isTorus () const
+Nova::Boolean NvGeExternalSurface::isTorus () const
 {
   const NvGeExternalSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -216,7 +216,7 @@ Adesk::Boolean NvGeExternalSurface::isTorus () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isNurbSurface () const
+Nova::Boolean NvGeExternalSurface::isNurbSurface () const
 {
   const NvGeExternalSurfData* aData = DataOf (mpImpEnt);
   return !aData->Surface.IsNull()
@@ -225,27 +225,27 @@ Adesk::Boolean NvGeExternalSurface::isNurbSurface () const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isDefined () const
+Nova::Boolean NvGeExternalSurface::isDefined () const
 {
   return !DataOf (mpImpEnt)->Surface.IsNull();
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isNativeSurface (NvGeSurface*& theNativeSurface) const
+Nova::Boolean NvGeExternalSurface::isNativeSurface (NvGeSurface*& theNativeSurface) const
 {
   const NvGeExternalSurfData* aData = DataOf (mpImpEnt);
   if (aData->Surface.IsNull())
   {
     theNativeSurface = nullptr;
-    return Adesk::kFalse;
+    return Nova::kFalse;
   }
   // Generic native wrapper around the shared geometry (documented layout
   // bridge: all ge wrappers are {mpImpEnt, mDelEnt} shells, so the entity
   // base wrapper doubles as an NvGeSurface).
   theNativeSurface = (NvGeSurface*) newEntity3d (
       new NvGeImpEntity3d (NvGe::kSurface, aData->Surface));
-  return Adesk::kTrue;
+  return Nova::kTrue;
 }
 
 //=================================================================================================
@@ -260,7 +260,7 @@ NvGeExternalSurface& NvGeExternalSurface::operator = (const NvGeExternalSurface&
 
 NvGeExternalSurface& NvGeExternalSurface::set (void* theSurfaceDef,
                                                NvGe::ExternalEntityKind theSurfaceKind,
-                                               Adesk::Boolean theMakeCopy)
+                                               Nova::Boolean theMakeCopy)
 {
   InstallData (mpImpEnt, theSurfaceDef, theSurfaceKind, theMakeCopy, "set");
   return *this;
@@ -268,7 +268,7 @@ NvGeExternalSurface& NvGeExternalSurface::set (void* theSurfaceDef,
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalSurface::isOwnerOfSurface () const
+Nova::Boolean NvGeExternalSurface::isOwnerOfSurface () const
 {
   return DataOf (mpImpEnt)->IsOwner;
 }

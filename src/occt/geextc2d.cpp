@@ -98,13 +98,13 @@ occ::handle<Geom2d_Curve> CaptureCurve (void* theCurveDef, bool theMakeCopy, con
 
 //! Installs a fresh holder, replacing the base placeholder impl.
 void InstallData (NvGeImpEntity3d*& theImp, void* theCurveDef,
-                  NvGe::ExternalEntityKind theKind, Adesk::Boolean theMakeCopy,
+                  NvGe::ExternalEntityKind theKind, Nova::Boolean theMakeCopy,
                   const char* theMethod)
 {
   occ::handle<NvGeExternalCurve2dData> aData = new NvGeExternalCurve2dData();
   aData->ExternalDef = theCurveDef;
   aData->Kind = theKind;
-  aData->IsOwner = theMakeCopy != Adesk::kFalse;
+  aData->IsOwner = theMakeCopy != Nova::kFalse;
   if (theCurveDef != nullptr)
   {
     // Validate and capture the geometry BEFORE touching this entity, so a
@@ -126,7 +126,7 @@ void InstallData (NvGeImpEntity3d*& theImp, void* theCurveDef,
 
 NvGeExternalCurve2d::NvGeExternalCurve2d()
 {
-  InstallData (mpImpEnt, nullptr, NvGe::kExternalEntityUndefined, Adesk::kFalse,
+  InstallData (mpImpEnt, nullptr, NvGe::kExternalEntityUndefined, Nova::kFalse,
                "NvGeExternalCurve2d");
 }
 
@@ -140,14 +140,14 @@ NvGeExternalCurve2d::NvGeExternalCurve2d (const NvGeExternalCurve2d& theSource)
 //=================================================================================================
 
 NvGeExternalCurve2d::NvGeExternalCurve2d (void* theCurveDef, NvGe::ExternalEntityKind theCurveKind,
-                                          Adesk::Boolean theMakeCopy)
+                                          Nova::Boolean theMakeCopy)
 {
   InstallData (mpImpEnt, theCurveDef, theCurveKind, theMakeCopy, "NvGeExternalCurve2d");
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve2d::isNurbCurve() const
+Nova::Boolean NvGeExternalCurve2d::isNurbCurve() const
 {
   const NvGeExternalCurve2dData* aData = DataOf (mpImpEnt);
   return !aData->Curve.IsNull()
@@ -156,7 +156,7 @@ Adesk::Boolean NvGeExternalCurve2d::isNurbCurve() const
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve2d::isNurbCurve (NvGeNurbCurve2d& theNurbCurve) const
+Nova::Boolean NvGeExternalCurve2d::isNurbCurve (NvGeNurbCurve2d& theNurbCurve) const
 {
   const NvGeExternalCurve2dData* aData = DataOf (mpImpEnt);
   if (aData->Curve.IsNull()
@@ -189,7 +189,7 @@ Adesk::Boolean NvGeExternalCurve2d::isNurbCurve (NvGeNurbCurve2d& theNurbCurve) 
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve2d::isDefined() const
+Nova::Boolean NvGeExternalCurve2d::isDefined() const
 {
   return !DataOf (mpImpEnt)->Curve.IsNull();
 }
@@ -212,7 +212,7 @@ NvGe::ExternalEntityKind NvGeExternalCurve2d::externalCurveKind() const
 
 NvGeExternalCurve2d& NvGeExternalCurve2d::set (void* theCurveDef,
                                                NvGe::ExternalEntityKind theCurveKind,
-                                               Adesk::Boolean theMakeCopy)
+                                               Nova::Boolean theMakeCopy)
 {
   InstallData (mpImpEnt, theCurveDef, theCurveKind, theMakeCopy, "set");
   return *this;
@@ -228,7 +228,7 @@ NvGeExternalCurve2d& NvGeExternalCurve2d::operator = (const NvGeExternalCurve2d&
 
 //=================================================================================================
 
-Adesk::Boolean NvGeExternalCurve2d::isOwnerOfCurve() const
+Nova::Boolean NvGeExternalCurve2d::isOwnerOfCurve() const
 {
   return DataOf (mpImpEnt)->IsOwner;
 }

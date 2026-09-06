@@ -258,7 +258,7 @@ NvGeEntity3d::~NvGeEntity3d()
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEntity3d::isKindOf (NvGe::EntityId theEntType) const
+Nova::Boolean NvGeEntity3d::isKindOf (NvGe::EntityId theEntType) const
 {
   return NvGeIsKindOf (type(), theEntType);
 }
@@ -299,21 +299,21 @@ NvGeEntity3d& NvGeEntity3d::operator = (const NvGeEntity3d& theEntity)
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEntity3d::operator == (const NvGeEntity3d& theEntity) const
+Nova::Boolean NvGeEntity3d::operator == (const NvGeEntity3d& theEntity) const
 {
   return isEqualTo (theEntity);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEntity3d::operator != (const NvGeEntity3d& theEntity) const
+Nova::Boolean NvGeEntity3d::operator != (const NvGeEntity3d& theEntity) const
 {
   return !isEqualTo (theEntity);
 }
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEntity3d::isEqualTo (const NvGeEntity3d& theEntity, const NvGeTol& theTol) const
+Nova::Boolean NvGeEntity3d::isEqualTo (const NvGeEntity3d& theEntity, const NvGeTol& theTol) const
 {
   if (mpImpEnt == nullptr || theEntity.mpImpEnt == nullptr)
   {
@@ -442,7 +442,7 @@ NvGeEntity3d& NvGeEntity3d::scaleBy (double theScaleFactor, const NvGePoint3d& t
 
 //=================================================================================================
 
-Adesk::Boolean NvGeEntity3d::isOn (const NvGePoint3d& thePnt, const NvGeTol& theTol) const
+Nova::Boolean NvGeEntity3d::isOn (const NvGePoint3d& thePnt, const NvGeTol& theTol) const
 {
   if (mpImpEnt == nullptr)
   {

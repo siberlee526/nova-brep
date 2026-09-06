@@ -319,7 +319,7 @@ inline gp_Trsf2d Trsf2dFromMatrix (const NvGeMatrix2d& theMat)
 {
   double aScale = 0.0;
   double anAngle = 0.0;
-  Adesk::Boolean isMirror = false;
+  Nova::Boolean isMirror = false;
   NvGeVector2d aReflex;
   if (!theMat.isConformal (aScale, anAngle, isMirror, aReflex))
   {
