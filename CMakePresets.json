@@ -1,0 +1,128 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 21, "patch": 0 },
+  "configurePresets": [
+    {
+      "name": "base",
+      "hidden": true,
+      "cacheVariables": {
+        "BUILD_CPP_STANDARD": "C++17",
+        "BUILD_GTEST": "ON"
+      }
+    },
+    {
+      "name": "win-base",
+      "hidden": true,
+      "inherits": "base",
+      "cacheVariables": {
+        "BUILD_USE_VCPKG": "ON",
+        "VCPKG_TARGET_TRIPLET": "x64-windows"
+      }
+    },
+    {
+      "name": "win-release",
+      "inherits": "win-base",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_OPT_PROFILE": "Production",
+        "BUILD_USE_PCH": "ON",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install",
+        "OpenCASCADE_DIR": "${sourceDir}/../OCCT/install/cmake"
+      }
+    },
+    {
+      "name": "win-debug",
+      "inherits": "win-base",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "BUILD_USE_PCH": "OFF",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install-debug",
+        "OpenCASCADE_DIR": "${sourceDir}/../OCCT/install-debug/cmake"
+      }
+    },
+    {
+      "name": "win-msvc",
+      "inherits": "win-base",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build-msvc",
+      "cacheVariables": {
+        "BUILD_USE_PCH": "OFF",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install-msvc",
+        "OpenCASCADE_DIR": "${sourceDir}/../OCCT/install/cmake"
+      }
+    },
+    {
+      "name": "release",
+      "inherits": "base",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_OPT_PROFILE": "Production",
+        "BUILD_USE_PCH": "ON",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install"
+      }
+    },
+    {
+      "name": "debug",
+      "inherits": "base",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "BUILD_USE_PCH": "OFF",
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/install-debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "win-release",
+      "configurePreset": "win-release"
+    },
+    {
+      "name": "win-debug",
+      "configurePreset": "win-debug"
+    },
+    {
+      "name": "win-msvc",
+      "configurePreset": "win-msvc",
+      "configuration": "Release"
+    },
+    {
+      "name": "release",
+      "configurePreset": "release"
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "win-release",
+      "configurePreset": "win-release",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "win-debug",
+      "configurePreset": "win-debug",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "release",
+      "configurePreset": "release",
+      "output": { "outputOnFailure": true }
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug",
+      "output": { "outputOnFailure": true }
+    }
+  ]
+}

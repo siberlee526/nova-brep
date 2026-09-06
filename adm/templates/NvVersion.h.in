@@ -1,0 +1,10 @@
+#ifndef Nv_Version_HeaderFile
+#define Nv_Version_HeaderFile
+
+//! NvBREP version components (single source of truth: root CMakeLists.txt project() command).
+#define NV_VERSION_MAJOR    @PROJECT_VERSION_MAJOR@
+#define NV_VERSION_MINOR    @PROJECT_VERSION_MINOR@
+#define NV_VERSION_PATCH    @PROJECT_VERSION_PATCH@
+#define NV_VERSION_COMPLETE "@PROJECT_VERSION@"
+
+#endif // Nv_Version_HeaderFile

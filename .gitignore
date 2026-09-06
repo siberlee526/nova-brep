@@ -10,6 +10,7 @@
 # Precompiled Headers
 *.gch
 *.pch
+.opencode
 
 # Linker files
 *.ilk
@@ -43,6 +44,7 @@
 build/
 Build/
 build-*/
+out/
 
 # CMake generated files
 CMakeFiles/
@@ -51,12 +53,21 @@ cmake_install.cmake
 Makefile
 install_manifest.txt
 compile_commands.json
+# install directories
+install/
+install-*/
 
 # Temporary files
 *.tmp
 *.log
 *.bak
 *.swp
+# IDE / tooling
+.vs/
+.vscode/
+.idea/
+*.user
+CMakeUserPresets.json
 
 # vcpkg
 vcpkg_installed/
@@ -67,3 +78,8 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+# caches
+.cache/
+*.pyc
+.omo/
+.lingma/

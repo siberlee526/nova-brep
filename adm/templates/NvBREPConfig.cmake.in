@@ -1,0 +1,15 @@
+@PACKAGE_INIT@
+
+include (CMakeFindDependencyMacro)
+
+# NvBREP public headers expose OCCT types; propagate the OCCT dependency.
+# The path recorded at NvBREP configure time is used as a hint, so consumers
+# do not need to locate OCCT themselves unless they want another installation.
+if (NOT OpenCASCADE_DIR)
+  set (OpenCASCADE_DIR "@OpenCASCADE_DIR@")
+endif()
+find_dependency (OpenCASCADE COMPONENTS FoundationClasses ModelingData ModelingAlgorithms)
+
+include ("${CMAKE_CURRENT_LIST_DIR}/NvBREPTargets.cmake")
+
+check_required_components (NvBREP)
